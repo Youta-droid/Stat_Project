@@ -1,0 +1,37 @@
+---
+title: "Project Proposal"
+format: html
+---
+
+## 1. Project Outline
+
+(summarize the topic of the project)
+
+## 2. Member
+
+\[name\] \[email\]
+
+\[name\] \[email\]
+
+Shohei Kobayashi (kobayashishohei1023\@gmail.com)
+
+## 3. GitHub Repogitry
+
+<https://github.com/Youta-droid/Stat_Project>
+
+## 4. Dataset
+
+Source: <https://www.worldhappiness.report/>
+
+Let's take a look into the dataset (for example 2025):
+
+```         
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(here)
+df <- read_excel("world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx")
+df
+```
