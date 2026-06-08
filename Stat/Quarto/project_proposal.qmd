@@ -3,11 +3,11 @@ title: "Project Proposal"
 format: html
 ---
 
-## 1. Project Outline
+# 1. Project Outline
 
-(summarize the topic of the project)
+Every March, headlines announce that Finland is “the happiest country in the world” — again. But what actually sits behind that single number, how much does it move from year to year, and how much of a nation's happiness can be pinned to money, health and freedom? This project uses five years of global survey data to look past the headline ranking and ask what really travels with well-being.
 
-## 2. Member
+## Member
 
 \[name\] \[email\]
 
@@ -15,23 +15,152 @@ format: html
 
 Shohei Kobayashi (kobayashishohei1023\@gmail.com)
 
-## 3. GitHub Repogitry
+## GitHub Repogitry
 
 <https://github.com/Youta-droid/Stat_Project>
 
-## 4. Dataset
+# 2. Source & Licence
 
-Source: <https://www.worldhappiness.report/>
+**Dataset:** World Happiness Report
 
-Let's take a look into the dataset (for example 2025):
+**Hosted on:** Kaggle — [kaggle.com/datasets/unsdsn/world-happiness](https://www.kaggle.com/datasets/unsdsn/world-happiness)
 
-```         
-```
+**Published by:** UN Sustainable Development Solutions Network (UNSDSN)
 
-```{r}
-library(tidyverse)
-library(readxl)
-library(here)
-df <- read_excel("world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx")
-df
-```
+**Underlying source:** Gallup World Poll — the Cantril ladder life-evaluation question
+
+**Coverage:** Five annual files, 2015–2019 (one CSV per report year)
+
+**Licence:** CC0 1.0 — Public Domain (no rights reserved)
+
+Because the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g. “World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”
+
+# 3. What's in It
+
+Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis.
+
+## Per-year structure
+
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+| **Year** | **Rows**                     | **Cols** | **What is different that year**                                               |
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+| **2015** | 158                          | 12       | Includes Region and Standard Error; has Dystopia Residual                     |
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+| **2016** | 157                          | 13       | Includes Region; Standard Error replaced by Lower/Upper Confidence Interval   |
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+| **2017** | 155                          | 12       | Region dropped; Whisker high/low instead of CI; Dystopia Residual kept        |
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+| **2018** | 156                          | 9        | Slim schema: columns renamed; Region, CI and Dystopia Residual all removed    |
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+| **2019** | 156                          | 9        | Same slim schema as 2018                                                      |
++----------+------------------------------+----------+-------------------------------------------------------------------------------+
+
+Row counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report's format was simplified over time.
+
+## Key variables
+
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Concept**             | **Column name(s)  (2015–17  /  2018–19)**                     | **What it measures**                                         |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Country**             | Country  /  Country or region                                 | The nation — the unit of analysis                            |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Region**              | Region  (2015–2016 only)                                      | World region grouping (e.g. Western Europe)                  |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Rank**                | Happiness Rank  /  Overall rank                               | Position in that year's global ranking                       |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Happiness score ★**   | Happiness Score  /  Score                                     | Cantril-ladder life evaluation, 0–10 — the TARGET variable   |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **GDP per capita**      | Economy (GDP per Capita)  /  GDP per capita                   | Contribution of income to the score                          |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Social support**      | Family  /  Social support                                     | Contribution of having someone to count on                   |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Life expectancy**     | Health (Life Expectancy)  /  Healthy life expectancy          | Contribution of healthy longevity                            |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Freedom**             | Freedom  /  Freedom to make life choices                      | Contribution of freedom over life choices                    |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Generosity**          | Generosity                                                    | Contribution of charitable behaviour                         |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Corruption**          | Trust (Government Corruption)  /  Perceptions of corruption   | Contribution of perceived honesty / low corruption           |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+| **Dystopia residual**   | Dystopia Residual  (through 2017)                             | Unexplained remainder above the Dystopia baseline            |
++-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+
+★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files.
+
+## A subtlety that shapes the whole analysis
+
+**The six “factor” columns are not raw measurements.**
+
+**What they actually are:** Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country's score — not the raw value (e.g. it is not GDP in dollars).
+
+**They are additive:** The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.
+
+**Why it matters:** This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction — a fact we deliberately exploit (and flag) in Question 3.
+
+# 4. Research Questions
+
+Three questions, one of each main claim type — descriptive, exploratory, and predictive — progressing from “what does the data show?” to “can we model it?”
+
+## Q1. Is the happiness map frozen at the top — or is it shifting?
+
+The same handful of (mostly Nordic) countries seem to win every year. We track happiness scores from 2015 to 2019 to see how stable the ranking really is, which regions cluster where, and which countries moved the most over the five years.
+
+**Claim type: Descriptive**
+
+**Hypothesis:** The top of the ranking is highly stable; most of the movement happens in the middle and bottom of the table.
+
+**Approach:** Slope / line charts of the top-10 scores over time, a “biggest movers” table (Δ score 2015→2019), and a choropleth world map coloured by score.
+
+**Watch-outs:** Only five years of data; year-to-year rank changes can be tiny and may fall within each score's confidence interval, so small moves should not be over-read.
+
+## Q2. Wealth or warmth — what tracks happiness more closely?
+
+A perennial debate: does money buy happiness, or do relationships matter more? We compare how strongly happiness is associated with GDP per capita versus social support, and check whether the pay-off from extra income flattens at high income levels (a diminishing-returns / Easterlin-style pattern).
+
+**Claim type: Exploratory**
+
+**Hypothesis:** Both correlate strongly with happiness, but the marginal contribution of GDP diminishes at high income, while social support stays consistently important.
+
+**Approach:** Correlation matrix and scatter plots with a smoothed (LOESS) fit on GDP vs. happiness to inspect curvature; compare standardised effect sizes.
+
+**Watch-outs:** Correlation is not causation; GDP and social support are themselves intercorrelated (multicollinearity), so “which matters more” cannot be cleanly separated from this data alone.
+
+## Q3. How much of happiness can these numbers explain — and what's left over?
+
+The report claims six factors largely account for national happiness, and even ships a Dystopia Residual column for the part they cannot. We rebuild a simple model from the six factors, confirm how much of the score they explain, and then turn the spotlight on the residual: which countries are noticeably happier (or unhappier) than their fundamentals predict?
+
+**Claim type: Predictive  (with an honest caveat)**
+
+**Hypothesis:** A simple linear model explains the large majority of the variance in scores, with GDP, social support and life expectancy carrying the most weight.
+
+**Approach:** Multiple linear regression (happiness \~ the six factors) in R, evaluated with R² and RMSE; then rank countries by their Dystopia Residual to surface over- and under-performers.
+
+**Watch-outs:** The high explanatory power is partly structural — the factor columns are additive components of the score — so the genuinely interesting result is the size and pattern of the unexplained residual, not the R² itself. Coefficients are not causal.
+
+# 5. Context & Target Audience
+
+**Context:** Journalistic — a data-driven story for an educated general audience curious about global well-being, not a peer-reviewed paper.
+
+**Audience:** General readers, students and the policy-curious public; no statistical background assumed.
+
+## Candidate story angle
+
+“Rich, free — and still restless: what five years of global happiness data reveal about the part of well-being money can't buy.” Headline ranking as the hook (Q1), the wealth-vs-relationships tension as the body (Q2), and the unexplained residual as the twist (Q3).
+
+## Presentation formats (mapped to each question)
+
+• **Choropleth world map —** happiness scores by country, shaded by score range — sets the scene for Q1.
+
+• **Slope / line chart —** top-10 countries' scores across 2015–2019, plus a small “biggest movers” table — the evidence for Q1.
+
+• **Annotated scatter —** GDP per capita vs. happiness with a smoothed fit, plus a correlation heatmap — carries Q2.
+
+• **Coefficient & residual chart —** which factors weigh most, and a ranked list of over- / under-performers by residual — delivers Q3.
+
+• **Interactive dashboard —** lets readers filter by year or region and explore on their own — ties the three threads together.
+
+*These formats prioritise accessibility and visual storytelling over statistical formalism, which fits a journalistic audience that wants the story behind the numbers.*
+
+# Proposed Next Step
+
+Load the five CSV files in R and harmonise them into one tidy data frame: add a Year column, standardise the differing column names, and decide how to handle the columns that exist only in some years (Region, the confidence-interval fields, and the Dystopia Residual). After that, begin exploratory analysis for Q1.
