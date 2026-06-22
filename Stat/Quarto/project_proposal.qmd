@@ -1,3 +1,10 @@
+```{r}
+library(tidyverse)
+library(readxl)
+Our_Data_ <- read_excel("C:/Users/Z005805K/Downloads/Eya/Stat/Stat_Project_Attempt/Stat/Quarto/world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx")
+View(Our_Data_)
+```
+
 ---
 title: "Project Proposal"
 format: html
@@ -97,45 +104,72 @@ Row counts vary because the set of surveyed countries changes slightly each year
 
 **Why it matters:** This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction — a fact we deliberately exploit (and flag) in Question 3.
 
-# 4. Research Questions
+# 4. Research Questions (Updated)
 
-Three questions, one of each main claim type — descriptive, exploratory, and predictive — progressing from “what does the data show?” to “can we model it?”
+## Q1. How strongly are GDP and social support associated with happiness, and does GDP show diminishing returns?
 
-## Q1. Is the happiness map frozen at the top — or is it shifting?
+**Planned output:**
+- Scatter plot: GDP per capita vs. happiness (with LOESS curve)
+#GDP vs. happiness
+```{r}
+ggplot(Our_Data_, aes(
+  x = `Explained by: Log GDP per capita`,
+  y = `Life evaluation (3-year average)`
+)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "loess", color = "blue") +
+  labs(
+    title = "GDP vs Happiness with LOESS Curve",
+    x = "GDP per Capita",
+    y = "Happiness Score"
+  )
+```
 
-The same handful of (mostly Nordic) countries seem to win every year. We track happiness scores from 2015 to 2019 to see how stable the ranking really is, which regions cluster where, and which countries moved the most over the five years.
+```{r}
+ggplot(Our_Data_, aes(x = `Explained by: Log GDP per capita`, y = `Life evaluation (3-year average)`)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "loess", color = "blue") +
+  labs(
+    title = "GDP vs Happiness with LOESS Curve",
+    x = "GDP per Capita",
+    y = "Happiness Score"
+  )
+```
+  
+- Scatter plot: social support vs. happiness
+#social support vs.happiness
+```{r}
+ggplot(Our_Data_, aes(x = `Explained by: Social support`, y = `Life evaluation (3-year average)`)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "loess", color = "red") +
+  labs(
+    title = "Social Support vs Happiness",
+    x = "Social Support",
+    y = "Happiness Score"
+  )
+```
 
-**Claim type: Descriptive**
+- Correlation comparison (standardised effect sizes)
 
-**Hypothesis:** The top of the ranking is highly stable; most of the movement happens in the middle and bottom of the table.
 
-**Approach:** Slope / line charts of the top-10 scores over time, a “biggest movers” table (Δ score 2015→2019), and a choropleth world map coloured by score.
+**Claim type:** Exploratory
 
-**Watch-outs:** Only five years of data; year-to-year rank changes can be tiny and may fall within each score's confidence interval, so small moves should not be over-read.
+**Goal:**
+To assess whether GDP and social support are both strongly associated with happiness, and whether the effect of GDP flattens at higher income levels.
 
-## Q2. Wealth or warmth — what tracks happiness more closely?
+---
 
-A perennial debate: does money buy happiness, or do relationships matter more? We compare how strongly happiness is associated with GDP per capita versus social support, and check whether the pay-off from extra income flattens at high income levels (a diminishing-returns / Easterlin-style pattern).
+## Q2. How well do the six reported factors explain happiness scores, and which countries deviate from the model?
 
-**Claim type: Exploratory**
+**Planned output:**
+- Multiple linear regression model (happiness ~ six factors)
+- Model performance: R² and RMSE
+- Ranking of countries by residuals (over- and under-performers)
 
-**Hypothesis:** Both correlate strongly with happiness, but the marginal contribution of GDP diminishes at high income, while social support stays consistently important.
+**Claim type:** Predictive
 
-**Approach:** Correlation matrix and scatter plots with a smoothed (LOESS) fit on GDP vs. happiness to inspect curvature; compare standardised effect sizes.
-
-**Watch-outs:** Correlation is not causation; GDP and social support are themselves intercorrelated (multicollinearity), so “which matters more” cannot be cleanly separated from this data alone.
-
-## Q3. How much of happiness can these numbers explain — and what's left over?
-
-The report claims six factors largely account for national happiness, and even ships a Dystopia Residual column for the part they cannot. We rebuild a simple model from the six factors, confirm how much of the score they explain, and then turn the spotlight on the residual: which countries are noticeably happier (or unhappier) than their fundamentals predict?
-
-**Claim type: Predictive  (with an honest caveat)**
-
-**Hypothesis:** A simple linear model explains the large majority of the variance in scores, with GDP, social support and life expectancy carrying the most weight.
-
-**Approach:** Multiple linear regression (happiness \~ the six factors) in R, evaluated with R² and RMSE; then rank countries by their Dystopia Residual to surface over- and under-performers.
-
-**Watch-outs:** The high explanatory power is partly structural — the factor columns are additive components of the score — so the genuinely interesting result is the size and pattern of the unexplained residual, not the R² itself. Coefficients are not causal.
+**Goal:**
+To quantify how much of happiness can be explained by the given factors and identify countries that are significantly above or below model expectations.
 
 # 5. Context & Target Audience
 
