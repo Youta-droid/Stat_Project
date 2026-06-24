@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -77,7 +42,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -128,16 +93,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./project_proposal.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./project_proposal.html" aria-current="page"> 
-<span class="menu-text">Project Proposal (deadline: June 8th 2026)</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">about this site</span></a>
+<span class="menu-text">About this site</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -155,10 +116,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-outline" id="toc-project-outline" class="nav-link active" data-scroll-target="#project-outline">1. Project Outline</a></li>
-  <li><a href="#member" id="toc-member" class="nav-link" data-scroll-target="#member">2. Member</a></li>
-  <li><a href="#github-repogitry" id="toc-github-repogitry" class="nav-link" data-scroll-target="#github-repogitry">3. GitHub Repogitry</a></li>
-  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">4. Dataset</a></li>
+  <li><a href="#project-outline" id="toc-project-outline" class="nav-link active" data-scroll-target="#project-outline">1. Project Outline</a>
+  <ul class="collapse">
+  <li><a href="#member" id="toc-member" class="nav-link" data-scroll-target="#member">Member</a></li>
+  <li><a href="#github-repogitry" id="toc-github-repogitry" class="nav-link" data-scroll-target="#github-repogitry">GitHub Repogitry</a></li>
+  </ul></li>
+  <li><a href="#source-licence" id="toc-source-licence" class="nav-link" data-scroll-target="#source-licence">2. Source &amp; Licence</a></li>
+  <li><a href="#whats-in-it" id="toc-whats-in-it" class="nav-link" data-scroll-target="#whats-in-it">3. What’s in It</a>
+  <ul class="collapse">
+  <li><a href="#per-year-structure" id="toc-per-year-structure" class="nav-link" data-scroll-target="#per-year-structure">Per-year structure</a></li>
+  <li><a href="#key-variables" id="toc-key-variables" class="nav-link" data-scroll-target="#key-variables">Key variables</a></li>
+  <li><a href="#a-subtlety-that-shapes-the-whole-analysis" id="toc-a-subtlety-that-shapes-the-whole-analysis" class="nav-link" data-scroll-target="#a-subtlety-that-shapes-the-whole-analysis">A subtlety that shapes the whole analysis</a></li>
+  </ul></li>
+  <li><a href="#research-questions-updated" id="toc-research-questions-updated" class="nav-link" data-scroll-target="#research-questions-updated">4. Research Questions (Updated)</a>
+  <ul class="collapse">
+  <li><a href="#q1.-which-countries-are-happier-than-they-should-be" id="toc-q1.-which-countries-are-happier-than-they-should-be" class="nav-link" data-scroll-target="#q1.-which-countries-are-happier-than-they-should-be">Q1. Which countries are happier than they “should” be?</a></li>
+  <li><a href="#q2.-is-the-world-getting-happier-over-time" id="toc-q2.-is-the-world-getting-happier-over-time" class="nav-link" data-scroll-target="#q2.-is-the-world-getting-happier-over-time">Q2. Is the world getting happier over time?</a></li>
+  </ul></li>
+  <li><a href="#context-target-audience" id="toc-context-target-audience" class="nav-link" data-scroll-target="#context-target-audience">5. Context &amp; Target Audience</a>
+  <ul class="collapse">
+  <li><a href="#candidate-story-angle" id="toc-candidate-story-angle" class="nav-link" data-scroll-target="#candidate-story-angle">Candidate story angle</a></li>
+  <li><a href="#presentation-formats-mapped-to-each-question" id="toc-presentation-formats-mapped-to-each-question" class="nav-link" data-scroll-target="#presentation-formats-mapped-to-each-question">Presentation formats (mapped to each question)</a></li>
+  </ul></li>
+  <li><a href="#proposed-next-step" id="toc-proposed-next-step" class="nav-link" data-scroll-target="#proposed-next-step">Proposed Next Step</a></li>
   </ul>
 </nav>
     </div>
@@ -184,75 +164,221 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="project-outline" class="level2">
-<h2 class="anchored" data-anchor-id="project-outline">1. Project Outline</h2>
-<p>(summarize the topic of the project)</p>
-</section>
+<section id="project-outline" class="level1">
+<h1>1. Project Outline</h1>
+<p>Every March, headlines announce that Finland is “the happiest country in the world” — again. But what actually sits behind that single number, how much does it move from year to year, and how much of a nation’s happiness can be pinned to money, health and freedom? This project uses five years of global survey data to look past the headline ranking and ask what really travels with well-being.</p>
 <section id="member" class="level2">
-<h2 class="anchored" data-anchor-id="member">2. Member</h2>
+<h2 class="anchored" data-anchor-id="member">Member</h2>
 <p>[name] [email]</p>
-<p>[name] [email]</p>
+<p>Slaheddine Azzabi (Azzabi.Slaheddine@campus.lmu.de)</p>
 <p>Shohei Kobayashi (kobayashishohei1023@gmail.com)</p>
 </section>
 <section id="github-repogitry" class="level2">
-<h2 class="anchored" data-anchor-id="github-repogitry">3. GitHub Repogitry</h2>
+<h2 class="anchored" data-anchor-id="github-repogitry">GitHub Repogitry</h2>
 <p><a href="https://github.com/Youta-droid/Stat_Project" class="uri">https://github.com/Youta-droid/Stat_Project</a></p>
 </section>
-<section id="dataset" class="level2">
-<h2 class="anchored" data-anchor-id="dataset">4. Dataset</h2>
-<p>Source: <a href="https://www.worldhappiness.report/" class="uri">https://www.worldhappiness.report/</a></p>
-<p>Let’s take a look into the dataset (for example 2025):</p>
-<pre><code></code></pre>
+</section>
+<section id="source-licence" class="level1">
+<h1>2. Source &amp; Licence</h1>
+<p><strong>Dataset:</strong> World Happiness Report</p>
+<p><strong>Hosted on:</strong> Kaggle — <a href="https://www.kaggle.com/datasets/unsdsn/world-happiness">kaggle.com/datasets/unsdsn/world-happiness</a></p>
+<p><strong>Published by:</strong> UN Sustainable Development Solutions Network (UNSDSN)</p>
+<p><strong>Underlying source:</strong> Gallup World Poll — the Cantril ladder life-evaluation question</p>
+<p><strong>Coverage:</strong> Five annual files, 2015–2019 (one CSV per report year)</p>
+<p><strong>Licence:</strong> CC0 1.0 — Public Domain (no rights reserved)</p>
+<p>Because the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g.&nbsp;“World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”</p>
+</section>
+<section id="whats-in-it" class="level1">
+<h1>3. What’s in It</h1>
+<p>Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis.</p>
+<section id="per-year-structure" class="level2">
+<h2 class="anchored" data-anchor-id="per-year-structure">Per-year structure</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Year</strong></td>
+<td><strong>Rows</strong></td>
+<td><strong>Cols</strong></td>
+<td><strong>What is different that year</strong></td>
+</tr>
+<tr class="even">
+<td><strong>2015</strong></td>
+<td>158</td>
+<td>12</td>
+<td>Includes Region and Standard Error; has Dystopia Residual</td>
+</tr>
+<tr class="odd">
+<td><strong>2016</strong></td>
+<td>157</td>
+<td>13</td>
+<td>Includes Region; Standard Error replaced by Lower/Upper Confidence Interval</td>
+</tr>
+<tr class="even">
+<td><strong>2017</strong></td>
+<td>155</td>
+<td>12</td>
+<td>Region dropped; Whisker high/low instead of CI; Dystopia Residual kept</td>
+</tr>
+<tr class="odd">
+<td><strong>2018</strong></td>
+<td>156</td>
+<td>9</td>
+<td>Slim schema: columns renamed; Region, CI and Dystopia Residual all removed</td>
+</tr>
+<tr class="even">
+<td><strong>2019</strong></td>
+<td>156</td>
+<td>9</td>
+<td>Same slim schema as 2018</td>
+</tr>
+</tbody>
+</table>
+<p>Row counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report’s format was simplified over time.</p>
+</section>
+<section id="key-variables" class="level2">
+<h2 class="anchored" data-anchor-id="key-variables">Key variables</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Concept</strong></td>
+<td><strong>Column name(s)&nbsp; (2015–17&nbsp; /&nbsp; 2018–19)</strong></td>
+<td><strong>What it measures</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Country</strong></td>
+<td>Country&nbsp; /&nbsp; Country or region</td>
+<td>The nation — the unit of analysis</td>
+</tr>
+<tr class="odd">
+<td><strong>Region</strong></td>
+<td>Region&nbsp; (2015–2016 only)</td>
+<td>World region grouping (e.g.&nbsp;Western Europe)</td>
+</tr>
+<tr class="even">
+<td><strong>Rank</strong></td>
+<td>Happiness Rank&nbsp; /&nbsp; Overall rank</td>
+<td>Position in that year’s global ranking</td>
+</tr>
+<tr class="odd">
+<td><strong>Happiness score ★</strong></td>
+<td>Happiness Score&nbsp; /&nbsp; Score</td>
+<td>Cantril-ladder life evaluation, 0–10 — the TARGET variable</td>
+</tr>
+<tr class="even">
+<td><strong>GDP per capita</strong></td>
+<td>Economy (GDP per Capita)&nbsp; /&nbsp; GDP per capita</td>
+<td>Contribution of income to the score</td>
+</tr>
+<tr class="odd">
+<td><strong>Social support</strong></td>
+<td>Family&nbsp; /&nbsp; Social support</td>
+<td>Contribution of having someone to count on</td>
+</tr>
+<tr class="even">
+<td><strong>Life expectancy</strong></td>
+<td>Health (Life Expectancy)&nbsp; /&nbsp; Healthy life expectancy</td>
+<td>Contribution of healthy longevity</td>
+</tr>
+<tr class="odd">
+<td><strong>Freedom</strong></td>
+<td>Freedom&nbsp; /&nbsp; Freedom to make life choices</td>
+<td>Contribution of freedom over life choices</td>
+</tr>
+<tr class="even">
+<td><strong>Generosity</strong></td>
+<td>Generosity</td>
+<td>Contribution of charitable behaviour</td>
+</tr>
+<tr class="odd">
+<td><strong>Corruption</strong></td>
+<td>Trust (Government Corruption)&nbsp; /&nbsp; Perceptions of corruption</td>
+<td>Contribution of perceived honesty / low corruption</td>
+</tr>
+<tr class="even">
+<td><strong>Dystopia residual</strong></td>
+<td>Dystopia Residual&nbsp; (through 2017)</td>
+<td>Unexplained remainder above the Dystopia baseline</td>
+</tr>
+</tbody>
+</table>
+<p>★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files.</p>
+</section>
+<section id="a-subtlety-that-shapes-the-whole-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="a-subtlety-that-shapes-the-whole-analysis">A subtlety that shapes the whole analysis</h2>
+<p><strong>The six “factor” columns are not raw measurements.</strong></p>
+<p><strong>What they actually are:</strong> Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country’s score — not the raw value (e.g.&nbsp;it is not GDP in dollars).</p>
+<p><strong>They are additive:</strong> The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.</p>
+<p><strong>Why it matters:</strong> This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction — a fact we deliberately exploit (and flag) in Question 3.</p>
+</section>
+</section>
+<section id="research-questions-updated" class="level1">
+<h1>4. Research Questions (Updated)</h1>
+<section id="q1.-which-countries-are-happier-than-they-should-be" class="level2">
+<h2 class="anchored" data-anchor-id="q1.-which-countries-are-happier-than-they-should-be">Q1. Which countries are happier than they “should” be?</h2>
+<p>Each country’s score already comes broken into the part explained by money, health, freedom, social support, generosity and corruption — and a final leftover, the <strong>Dystopia + residual</strong>: the happiness those measurable factors <em>cannot</em> account for. A country with a large residual is, in plain terms, happier than the numbers say it has any right to be — the part of well-being that money can’t buy.</p>
+<p><strong>Planned output:</strong> - Bar chart of the 10 highest- and 10 lowest-residual countries (latest year) - A short “punching above their weight” leaderboard</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.6
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.1     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/kobayashishouhei/Downloads/Fortgeschrittene statistische Software/Stat_Project/Stat/Quarto</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,969 × 13
-    Year  Rank `Country name` `Life evaluation (3-year average)` `Lower whisker`
-   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;           &lt;dbl&gt;
- 1  2024   147 Afghanistan                                  1.36            1.30
- 2  2023   143 Afghanistan                                  1.72            1.67
- 3  2022   137 Afghanistan                                  1.86            1.80
- 4  2021   146 Afghanistan                                  2.40            2.34
- 5  2020   150 Afghanistan                                  2.52            2.45
- 6  2019   153 Afghanistan                                  2.57            2.51
- 7  2018   154 Afghanistan                                  3.20           NA   
- 8  2017   145 Afghanistan                                  3.63           NA   
- 9  2016   141 Afghanistan                                  3.79           NA   
-10  2015   154 Afghanistan                                  3.36           NA   
-# ℹ 1,959 more rows
-# ℹ 8 more variables: `Upper whisker` &lt;dbl&gt;,
-#   `Explained by: Log GDP per capita` &lt;dbl&gt;,
-#   `Explained by: Social support` &lt;dbl&gt;,
-#   `Explained by: Healthy life expectancy` &lt;dbl&gt;,
-#   `Explained by: Freedom to make life choices` &lt;dbl&gt;,
-#   `Explained by: Generosity` &lt;dbl&gt;, …</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_proposal_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
+</div>
+<p><strong>Claim type:</strong> Exploratory</p>
+<p><strong>Goal:</strong> To identify the countries whose happiness goes beyond what wealth, health and freedom can explain — and open the question of what else might be holding them up.</p>
+<hr>
+</section>
+<section id="q2.-is-the-world-getting-happier-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="q2.-is-the-world-getting-happier-over-time">Q2. Is the world getting happier over time?</h2>
+<p>The dataset spans 2011–2024, so we can step back from any single country and ask the simplest question of all: across all these years, is global happiness trending up, down, or holding steady?</p>
+<p><strong>Planned output:</strong> - Line chart of the average happiness score per year</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_proposal_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Claim type:</strong> Exploratory</p>
+<p><strong>Goal:</strong> To describe the overall trend in global happiness over time and provide context for the country-level questions above.</p>
+</section>
+</section>
+<section id="context-target-audience" class="level1">
+<h1>5. Context &amp; Target Audience</h1>
+<p><strong>Context:</strong> Journalistic — a data-driven story for an educated general audience curious about global well-being, not a peer-reviewed paper.</p>
+<p><strong>Audience:</strong> General readers, students and the policy-curious public; no statistical background assumed.</p>
+<section id="candidate-story-angle" class="level2">
+<h2 class="anchored" data-anchor-id="candidate-story-angle">Candidate story angle</h2>
+<p>“Rich, free — and still restless: what five years of global happiness data reveal about the part of well-being money can’t buy.” Headline ranking as the hook (Q1), the wealth-vs-relationships tension as the body (Q2), and the unexplained residual as the twist (Q3).</p>
+</section>
+<section id="presentation-formats-mapped-to-each-question" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-formats-mapped-to-each-question">Presentation formats (mapped to each question)</h2>
+<p>• <strong>Choropleth world map —</strong> happiness scores by country, shaded by score range — sets the scene for Q1.</p>
+<p>• <strong>Slope / line chart —</strong> top-10 countries’ scores across 2015–2019, plus a small “biggest movers” table — the evidence for Q1.</p>
+<p>• <strong>Annotated scatter —</strong> GDP per capita vs.&nbsp;happiness with a smoothed fit, plus a correlation heatmap — carries Q2.</p>
+<p>• <strong>Coefficient &amp; residual chart —</strong> which factors weigh most, and a ranked list of over- / under-performers by residual — delivers Q3.</p>
+<p>• <strong>Interactive dashboard —</strong> lets readers filter by year or region and explore on their own — ties the three threads together.</p>
+<p><em>These formats prioritise accessibility and visual storytelling over statistical formalism, which fits a journalistic audience that wants the story behind the numbers.</em></p>
+</section>
+</section>
+<section id="proposed-next-step" class="level1">
+<h1>Proposed Next Step</h1>
+<p>Load the five CSV files in R and harmonise them into one tidy data frame: add a Year column, standardise the differing column names, and decide how to handle the columns that exist only in some years (Region, the confidence-interval fields, and the Dystopia Residual). After that, begin exploratory analysis for Q1.</p>
 
 
 </section>

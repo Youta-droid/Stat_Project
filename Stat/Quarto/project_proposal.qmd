@@ -1,13 +1,16 @@
 ```{r}
 library(tidyverse)
 library(readxl)
-Our_Data_ <- read_excel("C:/Users/Z005805K/Downloads/Eya/Stat/Stat_Project_Attempt/Stat/Quarto/world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx")
-View(Our_Data_)
+Our_Data_ <- read_excel("world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx")
 ```
 
 ---
 title: "Project Proposal"
 format: html
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
 # 1. Project Outline
@@ -18,7 +21,7 @@ Every March, headlines announce that Finland is “the happiest country in the w
 
 \[name\] \[email\]
 
-\[name\] \[email\]
+Slaheddine Azzabi (Azzabi.Slaheddine\@campus.lmu.de)
 
 Shohei Kobayashi (kobayashishohei1023\@gmail.com)
 
@@ -49,7 +52,7 @@ Each row represents one country in one report year. Combined across the five fil
 ## Per-year structure
 
 |  |  |  |  |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | **Year** | **Rows** | **Cols** | **What is different that year** |
 | **2015** | 158 | 12 | Includes Region and Standard Error; has Dystopia Residual |
 | **2016** | 157 | 13 | Includes Region; Standard Error replaced by Lower/Upper Confidence Interval |
@@ -62,7 +65,7 @@ Row counts vary because the set of surveyed countries changes slightly each year
 ## Key variables
 
 |  |  |  |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | **Concept** | **Column name(s)  (2015–17  /  2018–19)** | **What it measures** |
 | **Country** | Country  /  Country or region | The nation — the unit of analysis |
 | **Region** | Region  (2015–2016 only) | World region grouping (e.g. Western Europe) |
@@ -90,63 +93,58 @@ Row counts vary because the set of surveyed countries changes slightly each year
 
 # 4. Research Questions (Updated)
 
-## Q1. How strongly are GDP and social support associated with happiness, and does GDP show diminishing returns?
+## Q1. Which countries are happier than they "should" be?
 
-**Planned output:** - Scatter plot: GDP per capita vs. happiness (with LOESS curve) #GDP vs. happiness
+Each country's score already comes broken into the part explained by money, health, freedom, social support, generosity and corruption — and a final leftover, the **Dystopia + residual**: the happiness those measurable factors *cannot* account for. A country with a large residual is, in plain terms, happier than the numbers say it has any right to be — the part of well-being that money can't buy.
 
-```{r}
-ggplot(Our_Data_, aes(
-  x = `Explained by: Log GDP per capita`,
-  y = `Life evaluation (3-year average)`
-)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "loess", color = "blue") +
-  labs(
-    title = "GDP vs Happiness with LOESS Curve",
-    x = "GDP per Capita",
-    y = "Happiness Score"
-  )
-```
+**Planned output:** - Bar chart of the 10 highest- and 10 lowest-residual countries (latest year) - A short "punching above their weight" leaderboard
 
 ```{r}
-ggplot(Our_Data_, aes(x = `Explained by: Log GDP per capita`, y = `Life evaluation (3-year average)`)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "loess", color = "blue") +
+Our_Data_ |>
+  filter(Year == max(Year)) |>
+  slice_max(`Dystopia + residual`, n = 10) |>
+  ggplot(aes(x = reorder(`Country name`, `Dystopia + residual`),
+             y = `Dystopia + residual`)) +
+  geom_col(fill = "darkorange") +
+  coord_flip() +
   labs(
-    title = "GDP vs Happiness with LOESS Curve",
-    x = "GDP per Capita",
-    y = "Happiness Score"
+    title = "Happier than they 'should' be",
+    subtitle = "Top 10 countries by unexplained happiness (latest year)",
+    x = NULL,
+    y = "Dystopia + residual"
   )
 ```
-
-- Scatter plot: social support vs. happiness #social support vs.happiness
-
-```{r}
-ggplot(Our_Data_, aes(x = `Explained by: Social support`, y = `Life evaluation (3-year average)`)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "loess", color = "red") +
-  labs(
-    title = "Social Support vs Happiness",
-    x = "Social Support",
-    y = "Happiness Score"
-  )
-```
-
-- Correlation comparison (standardised effect sizes)
 
 **Claim type:** Exploratory
 
-**Goal:** To assess whether GDP and social support are both strongly associated with happiness, and whether the effect of GDP flattens at higher income levels.
+**Goal:** To identify the countries whose happiness goes beyond what wealth, health and freedom can explain — and open the question of what else might be holding them up.
 
 ------------------------------------------------------------------------
 
-## Q2. How well do the six reported factors explain happiness scores, and which countries deviate from the model?
+## Q2. Is the world getting happier over time?
 
-**Planned output:** - Multiple linear regression model (happiness \~ six factors) - Model performance: R² and RMSE - Ranking of countries by residuals (over- and under-performers)
+The dataset spans 2011–2024, so we can step back from any single country and ask the simplest question of all: across all these years, is global happiness trending up, down, or holding steady?
 
-**Claim type:** Predictive
+**Planned output:** - Line chart of the average happiness score per year
 
-**Goal:** To quantify how much of happiness can be explained by the given factors and identify countries that are significantly above or below model expectations.
+```{r}
+Our_Data_ |>
+  group_by(Year) |>
+  summarise(mean_score = mean(`Life evaluation (3-year average)`, na.rm = TRUE)) |>
+  ggplot(aes(x = Year, y = mean_score)) +
+  geom_line(color = "steelblue", linewidth = 1) +
+  geom_point(color = "steelblue") +
+  labs(
+    title = "Is the world getting happier?",
+    subtitle = "Average life evaluation across all countries, 2011–2024",
+    x = "Year",
+    y = "Average happiness score"
+  )
+```
+
+**Claim type:** Exploratory
+
+**Goal:** To describe the overall trend in global happiness over time and provide context for the country-level questions above.
 
 # 5. Context & Target Audience
 
