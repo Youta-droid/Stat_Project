@@ -5,10 +5,8 @@ website:
   title: "Happiness"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - href: project_proposal.qmd
-        text: "Project Proposal (deadline: June 8th 2026)"
+        text: Home
       - href: about.qmd
         text: "About this site"
 
