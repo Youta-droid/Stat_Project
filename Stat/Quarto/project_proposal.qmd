@@ -48,49 +48,33 @@ Each row represents one country in one report year. Combined across the five fil
 
 ## Per-year structure
 
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
-| **Year** | **Rows**                     | **Cols** | **What is different that year**                                               |
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
-| **2015** | 158                          | 12       | Includes Region and Standard Error; has Dystopia Residual                     |
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
-| **2016** | 157                          | 13       | Includes Region; Standard Error replaced by Lower/Upper Confidence Interval   |
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
-| **2017** | 155                          | 12       | Region dropped; Whisker high/low instead of CI; Dystopia Residual kept        |
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
-| **2018** | 156                          | 9        | Slim schema: columns renamed; Region, CI and Dystopia Residual all removed    |
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
-| **2019** | 156                          | 9        | Same slim schema as 2018                                                      |
-+----------+------------------------------+----------+-------------------------------------------------------------------------------+
+|  |  |  |  |
+|----|----|----|----|
+| **Year** | **Rows** | **Cols** | **What is different that year** |
+| **2015** | 158 | 12 | Includes Region and Standard Error; has Dystopia Residual |
+| **2016** | 157 | 13 | Includes Region; Standard Error replaced by Lower/Upper Confidence Interval |
+| **2017** | 155 | 12 | Region dropped; Whisker high/low instead of CI; Dystopia Residual kept |
+| **2018** | 156 | 9 | Slim schema: columns renamed; Region, CI and Dystopia Residual all removed |
+| **2019** | 156 | 9 | Same slim schema as 2018 |
 
 Row counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report's format was simplified over time.
 
 ## Key variables
 
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Concept**             | **Column name(s)  (2015–17  /  2018–19)**                     | **What it measures**                                         |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Country**             | Country  /  Country or region                                 | The nation — the unit of analysis                            |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Region**              | Region  (2015–2016 only)                                      | World region grouping (e.g. Western Europe)                  |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Rank**                | Happiness Rank  /  Overall rank                               | Position in that year's global ranking                       |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Happiness score ★**   | Happiness Score  /  Score                                     | Cantril-ladder life evaluation, 0–10 — the TARGET variable   |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **GDP per capita**      | Economy (GDP per Capita)  /  GDP per capita                   | Contribution of income to the score                          |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Social support**      | Family  /  Social support                                     | Contribution of having someone to count on                   |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Life expectancy**     | Health (Life Expectancy)  /  Healthy life expectancy          | Contribution of healthy longevity                            |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Freedom**             | Freedom  /  Freedom to make life choices                      | Contribution of freedom over life choices                    |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Generosity**          | Generosity                                                    | Contribution of charitable behaviour                         |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Corruption**          | Trust (Government Corruption)  /  Perceptions of corruption   | Contribution of perceived honesty / low corruption           |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
-| **Dystopia residual**   | Dystopia Residual  (through 2017)                             | Unexplained remainder above the Dystopia baseline            |
-+-------------------------+---------------------------------------------------------------+--------------------------------------------------------------+
+|  |  |  |
+|----|----|----|
+| **Concept** | **Column name(s)  (2015–17  /  2018–19)** | **What it measures** |
+| **Country** | Country  /  Country or region | The nation — the unit of analysis |
+| **Region** | Region  (2015–2016 only) | World region grouping (e.g. Western Europe) |
+| **Rank** | Happiness Rank  /  Overall rank | Position in that year's global ranking |
+| **Happiness score ★** | Happiness Score  /  Score | Cantril-ladder life evaluation, 0–10 — the TARGET variable |
+| **GDP per capita** | Economy (GDP per Capita)  /  GDP per capita | Contribution of income to the score |
+| **Social support** | Family  /  Social support | Contribution of having someone to count on |
+| **Life expectancy** | Health (Life Expectancy)  /  Healthy life expectancy | Contribution of healthy longevity |
+| **Freedom** | Freedom  /  Freedom to make life choices | Contribution of freedom over life choices |
+| **Generosity** | Generosity | Contribution of charitable behaviour |
+| **Corruption** | Trust (Government Corruption)  /  Perceptions of corruption | Contribution of perceived honesty / low corruption |
+| **Dystopia residual** | Dystopia Residual  (through 2017) | Unexplained remainder above the Dystopia baseline |
 
 ★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files.
 
@@ -108,9 +92,8 @@ Row counts vary because the set of surveyed countries changes slightly each year
 
 ## Q1. How strongly are GDP and social support associated with happiness, and does GDP show diminishing returns?
 
-**Planned output:**
-- Scatter plot: GDP per capita vs. happiness (with LOESS curve)
-#GDP vs. happiness
+**Planned output:** - Scatter plot: GDP per capita vs. happiness (with LOESS curve) #GDP vs. happiness
+
 ```{r}
 ggplot(Our_Data_, aes(
   x = `Explained by: Log GDP per capita`,
@@ -135,9 +118,9 @@ ggplot(Our_Data_, aes(x = `Explained by: Log GDP per capita`, y = `Life evaluati
     y = "Happiness Score"
   )
 ```
-  
-- Scatter plot: social support vs. happiness
-#social support vs.happiness
+
+- Scatter plot: social support vs. happiness #social support vs.happiness
+
 ```{r}
 ggplot(Our_Data_, aes(x = `Explained by: Social support`, y = `Life evaluation (3-year average)`)) +
   geom_point(alpha = 0.6) +
@@ -151,25 +134,19 @@ ggplot(Our_Data_, aes(x = `Explained by: Social support`, y = `Life evaluation (
 
 - Correlation comparison (standardised effect sizes)
 
-
 **Claim type:** Exploratory
 
-**Goal:**
-To assess whether GDP and social support are both strongly associated with happiness, and whether the effect of GDP flattens at higher income levels.
+**Goal:** To assess whether GDP and social support are both strongly associated with happiness, and whether the effect of GDP flattens at higher income levels.
 
----
+------------------------------------------------------------------------
 
 ## Q2. How well do the six reported factors explain happiness scores, and which countries deviate from the model?
 
-**Planned output:**
-- Multiple linear regression model (happiness ~ six factors)
-- Model performance: R² and RMSE
-- Ranking of countries by residuals (over- and under-performers)
+**Planned output:** - Multiple linear regression model (happiness \~ six factors) - Model performance: R² and RMSE - Ranking of countries by residuals (over- and under-performers)
 
 **Claim type:** Predictive
 
-**Goal:**
-To quantify how much of happiness can be explained by the given factors and identify countries that are significantly above or below model expectations.
+**Goal:** To quantify how much of happiness can be explained by the given factors and identify countries that are significantly above or below model expectations.
 
 # 5. Context & Target Audience
 
