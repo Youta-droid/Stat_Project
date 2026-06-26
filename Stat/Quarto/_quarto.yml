@@ -1,16 +1,28 @@
 project:
   type: website
 
+
 website:
+  search: true
+  announcement:
+    content: "Proposal due **29 Jun**"
+    type: warning        # info, warning, or danger
+    dismissable: true    # adds a "x" to deleted it
+  page-footer:
+    center: "StatProg2 — LMU Munich"
   title: "Happiness"
   navbar:
     left:
       - href: project_proposal.qmd
         text: Home
+      - href: data.qmd
+        text: "Our dataset"
+      - href: format.qmd
+        text: "Presentation formats"
       - href: about.qmd
         text: "About this site"
-      - href: source.qmd
-        text: "Source & Licence"
+      - href: group-reflection.qmd
+        text: "Group reflection"
 
 
 format:
@@ -20,6 +32,23 @@ format:
       - brand
     css: styles.css
     toc: true
+    code-fold: true        # collapse code into <details>
+    code-summary: "Show code"
+    code-overflow: scroll  # or wrap
+    code-line-numbers: true
+    code-copy: hover       # copy button on hover
+    code-tools: true       # show/hide all code menu
+
+
+execute:
+  echo: true       # show source code
+  eval: true       # run code
+  output: true     # include results
+  warning: false   # suppress warnings
+  error: false     # halt on errors
+  cache: false     # don't cache by default
+  freeze: auto     # re-run only if source changes
+
 
 editor: visual
 

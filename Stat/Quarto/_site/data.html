@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Happiness</title>
+<title>What’s in It – Happiness</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data.html"> 
+    <a class="nav-link active" href="./data.html" aria-current="page"> 
 <span class="menu-text">Our dataset</span></a>
   </li>  
   <li class="nav-item">
@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Presentation formats</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About this site</span></a>
   </li>  
   <li class="nav-item">
@@ -166,8 +166,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#members" id="toc-members" class="nav-link active" data-scroll-target="#members">Members</a></li>
-  <li><a href="#github-repogitry" id="toc-github-repogitry" class="nav-link" data-scroll-target="#github-repogitry">GitHub Repogitry</a></li>
+  <li><a href="#per-year-structure" id="toc-per-year-structure" class="nav-link active" data-scroll-target="#per-year-structure">Per-year structure</a></li>
+  <li><a href="#key-variables" id="toc-key-variables" class="nav-link" data-scroll-target="#key-variables">Key variables</a></li>
+  <li><a href="#a-subtlety-that-shapes-the-whole-analysis" id="toc-a-subtlety-that-shapes-the-whole-analysis" class="nav-link" data-scroll-target="#a-subtlety-that-shapes-the-whole-analysis">A subtlety that shapes the whole analysis</a></li>
+  <li><a href="#source-licence" id="toc-source-licence" class="nav-link" data-scroll-target="#source-licence">Source &amp; Licence</a></li>
   </ul>
 </nav>
     </div>
@@ -176,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">About</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">What’s in It</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -193,15 +195,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="members" class="level2">
-<h2 class="anchored" data-anchor-id="members">Members</h2>
-<p>Shohei Kobayashi (S.kobayashi@lmu.campus.de)</p>
-<p>Eya Fares (E.Fares@lmu.campus.de)</p>
-<p>Salaheddine Azzabi (S.Azzabi@campus.lmu.de)</p>
+<p>Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis.</p>
+<section id="per-year-structure" class="level2">
+<h2 class="anchored" data-anchor-id="per-year-structure">Per-year structure</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Year</strong></td>
+<td><strong>Rows</strong></td>
+<td><strong>Cols</strong></td>
+<td><strong>What is different that year</strong></td>
+</tr>
+<tr class="even">
+<td><strong>2015</strong></td>
+<td>158</td>
+<td>12</td>
+<td>Includes Region and Standard Error; has Dystopia Residual</td>
+</tr>
+<tr class="odd">
+<td><strong>2016</strong></td>
+<td>157</td>
+<td>13</td>
+<td>Includes Region; Standard Error replaced by Lower/Upper Confidence Interval</td>
+</tr>
+<tr class="even">
+<td><strong>2017</strong></td>
+<td>155</td>
+<td>12</td>
+<td>Region dropped; Whisker high/low instead of CI; Dystopia Residual kept</td>
+</tr>
+<tr class="odd">
+<td><strong>2018</strong></td>
+<td>156</td>
+<td>9</td>
+<td>Slim schema: columns renamed; Region, CI and Dystopia Residual all removed</td>
+</tr>
+<tr class="even">
+<td><strong>2019</strong></td>
+<td>156</td>
+<td>9</td>
+<td>Same slim schema as 2018</td>
+</tr>
+</tbody>
+</table>
+<p>Row counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report’s format was simplified over time.</p>
 </section>
-<section id="github-repogitry" class="level2">
-<h2 class="anchored" data-anchor-id="github-repogitry">GitHub Repogitry</h2>
-<p><a href="https://github.com/Youta-droid/Stat_Project" class="uri">https://github.com/Youta-droid/Stat_Project</a></p>
+<section id="key-variables" class="level2">
+<h2 class="anchored" data-anchor-id="key-variables">Key variables</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Concept</strong></td>
+<td><strong>Column name(s)&nbsp; (2015–17&nbsp; /&nbsp; 2018–19)</strong></td>
+<td><strong>What it measures</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Country</strong></td>
+<td>Country&nbsp; /&nbsp; Country or region</td>
+<td>The nation — the unit of analysis</td>
+</tr>
+<tr class="odd">
+<td><strong>Region</strong></td>
+<td>Region&nbsp; (2015–2016 only)</td>
+<td>World region grouping (e.g.&nbsp;Western Europe)</td>
+</tr>
+<tr class="even">
+<td><strong>Rank</strong></td>
+<td>Happiness Rank&nbsp; /&nbsp; Overall rank</td>
+<td>Position in that year’s global ranking</td>
+</tr>
+<tr class="odd">
+<td><strong>Happiness score ★</strong></td>
+<td>Happiness Score&nbsp; /&nbsp; Score</td>
+<td>Cantril-ladder life evaluation, 0–10 — the TARGET variable</td>
+</tr>
+<tr class="even">
+<td><strong>GDP per capita</strong></td>
+<td>Economy (GDP per Capita)&nbsp; /&nbsp; GDP per capita</td>
+<td>Contribution of income to the score</td>
+</tr>
+<tr class="odd">
+<td><strong>Social support</strong></td>
+<td>Family&nbsp; /&nbsp; Social support</td>
+<td>Contribution of having someone to count on</td>
+</tr>
+<tr class="even">
+<td><strong>Life expectancy</strong></td>
+<td>Health (Life Expectancy)&nbsp; /&nbsp; Healthy life expectancy</td>
+<td>Contribution of healthy longevity</td>
+</tr>
+<tr class="odd">
+<td><strong>Freedom</strong></td>
+<td>Freedom&nbsp; /&nbsp; Freedom to make life choices</td>
+<td>Contribution of freedom over life choices</td>
+</tr>
+<tr class="even">
+<td><strong>Generosity</strong></td>
+<td>Generosity</td>
+<td>Contribution of charitable behaviour</td>
+</tr>
+<tr class="odd">
+<td><strong>Corruption</strong></td>
+<td>Trust (Government Corruption)&nbsp; /&nbsp; Perceptions of corruption</td>
+<td>Contribution of perceived honesty / low corruption</td>
+</tr>
+<tr class="even">
+<td><strong>Dystopia residual</strong></td>
+<td>Dystopia Residual&nbsp; (through 2017)</td>
+<td>Unexplained remainder above the Dystopia baseline</td>
+</tr>
+</tbody>
+</table>
+<p>★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files.</p>
+</section>
+<section id="a-subtlety-that-shapes-the-whole-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="a-subtlety-that-shapes-the-whole-analysis">A subtlety that shapes the whole analysis</h2>
+<p><strong>The six “factor” columns are not raw measurements.</strong></p>
+<p><strong>What they actually are:</strong> Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country’s score — not the raw value (e.g.&nbsp;it is not GDP in dollars).</p>
+<p><strong>They are additive:</strong> The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.</p>
+<p><strong>Why it matters:</strong> This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction.</p>
+</section>
+<section id="source-licence" class="level2">
+<h2 class="anchored" data-anchor-id="source-licence">Source &amp; Licence</h2>
+<p><strong>Dataset:</strong> World Happiness Report</p>
+<p><strong>Hosted on:</strong> Kaggle — <a href="https://www.kaggle.com/datasets/unsdsn/world-happiness">kaggle.com/datasets/unsdsn/world-happiness</a></p>
+<p><strong>Published by:</strong> UN Sustainable Development Solutions Network (UNSDSN)</p>
+<p><strong>Underlying source:</strong> Gallup World Poll — the Cantril ladder life-evaluation question</p>
+<p><strong>Coverage:</strong> Five annual files, 2015–2019 (one CSV per report year)</p>
+<p><strong>Licence:</strong> CC0 1.0 — Public Domain (no rights reserved)</p>
+<p>Because the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g.&nbsp;“World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”</p>
 
 
 <!-- -->
@@ -661,21 +794,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "About"</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "What's in It"</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">## Members</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis.</span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>Shohei Kobayashi (S.kobayashi\@lmu.campus.de)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">## Per-year structure</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>Eya Fares (E.Fares\@lmu.campus.de)</span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a>Salaheddine Azzabi (S.Azzabi\@campus.lmu.de)</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">## GitHub Repogitry</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="ot">&lt;https://github.com/Youta-droid/Stat_Project&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="pp">|----|----|----|----|</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="pp">|</span> **Year** | **Rows** | **Cols** | **What is different that year** <span class="pp">|</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="pp">|</span> **2015** <span class="pp">|</span> 158 <span class="pp">|</span> 12 <span class="pp">|</span> Includes Region and Standard Error; has Dystopia Residual <span class="pp">|</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="pp">|</span> **2016** <span class="pp">|</span> 157 <span class="pp">|</span> 13 <span class="pp">|</span> Includes Region; Standard Error replaced by Lower/Upper Confidence Interval <span class="pp">|</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="pp">|</span> **2017** <span class="pp">|</span> 155 <span class="pp">|</span> 12 <span class="pp">|</span> Region dropped; Whisker high/low instead of CI; Dystopia Residual kept <span class="pp">|</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="pp">|</span> **2018** <span class="pp">|</span> 156 <span class="pp">|</span> 9 <span class="pp">|</span> Slim schema: columns renamed; Region, CI and Dystopia Residual all removed <span class="pp">|</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="pp">|</span> **2019** <span class="pp">|</span> 156 <span class="pp">|</span> 9 <span class="pp">|</span> Same slim schema as 2018 <span class="pp">|</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>Row counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report's format was simplified over time.</span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="fu">## Key variables</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="pp">|----|----|----|</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="pp">|</span> **Concept** | **Column name(s)&nbsp; (2015–17&nbsp; /&nbsp; 2018–19)** | **What it measures** <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="pp">|</span> **Country** <span class="pp">|</span> Country&nbsp; /&nbsp; Country or region <span class="pp">|</span> The nation — the unit of analysis <span class="pp">|</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="pp">|</span> **Region** <span class="pp">|</span> Region&nbsp; (2015–2016 only) <span class="pp">|</span> World region grouping (e.g. Western Europe) <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="pp">|</span> **Rank** <span class="pp">|</span> Happiness Rank&nbsp; /&nbsp; Overall rank <span class="pp">|</span> Position in that year's global ranking <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="pp">|</span> **Happiness score ★** <span class="pp">|</span> Happiness Score&nbsp; /&nbsp; Score <span class="pp">|</span> Cantril-ladder life evaluation, 0–10 — the TARGET variable <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="pp">|</span> **GDP per capita** <span class="pp">|</span> Economy (GDP per Capita)&nbsp; /&nbsp; GDP per capita <span class="pp">|</span> Contribution of income to the score <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="pp">|</span> **Social support** <span class="pp">|</span> Family&nbsp; /&nbsp; Social support <span class="pp">|</span> Contribution of having someone to count on <span class="pp">|</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="pp">|</span> **Life expectancy** <span class="pp">|</span> Health (Life Expectancy)&nbsp; /&nbsp; Healthy life expectancy <span class="pp">|</span> Contribution of healthy longevity <span class="pp">|</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="pp">|</span> **Freedom** <span class="pp">|</span> Freedom&nbsp; /&nbsp; Freedom to make life choices <span class="pp">|</span> Contribution of freedom over life choices <span class="pp">|</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="pp">|</span> **Generosity** <span class="pp">|</span> Generosity <span class="pp">|</span> Contribution of charitable behaviour <span class="pp">|</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="pp">|</span> **Corruption** <span class="pp">|</span> Trust (Government Corruption)&nbsp; /&nbsp; Perceptions of corruption <span class="pp">|</span> Contribution of perceived honesty / low corruption <span class="pp">|</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="pp">|</span> **Dystopia residual** <span class="pp">|</span> Dystopia Residual&nbsp; (through 2017) <span class="pp">|</span> Unexplained remainder above the Dystopia baseline <span class="pp">|</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files.</span>
+<span id="cb1-39"><a href="#cb1-39"></a></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="fu">## A subtlety that shapes the whole analysis</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a></span>
+<span id="cb1-42"><a href="#cb1-42"></a>**The six “factor” columns are not raw measurements.**</span>
+<span id="cb1-43"><a href="#cb1-43"></a></span>
+<span id="cb1-44"><a href="#cb1-44"></a>**What they actually are:** Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country's score — not the raw value (e.g. it is not GDP in dollars).</span>
+<span id="cb1-45"><a href="#cb1-45"></a></span>
+<span id="cb1-46"><a href="#cb1-46"></a>**They are additive:** The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.</span>
+<span id="cb1-47"><a href="#cb1-47"></a></span>
+<span id="cb1-48"><a href="#cb1-48"></a>**Why it matters:** This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction.</span>
+<span id="cb1-49"><a href="#cb1-49"></a></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="fu">## Source &amp; Licence</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a></span>
+<span id="cb1-52"><a href="#cb1-52"></a>**Dataset:** World Happiness Report</span>
+<span id="cb1-53"><a href="#cb1-53"></a></span>
+<span id="cb1-54"><a href="#cb1-54"></a>**Hosted on:** Kaggle — <span class="co">[</span><span class="ot">kaggle.com/datasets/unsdsn/world-happiness</span><span class="co">](https://www.kaggle.com/datasets/unsdsn/world-happiness)</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a></span>
+<span id="cb1-56"><a href="#cb1-56"></a>**Published by:** UN Sustainable Development Solutions Network (UNSDSN)</span>
+<span id="cb1-57"><a href="#cb1-57"></a></span>
+<span id="cb1-58"><a href="#cb1-58"></a>**Underlying source:** Gallup World Poll — the Cantril ladder life-evaluation question</span>
+<span id="cb1-59"><a href="#cb1-59"></a></span>
+<span id="cb1-60"><a href="#cb1-60"></a>**Coverage:** Five annual files, 2015–2019 (one CSV per report year)</span>
+<span id="cb1-61"><a href="#cb1-61"></a></span>
+<span id="cb1-62"><a href="#cb1-62"></a>**Licence:** CC0 1.0 — Public Domain (no rights reserved)</span>
+<span id="cb1-63"><a href="#cb1-63"></a></span>
+<span id="cb1-64"><a href="#cb1-64"></a>Because the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g. “World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
