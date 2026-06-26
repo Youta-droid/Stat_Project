@@ -9,6 +9,8 @@ website:
         text: Home
       - href: about.qmd
         text: "About this site"
+      - href: source.qmd
+        text: "Source & Licence"
 
 
 format:
