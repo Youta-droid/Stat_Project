@@ -1,0 +1,20 @@
+---
+title: "source"
+format: html
+---
+
+# Source & Licence
+
+**Dataset:** World Happiness Report
+
+**Hosted on:** Kaggle — [kaggle.com/datasets/unsdsn/world-happiness](https://www.kaggle.com/datasets/unsdsn/world-happiness)
+
+**Published by:** UN Sustainable Development Solutions Network (UNSDSN)
+
+**Underlying source:** Gallup World Poll — the Cantril ladder life-evaluation question
+
+**Coverage:** Five annual files, 2015–2019 (one CSV per report year)
+
+**Licence:** CC0 1.0 — Public Domain (no rights reserved)
+
+Because the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g. “World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”
