@@ -3,14 +3,9 @@ title: "group-reflection"
 format: html
 ---
 
----
-title: "Group Reflection"
----
-
 ## Skills inventory
 
-For each skill area, describe what your group actually used it for.
-If you did not use a skill, say so and note why.
+For each skill area, describe what your group actually used it for. If you did not use a skill, say so and note why.
 
 ### Functions & refactoring (W2)
 
@@ -86,10 +81,9 @@ If you did not use a skill, say so and note why.
 
 ## Key analytical decisions
 
-Describe 2–3 decisions that had a meaningful effect on your results or workflow.
-#say that I used https://quarto.org/docs/reference/projects/websites.html
+Describe 2–3 decisions that had a meaningful effect on your results or workflow. #say that I used https://quarto.org/docs/reference/projects/websites.html
 
-### Decision 1: [short title]
+### Decision 1: \[short title\]
 
 *What were we deciding between?*
 
@@ -97,7 +91,7 @@ Describe 2–3 decisions that had a meaningful effect on your results or workflo
 
 *In hindsight, would we decide differently?*
 
-### Decision 2: [short title]
+### Decision 2: \[short title\]
 
 *What were we deciding between?*
 
@@ -117,13 +111,13 @@ Describe 2–3 decisions that had a meaningful effect on your results or workflo
 
 Describe up to 5 significant uses of an LLM tool during the project.
 
-### Usage 1: [task]
+### Usage 1: \[task\]
 
 - **Tool / model:**
 - **What it produced:**
 - **What we had to correct or verify:**
 
-### Usage 2: [task]
+### Usage 2: \[task\]
 
 - **Tool / model:**
 - **What it produced:**
