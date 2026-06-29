@@ -3,12 +3,182 @@ title: "Presentation formats"
 format: html
 ---
 
-•
+# Question 1
 
-•
+## Plot 1
+[Go to Plot](project_proposal.html#plot1)
 
-•
+#### Type of Visualization
 
-•
+- **Scatter plot (bivariate plot)**\
+  Shows the relationship between two continuous variables.
 
-•
+#### Added Modeling Layers
+
+- **Linear regression line (OLS trend)**\
+  → Straight line fitted using a linear model (`lm`).
+
+- **LOESS smooth curve (nonparametric regression)**\
+  → Flexible smoothing method that captures nonlinear patterns.
+
+#### Overall Classification
+
+⇒ **Exploratory scatter plot with two fitted regression models (parametric + nonparametric)**
+
+#### Key Components (format-wise)
+
+- **Points** → raw observations\
+- **Blue line** → parametric model (linear regression)\
+- **Red line** → nonparametric model (LOESS smoothing)
+
+------------------------------------------------------------------------
+
+## Plot 2
+[Go to Plot](project_proposal.html#plot2)
+
+#### Type of Visualization
+
+- **Scatter plot (bivariate plot)**\
+  Displays the relationship between two continuous variables.
+
+#### Added Modeling Layer
+
+- **Linear regression line (OLS trend)**\
+  → A straight line fitted using a linear model (`lm`) to summarize the overall trend.
+
+#### Overall Classification
+
+⇒ **Exploratory scatter plot with a fitted linear regression model (parametric)**
+
+#### Key Components (format-wise)
+
+- **Points** → raw observations\
+- **Green line** → parametric model (linear regression)
+
+## Plot 3
+[Go to Plot](project_proposal.html#plot3)
+
+#### Type of Visualization
+
+- **Bar chart (categorical comparison plot)**\
+  Displays values for a set of discrete categories using bar lengths.
+
+#### Statistical Measure
+
+- **Correlation coefficients (bivariate association measure)**\
+  → Each bar represents the strength of association between one variable and a target variable.
+
+#### Overall Classification
+
+⇒ **Descriptive statistical visualization of correlation measures across multiple variables**
+
+#### Key Components (format-wise)
+
+- **Bars** → represent numerical values (correlation coefficients)\
+- **Categories (y-axis)** → discrete variables being compared\
+- **Bar length (x-axis)** → magnitude of the correlation\
+- **Ordering** → values sorted to emphasize ranking
+
+## Plot 4
+[Go to Plot](project_proposal.html#plot4)
+
+#### Type of Visualization
+
+- **Scatter plot (bivariate plot)**\
+  Displays the relationship between two continuous variables, with observations positioned in a two-dimensional space.
+
+#### Modeling Technique
+
+- **K-means clustering (unsupervised learning method)**\
+  → Partitions observations into groups based on similarity across multiple variables.
+
+#### Overall Classification
+
+⇒ **Exploratory scatter plot with cluster assignments from an unsupervised machine learning model**
+
+#### Key Components (format-wise)
+
+- **Points** → individual observations\
+- **Color coding** → cluster membership\
+- **Axes** → two selected continuous variables used for visualization\
+- **Clusters (1, 2, 3)** → groups identified by the k-means algorithm
+
+# Question 2
+
+## Plot 1
+[Go to Plot](project_proposal.html#plot5)
+
+#### Type of Visualization
+
+- **Scatter plot (bivariate plot)**\
+  Displays the relationship between two continuous variables.
+
+#### Modeling Framework
+
+- **Multiple linear regression (parametric model)**\
+  → Predicts a response variable using several explanatory variables.
+
+#### Model Evaluation Representation
+
+- **Predicted vs. actual plot (model diagnostics visualization)**\
+  → Compares model predictions with observed values to assess model fit.
+
+#### Overall Classification
+
+⇒ **Model evaluation plot for a multiple linear regression model**
+
+#### Key Components (format-wise)
+
+- **Points** → observed vs. predicted values for each observation\
+- **Diagonal reference line** → ideal fit (perfect prediction, 45° line)\
+- **Axes** → predicted values (x-axis) and actual values (y-axis)
+
+## Plot 2
+[Go to Plot](project_proposal.html#plot6)
+
+#### Type of Visualization
+
+- **Bar chart (categorical comparison plot)**\
+  Displays numerical values for a set of discrete categories using bar lengths.
+
+#### Underlying Model Output
+
+- **Residual-based summary (model diagnostics measure)**\
+  → Uses residual values derived from a regression model to quantify deviations.
+
+#### Overall Classification
+
+⇒ **Model diagnostics visualization based on aggregated residuals**
+
+#### Key Components (format-wise)
+
+- **Bars** → aggregated numerical values (average residuals)\
+- **Categories (y-axis)** → discrete entities (countries)\
+- **Bar direction** → sign of the residual (positive or negative)\
+- **Bar length (x-axis)** → magnitude of the deviation\
+- **Color coding** → grouping based on residual sign (two categories)
+
+## Plot 3
+[Go to Plot](project_proposal.html#plot7)
+
+#### Type of Visualization
+
+- **Tree diagram (hierarchical visualization)**\
+  Represents data through a sequence of binary splits arranged in a tree structure.
+
+#### Modeling Technique
+
+- **Decision tree (supervised learning model, regression tree)**\
+  → Predicts a continuous target variable by recursively splitting the data based on feature thresholds.
+
+#### Overall Classification
+
+⇒ **Model visualization for a regression tree (nonlinear, rule-based predictive model)**
+
+#### Key Components (format-wise)
+
+- **Nodes** → represent subsets of the data after each split\
+- **Root node** → initial dataset before any splitting\
+- **Branches** → decision rules (feature thresholds) that partition the data\
+- **Leaf nodes** → final predictions for each segment\
+- **Hierarchical structure** → shows sequential splitting of the feature space
