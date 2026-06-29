@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: _site
 
 
 website:
@@ -10,7 +11,7 @@ website:
     dismissable: true    # adds a "x" to deleted it
   page-footer:
     center: "StatProg2 — LMU Munich"
-  title: "Happiness"
+  title: "Happiness ㋡"
   navbar:
     left:
       - href: project_proposal.qmd
@@ -23,13 +24,17 @@ website:
         text: "About this site"
       - href: group-reflection.qmd
         text: "Group reflection"
+    right:
+      - icon: github
+        href: https://github.com/Youta-droid/Stat_Project
+        aria-label: GitHub
 
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+     light: minty
+     dark: superhero
     css: styles.css
     toc: true
     code-fold: true        # collapse code into <details>
@@ -41,7 +46,7 @@ format:
 
 
 execute:
-  echo: true       # show source code
+  echo: false      # show source code
   eval: true       # run code
   output: true     # include results
   warning: false   # suppress warnings
