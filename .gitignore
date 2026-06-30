@@ -8,9 +8,10 @@
 # Quarto build output
 /Stat/Quarto/_site/
 /Stat/Quarto/.quarto/
-*_files/
-*_cache/
 /.quarto/
+*_cache/
+# Note: keep _freeze/ committed — required by `freeze: auto` so CI can
+# rebuild the site without re-running R. Do NOT ignore it.
 
 # OS files
 .DS_Store
