@@ -1,33 +1,136 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Eya",
+    "objectID": "project_proposal.html",
+    "href": "project_proposal.html",
+    "title": "Project Proposal",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Show code\n#load packages\nlibrary(tidyverse)\nlibrary(ggplot2)\nlibrary(readxl)\nlibrary(broom)\nlibrary(rpart)\nlibrary(rpart.plot)\n\n#load data\nhappiness &lt;- read_excel(\"world_hapiness_datasets/WHR25_Data_Figure_2.1v3.xlsx\")\n\n#clean data\nhappiness_clean &lt;- happiness %&gt;%\n  rename(\n    year = Year,\n    rank = Rank,\n    country = `Country name`,\n    happiness = `Life evaluation (3-year average)`,\n    gdp = `Explained by: Log GDP per capita`,\n    social_support = `Explained by: Social support`,\n    health = `Explained by: Healthy life expectancy`,\n    freedom = `Explained by: Freedom to make life choices`,\n    generosity = `Explained by: Generosity`,\n    corruption = `Explained by: Perceptions of corruption`,\n    dystopia_residual = `Dystopia + residual`\n  ) %&gt;%\n  mutate(across(c(happiness, gdp, social_support, health, freedom,\n                  generosity, corruption, dystopia_residual), as.numeric))\n\n#filter complete cases\nhappiness_complete &lt;- happiness_clean %&gt;%\n  filter(\n    !is.na(happiness),\n    !is.na(gdp),\n    !is.na(social_support),\n    !is.na(health),\n    !is.na(freedom),\n    !is.na(generosity),\n    !is.na(corruption)\n  )"
+  },
+  {
+    "objectID": "project_proposal.html#q1.-what-explains-happiness",
+    "href": "project_proposal.html#q1.-what-explains-happiness",
+    "title": "Project Proposal",
+    "section": "Q1. What explains happiness?",
+    "text": "Q1. What explains happiness?\nTo what extent can happiness be explained by economic and social factors such as GDP, social support, and freedom?\nThis question explores whether richer countries are automatically happier, or whether other dimensions such as social support and freedom help explain why some countries achieve higher well-being than others.\n\n\nPlot 1: GDP and happiness\nThis plot compares GDP contribution with happiness. A linear regression line shows the general direction of the relationship, while the LOESS curve allows for a non-linear pattern. This is useful because the relationship between income and happiness may weaken at higher income levels.\n\n\nShow code\n#This is a plot, not a full model section.\n\nggplot(happiness_complete, aes(x = gdp, y = happiness)) + #Create the plot and define axes (use dataset happiness_clean)\n\n   geom_point(alpha = 0.45, color = \"gray40\") + #Add scatter points (transparency=0.45, each point reprents a country)\n\n   geom_smooth(method = \"lm\", se = FALSE, color = \"darkblue\", linewidth = 1) + #Add linear regression line (method = \"lm\" → linear regression so straight line, se = FALSE → no confidence interval shading)\n\n  geom_smooth(method = \"loess\", se = FALSE, color = \"red\", linewidth = 1) + #Add LOESS curve (nonlinear trend)\n#Blue line → simple linear assumption\n#Red line → real pattern (may bend)\n  \n  labs( #sets text elements\n\n    title = \"GDP and Happiness: Linear Trend vs Nonlinear Pattern\",\n\n    subtitle = \"The LOESS curve helps reveal possible diminishing returns of GDP\",\n\n    x = \"Explained by: Log GDP per capita\",\n\n    y = \"Life Evaluation / Happiness Score\"\n\n  ) +\n\n  theme_minimal() # removes background clutter and creates clean design\n\n\n\n\n\n\n\n\n\nInterpretation:\nGDP is positively associated with happiness, meaning that countries with higher economic contribution usually report higher life evaluations. However, the LOESS curve can show whether the increase becomes flatter at higher GDP levels. This supports the idea that money matters, but may not explain happiness indefinitely.\n\n\nPlot 2: Social support and happiness\nThis plot focuses on the relationship between social support and happiness. It directly supports the central story of the project: well-being is not only about wealth, but also about relationships and social connection.\n\n\nShow code\n# This is a plot.\n\nggplot(happiness_complete, aes(x = social_support, y = happiness)) +\n  geom_point(alpha = 0.45, color = \"gray40\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"darkgreen\", linewidth = 1) +\n  labs(\n    title = \"Social Support and Happiness\",\n    subtitle = \"Countries with stronger social support tend to report higher happiness\",\n    x = \"Explained by: Social support\",\n    y = \"Life Evaluation / Happiness Score\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nInterpretation:\nThe plot shows whether countries with stronger social support also report higher happiness scores. If the relationship is strong, it supports the argument that social relationships can be as important as economic wealth in explaining well-being.\n\n\nPlot 3: Which factors are most strongly associated with happiness?\nInstead of looking at only one variable at a time, this plot compares the correlation between happiness and all explanatory factors. It summarizes which variables are most closely related to happiness.\n\n\nShow code\n#This is a calculation + plot.It is not a predictive model, but it calculates correlations and then plots them.\n\ncor_data &lt;- happiness_complete %&gt;%\n  select(happiness, gdp, social_support, health, freedom, generosity, corruption) \n\ncorrelations &lt;- cor_data %&gt;%\n  summarise(\n    GDP = cor(happiness, gdp),\n    `Social Support` = cor(happiness, social_support),\n    Health = cor(happiness, health),\n    Freedom = cor(happiness, freedom),\n    Generosity = cor(happiness, generosity),\n    Corruption = cor(happiness, corruption)\n  ) %&gt;%\n  pivot_longer(\n    cols = everything(),\n    names_to = \"factor\",\n    values_to = \"correlation\"\n  ) %&gt;%\n  arrange(desc(correlation))\n\nggplot(correlations, aes(x = reorder(factor, correlation), y = correlation)) +\n  geom_col(fill = \"steelblue\") +\n  coord_flip() +\n  labs(\n    title = \"Correlation with Happiness\",\n    subtitle = \"Comparison of the reported explanatory factors\",\n    x = \"Factor\",\n    y = \"Correlation with happiness\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nInterpretation:\nThis plot helps compare the relative importance of different factors. If GDP, social support, health, and freedom all show strong correlations, then happiness should be understood as multi-dimensional rather than purely economic.\n\n\nPlot 4: Country profiles using clustering\nThis plot uses k-means clustering to group countries with similar happiness profiles. Unlike regression, clustering does not predict happiness. Instead, it discovers patterns in the data and groups countries based on similarities across multiple factors.\n\n\nShow code\n#This is a model + plot\n#kmeans() = clustering model\n#ggplot() = visualization of the cluster results\n\ncluster_data &lt;- happiness_complete %&gt;%\n  filter(year == 2024) %&gt;%\n  select(country, happiness, gdp, social_support, health, freedom, generosity, corruption)\n\ncluster_scaled &lt;- cluster_data %&gt;%\n  select(gdp, social_support, health, freedom, generosity, corruption) %&gt;%\n  scale()\n\nset.seed(123)\nclusters &lt;- kmeans(cluster_scaled, centers = 3)\n\ncluster_data &lt;- cluster_data %&gt;%\n  mutate(cluster = as.factor(clusters$cluster))\n\nggplot(cluster_data, aes(x = gdp, y = social_support, color = cluster)) +\n  geom_point(size = 3, alpha = 0.8) +\n  labs(\n    title = \"Country Clusters Based on Happiness Factors\",\n    subtitle = \"k-means clustering using GDP, social support, health, freedom, generosity, and corruption\",\n    x = \"Explained by: Log GDP per capita\",\n    y = \"Explained by: Social support\",\n    color = \"Cluster\"\n  ) +\n  theme_minimal() \n\n\n\n\n\n\n\n\n\nInterpretation:\nThe clustering model groups countries into different profiles. For example, some countries may combine high GDP and high social support, while others may show lower values across several factors. This supports the idea that there are different pathways to happiness, not just one universal explanation.\n\n\nQ1 Summary\nThe Q1 analysis shows that happiness is associated with several dimensions. GDP matters, but the relationship is not the full story. Social support, freedom, health, and institutional trust also contribute to differences in happiness. The clustering model further suggests that countries form different well-being profiles rather than following one single pattern."
+  },
+  {
+    "objectID": "project_proposal.html#q2.-what-remains-unexplained",
+    "href": "project_proposal.html#q2.-what-remains-unexplained",
+    "title": "Project Proposal",
+    "section": "Q2. What remains unexplained?",
+    "text": "Q2. What remains unexplained?\nWhat part of happiness cannot be explained by observable variables?\nThis question uses modeling to estimate happiness from the reported factors and then examines the residuals. Residuals are the differences between actual and predicted happiness. They help identify countries that are happier or less happy than expected based on the model.\n\nPlot 1: Predicted vs actual happiness\nA multiple linear regression model is used to predict happiness from several explanatory factors. The plot compares predicted happiness with actual happiness. If the model fits well, the points should lie close to the diagonal line.\n\n\nShow code\n#This is a model + plot.\n#lm() = linear regression model\n#ggplot() = model performance visualization\n\nmodel_data &lt;- happiness_complete %&gt;%\n  select(country, year, happiness, gdp, social_support, health, freedom, generosity, corruption)\n\nlm_model &lt;- lm(\n  happiness ~ gdp + social_support + health + freedom + generosity + corruption,\n  data = model_data\n)\n\nmodel_results &lt;- model_data %&gt;%\n  mutate(\n    predicted = predict(lm_model),\n    residual = happiness - predicted\n  )\n\nggplot(model_results, aes(x = predicted, y = happiness)) +\n  geom_point(alpha = 0.45, color = \"gray40\") +\n  geom_abline(slope = 1, intercept = 0, color = \"red\", linewidth = 1) +\n  labs(\n    title = \"Predicted vs Actual Happiness\",\n    subtitle = \"Multiple linear regression using six reported factors\",\n    x = \"Predicted happiness\",\n    y = \"Actual happiness\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nInterpretation:\nThe predicted-versus-actual plot shows how well the regression model reconstructs happiness scores. Points close to the red diagonal line are well explained by the model, while points farther away indicate countries or years where the model does not fully capture the actual happiness score.\n\n\nPlot 2: Countries that deviate from the model\nThis plot shows the strongest positive and negative residuals. Positive residuals mean that a country is happier than predicted by the model. Negative residuals mean that a country is less happy than predicted.\n\n\nShow code\n#This is a model-result plot.It does not fit a new model, but it visualizes the residuals from the previous regression model.\n\nresidual_summary &lt;- model_results %&gt;%\n  group_by(country) %&gt;%\n  summarise(mean_residual = mean(residual, na.rm = TRUE)) %&gt;%\n  ungroup()\n\ntop_residuals &lt;- residual_summary %&gt;%\n  slice_max(mean_residual, n = 8)\n\nbottom_residuals &lt;- residual_summary %&gt;%\n  slice_min(mean_residual, n = 8)\n\nresidual_plot_data &lt;- bind_rows(top_residuals, bottom_residuals) %&gt;%\n  mutate(type = if_else(mean_residual &gt; 0, \"Happier than predicted\", \"Less happy than predicted\"))\n\nggplot(residual_plot_data, aes(x = reorder(country, mean_residual), y = mean_residual, fill = type)) +\n  geom_col() +\n  coord_flip() +\n  labs(\n    title = \"Countries That Deviate Most from the Regression Model\",\n    subtitle = \"Average residuals across available years\",\n    x = \"Country\",\n    y = \"Average residual\",\n    fill = \"Residual type\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nInterpretation:\nThis plot is the main “twist” of the analysis. It shows that even after accounting for GDP, social support, health, freedom, generosity, and corruption, some countries still differ from model expectations. These deviations may reflect factors not directly included in the dataset, such as culture, inequality, mental health, political stability, or historical context.\n\n\nPlot 3: Decision tree model\nThe decision tree provides a different modeling perspective. Unlike linear regression, it splits the data into groups based on factor thresholds. This makes it useful for identifying which variables separate countries with lower and higher happiness scores.\n\n\nShow code\n#This is a model / model visualization.\n#rpart() = decision tree model\n#rpart.plot() = visualization of the model structure\n\ntree_model &lt;- rpart(\n  happiness ~ gdp + social_support + health + freedom + generosity + corruption,\n  data = model_data,\n  method = \"anova\",\n  control = rpart.control(cp = 0.01)\n)\n\nrpart.plot(\n  tree_model,\n  main = \"Decision Tree Predicting Happiness\",\n  type = 2,\n  extra = 101,\n  fallen.leaves = TRUE\n)\n\n\n\n\n\n\n\n\n\nInterpretation:\nThe decision tree is useful because it gives a non-linear view of happiness. It identifies variables that split countries into groups with different average happiness levels. If social support, GDP, or health appear near the top of the tree, this suggests that these variables are especially important for separating higher- and lower-happiness observations."
+  },
+  {
+    "objectID": "project_proposal.html#final-conclusion",
+    "href": "project_proposal.html#final-conclusion",
+    "title": "Project Proposal",
+    "section": "Final Conclusion",
+    "text": "Final Conclusion\nThe analysis shows that happiness is not determined by wealth alone. GDP is clearly associated with happiness, but social support, freedom, health, and institutional trust also play important roles. The clustering model shows that countries follow different happiness profiles, while the regression and decision tree models show that some patterns can be modeled but not fully explained.\nOverall, the project supports the idea that economic prosperity matters, but it cannot fully capture human well-being. The residuals show that there is still an unexplained part of happiness—possibly shaped by culture, inequality, mental health, social stability, or other factors not directly measured in the dataset.\nMain takeaway:\nWealth matters, but happiness is broader than money."
+  },
+  {
+    "objectID": "group-reflection.html",
+    "href": "group-reflection.html",
+    "title": "Group Reflection",
+    "section": "",
+    "text": "For each skill area, describe what your group actually used it for. If you did not use a skill, say so and note why.\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:"
+  },
+  {
+    "objectID": "group-reflection.html#skills-inventory",
+    "href": "group-reflection.html#skills-inventory",
+    "title": "Group Reflection",
+    "section": "",
+    "text": "For each skill area, describe what your group actually used it for. If you did not use a skill, say so and note why.\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:\n\n\n\nWhat we did:\nWhat worked well:\nWhat was hard:"
+  },
+  {
+    "objectID": "group-reflection.html#key-analytical-decisions",
+    "href": "group-reflection.html#key-analytical-decisions",
+    "title": "Group Reflection",
+    "section": "Key analytical decisions",
+    "text": "Key analytical decisions\nDescribe 2–3 decisions that had a meaningful effect on your results or workflow. #say that I used https://quarto.org/docs/reference/projects/websites.html\n\nDecision 1: [short title]\nWhat were we deciding between?\nHow did we reason through it?\nIn hindsight, would we decide differently?\n\n\nDecision 2: [short title]\nWhat were we deciding between?\nHow did we reason through it?\nIn hindsight, would we decide differently?"
+  },
+  {
+    "objectID": "group-reflection.html#workflow-collaboration",
+    "href": "group-reflection.html#workflow-collaboration",
+    "title": "Group Reflection",
+    "section": "Workflow & collaboration",
+    "text": "Workflow & collaboration\nHow did we divide work across group members?\nWhat branching or Git workflow did we actually use — and did it match the proposal?\nWhat would we change about how we coordinated?"
+  },
+  {
+    "objectID": "group-reflection.html#llm-usage",
+    "href": "group-reflection.html#llm-usage",
+    "title": "Group Reflection",
+    "section": "LLM usage",
+    "text": "LLM usage\nDescribe up to 5 significant uses of an LLM tool during the project.\n\nUsage 1: [task]\n\nTool / model:\nWhat it produced:\nWhat we had to correct or verify:\n\n\n\nUsage 2: [task]\n\nTool / model:\nWhat it produced:\nWhat we had to correct or verify:"
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "What’s in It",
+    "section": "",
+    "text": "Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis."
+  },
+  {
+    "objectID": "data.html#per-year-structure",
+    "href": "data.html#per-year-structure",
+    "title": "What’s in It",
+    "section": "Per-year structure",
+    "text": "Per-year structure\n\n\n\n\n\n\n\n\n\nYear\nRows\nCols\nWhat is different that year\n\n\n2015\n158\n12\nIncludes Region and Standard Error; has Dystopia Residual\n\n\n2016\n157\n13\nIncludes Region; Standard Error replaced by Lower/Upper Confidence Interval\n\n\n2017\n155\n12\nRegion dropped; Whisker high/low instead of CI; Dystopia Residual kept\n\n\n2018\n156\n9\nSlim schema: columns renamed; Region, CI and Dystopia Residual all removed\n\n\n2019\n156\n9\nSame slim schema as 2018\n\n\n\nRow counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report’s format was simplified over time."
+  },
+  {
+    "objectID": "data.html#key-variables",
+    "href": "data.html#key-variables",
+    "title": "What’s in It",
+    "section": "Key variables",
+    "text": "Key variables\n\n\n\n\n\n\n\n\nConcept\nColumn name(s)  (2015–17  /  2018–19)\nWhat it measures\n\n\nCountry\nCountry  /  Country or region\nThe nation — the unit of analysis\n\n\nRegion\nRegion  (2015–2016 only)\nWorld region grouping (e.g. Western Europe)\n\n\nRank\nHappiness Rank  /  Overall rank\nPosition in that year’s global ranking\n\n\nHappiness score ★\nHappiness Score  /  Score\nCantril-ladder life evaluation, 0–10 — the TARGET variable\n\n\nGDP per capita\nEconomy (GDP per Capita)  /  GDP per capita\nContribution of income to the score\n\n\nSocial support\nFamily  /  Social support\nContribution of having someone to count on\n\n\nLife expectancy\nHealth (Life Expectancy)  /  Healthy life expectancy\nContribution of healthy longevity\n\n\nFreedom\nFreedom  /  Freedom to make life choices\nContribution of freedom over life choices\n\n\nGenerosity\nGenerosity\nContribution of charitable behaviour\n\n\nCorruption\nTrust (Government Corruption)  /  Perceptions of corruption\nContribution of perceived honesty / low corruption\n\n\nDystopia residual\nDystopia Residual  (through 2017)\nUnexplained remainder above the Dystopia baseline\n\n\n\n★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files."
+  },
+  {
+    "objectID": "data.html#a-subtlety-that-shapes-the-whole-analysis",
+    "href": "data.html#a-subtlety-that-shapes-the-whole-analysis",
+    "title": "What’s in It",
+    "section": "A subtlety that shapes the whole analysis",
+    "text": "A subtlety that shapes the whole analysis\nThe six “factor” columns are not raw measurements.\nWhat they actually are: Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country’s score — not the raw value (e.g. it is not GDP in dollars).\nThey are additive: The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.\nWhy it matters: This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction."
+  },
+  {
+    "objectID": "data.html#source-licence",
+    "href": "data.html#source-licence",
+    "title": "What’s in It",
+    "section": "Source & Licence",
+    "text": "Source & Licence\nDataset: World Happiness Report\nHosted on: Kaggle — kaggle.com/datasets/unsdsn/world-happiness\nPublished by: UN Sustainable Development Solutions Network (UNSDSN)\nUnderlying source: Gallup World Poll — the Cantril ladder life-evaluation question\nCoverage: Five annual files, 2015–2019 (one CSV per report year)\nLicence: CC0 1.0 — Public Domain (no rights reserved)\nBecause the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g. “World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (S.Azzabi@campus.lmu.de)"
   },
   {
-    "objectID": "project_proposal.html",
-    "href": "project_proposal.html",
-    "title": "Project Proposal",
+    "objectID": "about.html#members",
+    "href": "about.html#members",
+    "title": "About",
     "section": "",
+<<<<<<< HEAD
     "text": "Every March, headlines announce that Finland is “the happiest country in the world” — again. But what actually sits behind that single number, how much does it move from year to year, and how much of a nation’s happiness can be pinned to money, health and freedom? This project uses five years of global survey data to look past the headline ranking and ask what really travels with well-being.\n\n\n[name] [email]\nSlaheddine Azzabi (Azzabi.Slaheddine@campus.lmu.de)\nShohei Kobayashi (kobayashishohei1023@gmail.com)\n\n\n\nhttps://github.com/Youta-droid/Stat_Project"
+=======
+    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (S.Azzabi@campus.lmu.de)"
+>>>>>>> main
   },
   {
-    "objectID": "project_proposal.html#project-outline",
-    "href": "project_proposal.html#project-outline",
-    "title": "Project Proposal",
+    "objectID": "about.html#github-repogitry",
+    "href": "about.html#github-repogitry",
+    "title": "About",
+    "section": "GitHub Repogitry",
+    "text": "GitHub Repogitry\nhttps://github.com/Youta-droid/Stat_Project"
+  },
+  {
+    "objectID": "format.html",
+    "href": "format.html",
+    "title": "Presentation formats",
     "section": "",
-    "text": "(summarize the topic of the project)"
+    "text": "•\n•\n•\n•\n•"
   },
   {
+<<<<<<< HEAD
     "objectID": "project_proposal.html#member",
     "href": "project_proposal.html#member",
     "title": "Project Proposal",
@@ -187,5 +290,12 @@
     "title": "Project Proposal — The Happiness Money Can’t Buy",
     "section": "Presentation formats (mapped to each question)",
     "text": "Presentation formats (mapped to each question)\n• Diverging bar chart — countries ranked by their unexplained happiness, highest and lowest side by side — delivers Q1.\n• Line chart — average happiness across all countries, 2011–2024, with key moments annotated — delivers Q2.\n• Interactive dashboard (stretch goal) — lets readers filter by year or region and explore the residual on their own — ties the two threads together.\nThese formats prioritise accessibility and visual storytelling over statistical formalism, which fits a journalistic audience that wants the story behind the numbers."
+=======
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Eya",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+>>>>>>> main
   }
 ]

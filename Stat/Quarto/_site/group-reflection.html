@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Happiness</title>
+<title>Group Reflection – Happiness</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -135,10 +135,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-<<<<<<< HEAD
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About this site</span></a>
-=======
     <a class="nav-link" href="./data.html"> 
 <span class="menu-text">Our dataset</span></a>
   </li>  
@@ -147,13 +143,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Presentation formats</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About this site</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./group-reflection.html"> 
+    <a class="nav-link active" href="./group-reflection.html" aria-current="page"> 
 <span class="menu-text">Group reflection</span></a>
->>>>>>> main
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -171,8 +166,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#members" id="toc-members" class="nav-link active" data-scroll-target="#members">Members</a></li>
-  <li><a href="#github-repogitry" id="toc-github-repogitry" class="nav-link" data-scroll-target="#github-repogitry">GitHub Repogitry</a></li>
+  <li><a href="#skills-inventory" id="toc-skills-inventory" class="nav-link active" data-scroll-target="#skills-inventory">Skills inventory</a>
+  <ul class="collapse">
+  <li><a href="#functions-refactoring-w2" id="toc-functions-refactoring-w2" class="nav-link" data-scroll-target="#functions-refactoring-w2">Functions &amp; refactoring (W2)</a></li>
+  <li><a href="#debugging-w3" id="toc-debugging-w3" class="nav-link" data-scroll-target="#debugging-w3">Debugging (W3)</a></li>
+  <li><a href="#version-control-remotes-w4" id="toc-version-control-remotes-w4" class="nav-link" data-scroll-target="#version-control-remotes-w4">Version control &amp; remotes (W4)</a></li>
+  <li><a href="#quarto-websites-collaborative-coding-w5" id="toc-quarto-websites-collaborative-coding-w5" class="nav-link" data-scroll-target="#quarto-websites-collaborative-coding-w5">Quarto websites &amp; collaborative coding (W5)</a></li>
+  <li><a href="#r-packages-w6" id="toc-r-packages-w6" class="nav-link" data-scroll-target="#r-packages-w6">R packages (W6)</a></li>
+  <li><a href="#initial-data-analysis-data-cleaning-w7" id="toc-initial-data-analysis-data-cleaning-w7" class="nav-link" data-scroll-target="#initial-data-analysis-data-cleaning-w7">Initial data analysis &amp; data cleaning (W7)</a></li>
+  <li><a href="#reproducibility-open-data-renv-w9" id="toc-reproducibility-open-data-renv-w9" class="nav-link" data-scroll-target="#reproducibility-open-data-renv-w9">Reproducibility, open data &amp; renv (W9)</a></li>
+  <li><a href="#analysis-inference-strategies-w10" id="toc-analysis-inference-strategies-w10" class="nav-link" data-scroll-target="#analysis-inference-strategies-w10">Analysis &amp; inference strategies (W10)</a></li>
+  <li><a href="#communication-visualisation-w11" id="toc-communication-visualisation-w11" class="nav-link" data-scroll-target="#communication-visualisation-w11">Communication &amp; visualisation (W11)</a></li>
+  </ul></li>
+  <li><a href="#key-analytical-decisions" id="toc-key-analytical-decisions" class="nav-link" data-scroll-target="#key-analytical-decisions">Key analytical decisions</a>
+  <ul class="collapse">
+  <li><a href="#decision-1-short-title" id="toc-decision-1-short-title" class="nav-link" data-scroll-target="#decision-1-short-title">Decision 1: [short title]</a></li>
+  <li><a href="#decision-2-short-title" id="toc-decision-2-short-title" class="nav-link" data-scroll-target="#decision-2-short-title">Decision 2: [short title]</a></li>
+  </ul></li>
+  <li><a href="#workflow-collaboration" id="toc-workflow-collaboration" class="nav-link" data-scroll-target="#workflow-collaboration">Workflow &amp; collaboration</a></li>
+  <li><a href="#llm-usage" id="toc-llm-usage" class="nav-link" data-scroll-target="#llm-usage">LLM usage</a>
+  <ul class="collapse">
+  <li><a href="#usage-1-task" id="toc-usage-1-task" class="nav-link" data-scroll-target="#usage-1-task">Usage 1: [task]</a></li>
+  <li><a href="#usage-2-task" id="toc-usage-2-task" class="nav-link" data-scroll-target="#usage-2-task">Usage 2: [task]</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -181,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">About</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Group Reflection</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -198,19 +214,109 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="members" class="level2">
-<h2 class="anchored" data-anchor-id="members">Members</h2>
-<p>Shohei Kobayashi (S.kobayashi@lmu.campus.de)</p>
-<p>Eya Fares (E.Fares@lmu.campus.de)</p>
-<p>Salaheddine Azzabi (S.Azzabi@campus.lmu.de)</p>
+<section id="skills-inventory" class="level2">
+<h2 class="anchored" data-anchor-id="skills-inventory">Skills inventory</h2>
+<p>For each skill area, describe what your group actually used it for. If you did not use a skill, say so and note why.</p>
+<section id="functions-refactoring-w2" class="level3">
+<h3 class="anchored" data-anchor-id="functions-refactoring-w2">Functions &amp; refactoring (W2)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
 </section>
-<section id="github-repogitry" class="level2">
-<h2 class="anchored" data-anchor-id="github-repogitry">GitHub Repogitry</h2>
-<p><a href="https://github.com/Youta-droid/Stat_Project" class="uri">https://github.com/Youta-droid/Stat_Project</a></p>
+<section id="debugging-w3" class="level3">
+<h3 class="anchored" data-anchor-id="debugging-w3">Debugging (W3)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="version-control-remotes-w4" class="level3">
+<h3 class="anchored" data-anchor-id="version-control-remotes-w4">Version control &amp; remotes (W4)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="quarto-websites-collaborative-coding-w5" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-websites-collaborative-coding-w5">Quarto websites &amp; collaborative coding (W5)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="r-packages-w6" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages-w6">R packages (W6)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="initial-data-analysis-data-cleaning-w7" class="level3">
+<h3 class="anchored" data-anchor-id="initial-data-analysis-data-cleaning-w7">Initial data analysis &amp; data cleaning (W7)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="reproducibility-open-data-renv-w9" class="level3">
+<h3 class="anchored" data-anchor-id="reproducibility-open-data-renv-w9">Reproducibility, open data &amp; renv (W9)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="analysis-inference-strategies-w10" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-inference-strategies-w10">Analysis &amp; inference strategies (W10)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+<section id="communication-visualisation-w11" class="level3">
+<h3 class="anchored" data-anchor-id="communication-visualisation-w11">Communication &amp; visualisation (W11)</h3>
+<p><em>What we did:</em></p>
+<p><em>What worked well:</em></p>
+<p><em>What was hard:</em></p>
+</section>
+</section>
+<section id="key-analytical-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="key-analytical-decisions">Key analytical decisions</h2>
+<p>Describe 2–3 decisions that had a meaningful effect on your results or workflow. #say that I used https://quarto.org/docs/reference/projects/websites.html</p>
+<section id="decision-1-short-title" class="level3">
+<h3 class="anchored" data-anchor-id="decision-1-short-title">Decision 1: [short title]</h3>
+<p><em>What were we deciding between?</em></p>
+<p><em>How did we reason through it?</em></p>
+<p><em>In hindsight, would we decide differently?</em></p>
+</section>
+<section id="decision-2-short-title" class="level3">
+<h3 class="anchored" data-anchor-id="decision-2-short-title">Decision 2: [short title]</h3>
+<p><em>What were we deciding between?</em></p>
+<p><em>How did we reason through it?</em></p>
+<p><em>In hindsight, would we decide differently?</em></p>
+</section>
+</section>
+<section id="workflow-collaboration" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-collaboration">Workflow &amp; collaboration</h2>
+<p><em>How did we divide work across group members?</em></p>
+<p><em>What branching or Git workflow did we actually use — and did it match the proposal?</em></p>
+<p><em>What would we change about how we coordinated?</em></p>
+</section>
+<section id="llm-usage" class="level2">
+<h2 class="anchored" data-anchor-id="llm-usage">LLM usage</h2>
+<p>Describe up to 5 significant uses of an LLM tool during the project.</p>
+<section id="usage-1-task" class="level3">
+<h3 class="anchored" data-anchor-id="usage-1-task">Usage 1: [task]</h3>
+<ul>
+<li><strong>Tool / model:</strong></li>
+<li><strong>What it produced:</strong></li>
+<li><strong>What we had to correct or verify:</strong></li>
+</ul>
+</section>
+<section id="usage-2-task" class="level3">
+<h3 class="anchored" data-anchor-id="usage-2-task">Usage 2: [task]</h3>
+<ul>
+<li><strong>Tool / model:</strong></li>
+<li><strong>What it produced:</strong></li>
+<li><strong>What we had to correct or verify:</strong></li>
+</ul>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -666,21 +772,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "About"</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "group-reflection"</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">## Members</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>Shohei Kobayashi (S.kobayashi\@lmu.campus.de)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>---</span>
+<span id="cb1-7"><a href="#cb1-7"></a>title: "Group Reflection"</span>
+<span id="cb1-8"><a href="#cb1-8"></a>---</span>
 <span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>Eya Fares (E.Fares\@lmu.campus.de)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">## Skills inventory</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a>Salaheddine Azzabi (S.Azzabi\@campus.lmu.de)</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">## GitHub Repogitry</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="ot">&lt;https://github.com/Youta-droid/Stat_Project&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-12"><a href="#cb1-12"></a>For each skill area, describe what your group actually used it for.</span>
+<span id="cb1-13"><a href="#cb1-13"></a>If you did not use a skill, say so and note why.</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="fu">### Functions &amp; refactoring (W2)</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a>*What we did:*</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>*What worked well:*</span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a>*What was hard:*</span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="fu">### Debugging (W3)</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>*What we did:*</span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a>*What worked well:*</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>*What was hard:*</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="fu">### Version control &amp; remotes (W4)</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a>*What we did:*</span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a>*What worked well:*</span>
+<span id="cb1-36"><a href="#cb1-36"></a></span>
+<span id="cb1-37"><a href="#cb1-37"></a>*What was hard:*</span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="fu">### Quarto websites &amp; collaborative coding (W5)</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a></span>
+<span id="cb1-41"><a href="#cb1-41"></a>*What we did:*</span>
+<span id="cb1-42"><a href="#cb1-42"></a></span>
+<span id="cb1-43"><a href="#cb1-43"></a>*What worked well:*</span>
+<span id="cb1-44"><a href="#cb1-44"></a></span>
+<span id="cb1-45"><a href="#cb1-45"></a>*What was hard:*</span>
+<span id="cb1-46"><a href="#cb1-46"></a></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="fu">### R packages (W6)</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a>*What we did:*</span>
+<span id="cb1-50"><a href="#cb1-50"></a></span>
+<span id="cb1-51"><a href="#cb1-51"></a>*What worked well:*</span>
+<span id="cb1-52"><a href="#cb1-52"></a></span>
+<span id="cb1-53"><a href="#cb1-53"></a>*What was hard:*</span>
+<span id="cb1-54"><a href="#cb1-54"></a></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="fu">### Initial data analysis &amp; data cleaning (W7)</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a></span>
+<span id="cb1-57"><a href="#cb1-57"></a>*What we did:*</span>
+<span id="cb1-58"><a href="#cb1-58"></a></span>
+<span id="cb1-59"><a href="#cb1-59"></a>*What worked well:*</span>
+<span id="cb1-60"><a href="#cb1-60"></a></span>
+<span id="cb1-61"><a href="#cb1-61"></a>*What was hard:*</span>
+<span id="cb1-62"><a href="#cb1-62"></a></span>
+<span id="cb1-63"><a href="#cb1-63"></a><span class="fu">### Reproducibility, open data &amp; renv (W9)</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a></span>
+<span id="cb1-65"><a href="#cb1-65"></a>*What we did:*</span>
+<span id="cb1-66"><a href="#cb1-66"></a></span>
+<span id="cb1-67"><a href="#cb1-67"></a>*What worked well:*</span>
+<span id="cb1-68"><a href="#cb1-68"></a></span>
+<span id="cb1-69"><a href="#cb1-69"></a>*What was hard:*</span>
+<span id="cb1-70"><a href="#cb1-70"></a></span>
+<span id="cb1-71"><a href="#cb1-71"></a><span class="fu">### Analysis &amp; inference strategies (W10)</span></span>
+<span id="cb1-72"><a href="#cb1-72"></a></span>
+<span id="cb1-73"><a href="#cb1-73"></a>*What we did:*</span>
+<span id="cb1-74"><a href="#cb1-74"></a></span>
+<span id="cb1-75"><a href="#cb1-75"></a>*What worked well:*</span>
+<span id="cb1-76"><a href="#cb1-76"></a></span>
+<span id="cb1-77"><a href="#cb1-77"></a>*What was hard:*</span>
+<span id="cb1-78"><a href="#cb1-78"></a></span>
+<span id="cb1-79"><a href="#cb1-79"></a><span class="fu">### Communication &amp; visualisation (W11)</span></span>
+<span id="cb1-80"><a href="#cb1-80"></a></span>
+<span id="cb1-81"><a href="#cb1-81"></a>*What we did:*</span>
+<span id="cb1-82"><a href="#cb1-82"></a></span>
+<span id="cb1-83"><a href="#cb1-83"></a>*What worked well:*</span>
+<span id="cb1-84"><a href="#cb1-84"></a></span>
+<span id="cb1-85"><a href="#cb1-85"></a>*What was hard:*</span>
+<span id="cb1-86"><a href="#cb1-86"></a></span>
+<span id="cb1-87"><a href="#cb1-87"></a><span class="fu">## Key analytical decisions</span></span>
+<span id="cb1-88"><a href="#cb1-88"></a></span>
+<span id="cb1-89"><a href="#cb1-89"></a>Describe 2–3 decisions that had a meaningful effect on your results or workflow.</span>
+<span id="cb1-90"><a href="#cb1-90"></a>#say that I used https://quarto.org/docs/reference/projects/websites.html</span>
+<span id="cb1-91"><a href="#cb1-91"></a></span>
+<span id="cb1-92"><a href="#cb1-92"></a><span class="fu">### Decision 1: [short title]</span></span>
+<span id="cb1-93"><a href="#cb1-93"></a></span>
+<span id="cb1-94"><a href="#cb1-94"></a>*What were we deciding between?*</span>
+<span id="cb1-95"><a href="#cb1-95"></a></span>
+<span id="cb1-96"><a href="#cb1-96"></a>*How did we reason through it?*</span>
+<span id="cb1-97"><a href="#cb1-97"></a></span>
+<span id="cb1-98"><a href="#cb1-98"></a>*In hindsight, would we decide differently?*</span>
+<span id="cb1-99"><a href="#cb1-99"></a></span>
+<span id="cb1-100"><a href="#cb1-100"></a><span class="fu">### Decision 2: [short title]</span></span>
+<span id="cb1-101"><a href="#cb1-101"></a></span>
+<span id="cb1-102"><a href="#cb1-102"></a>*What were we deciding between?*</span>
+<span id="cb1-103"><a href="#cb1-103"></a></span>
+<span id="cb1-104"><a href="#cb1-104"></a>*How did we reason through it?*</span>
+<span id="cb1-105"><a href="#cb1-105"></a></span>
+<span id="cb1-106"><a href="#cb1-106"></a>*In hindsight, would we decide differently?*</span>
+<span id="cb1-107"><a href="#cb1-107"></a></span>
+<span id="cb1-108"><a href="#cb1-108"></a><span class="fu">## Workflow &amp; collaboration</span></span>
+<span id="cb1-109"><a href="#cb1-109"></a></span>
+<span id="cb1-110"><a href="#cb1-110"></a>*How did we divide work across group members?*</span>
+<span id="cb1-111"><a href="#cb1-111"></a></span>
+<span id="cb1-112"><a href="#cb1-112"></a>*What branching or Git workflow did we actually use — and did it match the proposal?*</span>
+<span id="cb1-113"><a href="#cb1-113"></a></span>
+<span id="cb1-114"><a href="#cb1-114"></a>*What would we change about how we coordinated?*</span>
+<span id="cb1-115"><a href="#cb1-115"></a></span>
+<span id="cb1-116"><a href="#cb1-116"></a><span class="fu">## LLM usage</span></span>
+<span id="cb1-117"><a href="#cb1-117"></a></span>
+<span id="cb1-118"><a href="#cb1-118"></a>Describe up to 5 significant uses of an LLM tool during the project.</span>
+<span id="cb1-119"><a href="#cb1-119"></a></span>
+<span id="cb1-120"><a href="#cb1-120"></a><span class="fu">### Usage 1: [task]</span></span>
+<span id="cb1-121"><a href="#cb1-121"></a></span>
+<span id="cb1-122"><a href="#cb1-122"></a><span class="ss">- </span>**Tool / model:**</span>
+<span id="cb1-123"><a href="#cb1-123"></a><span class="ss">- </span>**What it produced:**</span>
+<span id="cb1-124"><a href="#cb1-124"></a><span class="ss">- </span>**What we had to correct or verify:**</span>
+<span id="cb1-125"><a href="#cb1-125"></a></span>
+<span id="cb1-126"><a href="#cb1-126"></a><span class="fu">### Usage 2: [task]</span></span>
+<span id="cb1-127"><a href="#cb1-127"></a></span>
+<span id="cb1-128"><a href="#cb1-128"></a><span class="ss">- </span>**Tool / model:**</span>
+<span id="cb1-129"><a href="#cb1-129"></a><span class="ss">- </span>**What it produced:**</span>
+<span id="cb1-130"><a href="#cb1-130"></a><span class="ss">- </span>**What we had to correct or verify:**</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
