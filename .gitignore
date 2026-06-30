@@ -1,5 +1,17 @@
+# RStudio / R
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 .positai
+
+# Quarto build output
+/Stat/Quarto/_site/
+/Stat/Quarto/.quarto/
+*_files/
+*_cache/
+/.quarto/
+
+# OS files
+.DS_Store
+Thumbs.db
