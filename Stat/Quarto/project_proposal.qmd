@@ -161,51 +161,35 @@ Instead of looking at only one variable at a time, this plot compares the correl
 ```{r warning=FALSE}
 #This is a calculation + plot.It is not a predictive model, but it calculates correlations and then plots them.
 
-cluster_data <- happiness_complete %>%
-  filter(year == 2024) %>%
-  select(country, happiness, gdp, social_support, health, freedom, generosity, corruption)
+cor_data <- happiness_complete %>%
+  select(happiness, gdp, social_support, health, freedom, generosity, corruption)
 
-cluster_scaled <- cluster_data %>%
-  select(gdp, social_support, health, freedom, generosity, corruption) %>%
-  scale()
+correlations <- cor_data %>%
+  summarise(
+    GDP = cor(happiness, gdp),
+    `Social Support` = cor(happiness, social_support),
+    Health = cor(happiness, health),
+    Freedom = cor(happiness, freedom),
+    Generosity = cor(happiness, generosity),
+    Corruption = cor(happiness, corruption)
+  ) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "factor",
+    values_to = "correlation"
+  ) %>%
+  arrange(desc(correlation))
 
-set.seed(123)
-clusters <- kmeans(cluster_scaled, centers = 3)
-
-cluster_data <- cluster_data %>%
-  mutate(
-    cluster = as.factor(clusters$cluster),
-    hover_text = paste(
-      "Country:", country,
-      "<br>Cluster:", cluster,
-      "<br>Happiness score:", round(happiness, 2),
-      "<br>GDP contribution:", round(gdp, 2),
-      "<br>Social support:", round(social_support, 2),
-      "<br>Health:", round(health, 2),
-      "<br>Freedom:", round(freedom, 2)
-    )
-  )
-
-p_cluster <- ggplot(
-  cluster_data,
-  aes(
-    x = gdp,
-    y = social_support,
-    color = cluster,
-    text = hover_text
-  )
-) +
-  geom_point(size = 3, alpha = 0.8) +
+ggplot(correlations, aes(x = reorder(factor, correlation), y = correlation)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
   labs(
-    title = "Country Clusters Based on Happiness Factors",
-    subtitle = "k-means clustering using GDP, social support, health, freedom, generosity, and corruption",
-    x = "Explained by: Log GDP per capita",
-    y = "Explained by: Social support",
-    color = "Cluster"
+    title = "Correlation with Happiness",
+    subtitle = "Comparison of the reported explanatory factors",
+    x = "Factor",
+    y = "Correlation with happiness"
   ) +
   theme_minimal()
-
-ggplotly(p_cluster, tooltip = "text")
 ```
 
 **Interpretation:**\
