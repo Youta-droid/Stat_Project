@@ -193,7 +193,7 @@ ggplot(correlations, aes(x = reorder(factor, correlation), y = correlation)) +
 ```
 
 **Interpretation:**\
-The clustering analysis reveals three distinct groups of countries based on GDP per capita and social support. Countries in Cluster 1 are characterized by lower levels of both factors and a greater variability, whereas Cluster 3 contains countries with the highest GDP and strongest social support systems. Cluster 2 occupies an intermediate position. The clear separation of these groups suggests that economic prosperity and social support jointly play an important role in explaining differences in happiness across countries. Countries that perform well on both dimensions tend to belong to the cluster associated with higher well-being outcomes.
+The correlation plot compares the strength of association between happiness and the main explanatory factors. GDP and social support show the strongest positive correlations with happiness, followed closely by health. This suggests that economic prosperity, supportive social networks, and healthy life expectancy are the factors most closely related to higher life evaluation scores. Freedom also appears to be positively associated with happiness, while corruption shows a moderate relationship and generosity has the weakest association. Overall, the results indicate that happiness is more strongly linked to structural and social conditions than to generosity alone.
 
 ### Plot 4: Country profiles using clustering
 
@@ -204,17 +204,41 @@ This plot uses k-means clustering to group countries with similar happiness prof
 #kmeans() = clustering model
 #ggplot() = visualization of the cluster results
 
+# Prepare clustering data
 cluster_data <- happiness_complete %>%
   filter(year == 2024) %>%
-  select(country, happiness, gdp, social_support, health, freedom, generosity, corruption)
+  select(
+    country,
+    happiness,
+    gdp,
+    social_support,
+    health,
+    freedom,
+    generosity,
+    corruption
+  )
 
+# Scale variables for k-means
 cluster_scaled <- cluster_data %>%
-  select(gdp, social_support, health, freedom, generosity, corruption) %>%
+  select(
+    gdp,
+    social_support,
+    health,
+    freedom,
+    generosity,
+    corruption
+  ) %>%
   scale()
 
+# Run k-means
 set.seed(123)
-clusters <- kmeans(cluster_scaled, centers = 3)
 
+clusters <- kmeans(
+  cluster_scaled,
+  centers = 3
+)
+
+# Add cluster labels and hover text
 cluster_data <- cluster_data %>%
   mutate(
     cluster = as.factor(clusters$cluster),
@@ -229,6 +253,15 @@ cluster_data <- cluster_data %>%
     )
   )
 
+# Calculate cluster centers
+centers <- cluster_data %>%
+  group_by(cluster) %>%
+  summarise(
+    gdp = mean(gdp),
+    social_support = mean(social_support)
+  )
+
+# Plot
 p_cluster <- ggplot(
   cluster_data,
   aes(
@@ -238,12 +271,21 @@ p_cluster <- ggplot(
     text = hover_text
   )
 ) +
-  geom_point(size = 3, alpha = 0.8) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_point(
+    data = centers,
+    aes(x = gdp, y = social_support),
+    shape = 4,
+    size = 3,
+    stroke = 1.2,
+    color = "black",
+    inherit.aes = FALSE
+  ) +
   labs(
-    title = "Country Clusters Based on Happiness Factors",
-    subtitle = "k-means clustering using GDP, social support, health, freedom, generosity, and corruption",
-    x = "Explained by: Log GDP per capita",
-    y = "Explained by: Social support",
+    title = "Country Profiles Identified by K-Means Clustering",
+    subtitle = "Clusters were created using GDP, social support, health, freedom, generosity, and corruption",
+    x = "Log GDP per capita",
+    y = "Social support",
     color = "Cluster"
   ) +
   theme_minimal()
@@ -252,7 +294,7 @@ ggplotly(p_cluster, tooltip = "text")
 ```
 
 **Interpretation:**\
-The clustering model groups countries into different profiles. For example, some countries may combine high GDP and high social support, while others may show lower values across several factors. This supports the idea that there are different pathways to happiness, not just one universal explanation.
+The k-means clustering analysis identifies three distinct groups of countries based on GDP, social support, health, freedom, generosity, and corruption. Although the clusters were created using all six variables, they are visualized using GDP per capita and social support, since these factors exhibited the strongest associations with happiness. Countries in Cluster 1 generally exhibit lower levels of both factors and greater variability, while Cluster 3 contains countries with the highest GDP and strongest social support systems. Cluster 2 represents an intermediate group. The black X markers indicate the center of each cluster and highlight the progression from lower- to higher-performing country profiles. The clear separation between clusters suggests that countries share common combinations of economic and social characteristics, indicating that happiness is influenced by multiple interconnected factors rather than by a single variable alone.
 
 ### Q1 Summary
 
