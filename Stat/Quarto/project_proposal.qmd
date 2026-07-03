@@ -108,7 +108,7 @@ ggplotly(p_gdp, tooltip = "text")
 ```
 
 **Interpretation:**\
-GDP is positively associated with happiness, meaning that countries with higher economic contribution usually report higher life evaluations. However, the LOESS curve can show whether the increase becomes flatter at higher GDP levels. This supports the idea that money matters, but may not explain happiness indefinitely.
+The scatter plot reveals a strong positive association between GDP per capita and happiness. Both the linear regression line and the LOESS smoother indicate that countries with higher income levels tend to report higher life evaluation scores. While the two fitted curves are generally similar, the LOESS smoother suggests a slight nonlinear pattern, implying that the relationship between GDP and happiness may not be perfectly linear across all income levels. Nevertheless, the considerable dispersion of observations around both curves indicates that GDP alone cannot fully explain variations in happiness across countries.
 
 ### Plot 2: Social support and happiness
 
@@ -151,7 +151,8 @@ ggplotly(p_social, tooltip = "text")
 ```
 
 **Interpretation:**\
-The plot shows whether countries with stronger social support also report higher happiness scores. If the relationship is strong, it supports the argument that social relationships can be as important as economic wealth in explaining well-being.
+The plot suggests a positive linear association between social support and happiness. Countries with higher levels of social support generally achieve higher life evaluation scores. 
+Although countries with higher social support generally report higher happiness levels, the considerable dispersion of points around the regression line indicates that social support alone does not fully explain differences in happiness. Countries with comparable levels of social support can still exhibit substantially different happiness scores, suggesting that additional economic, social, and institutional factors contribute to well-being.
 
 ### Plot 3: Which factors are most strongly associated with happiness?
 
@@ -208,7 +209,7 @@ ggplotly(p_cluster, tooltip = "text")
 ```
 
 **Interpretation:**\
-This plot helps compare the relative importance of different factors. If GDP, social support, health, and freedom all show strong correlations, then happiness should be understood as multi-dimensional rather than purely economic.
+The clustering analysis reveals three distinct groups of countries based on GDP per capita and social support. Countries in Cluster 1 are characterized by lower levels of both factors and a greater variability, whereas Cluster 3 contains countries with the highest GDP and strongest social support systems. Cluster 2 occupies an intermediate position. The clear separation of these groups suggests that economic prosperity and social support jointly play an important role in explaining differences in happiness across countries. Countries that perform well on both dimensions tend to belong to the cluster associated with higher well-being outcomes.
 
 ### Plot 4: Country profiles using clustering
 
