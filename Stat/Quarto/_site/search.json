@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "format.html",
-    "href": "format.html",
-    "title": "Presentation formats",
-    "section": "",
-    "text": "Go to Plot\n\n\n\nScatter plot (bivariate plot)\nShows the relationship between two continuous variables.\n\n\n\n\n\nLinear regression line (OLS trend)\n→ Straight line fitted using a linear model (lm).\nLOESS smooth curve (nonparametric regression)\n→ Flexible smoothing method that captures nonlinear patterns.\n\n\n\n\n⇒ Exploratory scatter plot with two fitted regression models (parametric + nonparametric)\n\n\n\n\nPoints → raw observations\n\nBlue line → parametric model (linear regression)\n\nRed line → nonparametric model (LOESS smoothing)\n\n\n\n\n\n\nGo to Plot\n\n\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables.\n\n\n\n\n\nLinear regression line (OLS trend)\n→ A straight line fitted using a linear model (lm) to summarize the overall trend.\n\n\n\n\n⇒ Exploratory scatter plot with a fitted linear regression model (parametric)\n\n\n\n\nPoints → raw observations\n\nGreen line → parametric model (linear regression)\n\n\n\n\n\nGo to Plot\n\n\n\nBar chart (categorical comparison plot)\nDisplays values for a set of discrete categories using bar lengths.\n\n\n\n\n\nCorrelation coefficients (bivariate association measure)\n→ Each bar represents the strength of association between one variable and a target variable.\n\n\n\n\n⇒ Descriptive statistical visualization of correlation measures across multiple variables\n\n\n\n\nBars → represent numerical values (correlation coefficients)\n\nCategories (y-axis) → discrete variables being compared\n\nBar length (x-axis) → magnitude of the correlation\n\nOrdering → values sorted to emphasize ranking\n\n\n\n\n\nGo to Plot\n\n\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables, with observations positioned in a two-dimensional space.\n\n\n\n\n\nK-means clustering (unsupervised learning method)\n→ Partitions observations into groups based on similarity across multiple variables.\n\n\n\n\n⇒ Exploratory scatter plot with cluster assignments from an unsupervised machine learning model\n\n\n\n\nPoints → individual observations\n\nColor coding → cluster membership\n\nAxes → two selected continuous variables used for visualization\n\nClusters (1, 2, 3) → groups identified by the k-means algorithm"
-  },
-  {
-    "objectID": "format.html#q1.plot-1",
-    "href": "format.html#q1.plot-1",
-    "title": "Presentation formats",
-    "section": "",
-    "text": "Scatter plot (bivariate plot)\nShows the relationship between two continuous variables.\n\n\n\n\n\n\nLinear regression line (OLS trend)\n→ Straight line fitted using a linear model (lm).\nLOESS smooth curve (nonparametric regression)\n→ Flexible smoothing method that captures nonlinear patterns.\n\n\n\n\n\n➡️ Exploratory scatter plot with two fitted regression models (parametric + nonparametric)\n\n\n\n\n\nPoints → raw observations\n\nBlue line → parametric model (linear regression)\n\nRed line → nonparametric model (LOESS smoothing)\n\n•\n•\n•\n•"
-  },
-  {
     "objectID": "project_proposal.html",
     "href": "project_proposal.html",
     "title": "Project Outline",
@@ -77,67 +63,67 @@
     "text": "LLM usage\nDescribe up to 5 significant uses of an LLM tool during the project.\n\nUsage 1: [task]\n\nTool / model:\nWhat it produced:\nWhat we had to correct or verify:\n\n\n\nUsage 2: [task]\n\nTool / model:\nWhat it produced:\nWhat we had to correct or verify:"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Happiness",
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "What’s in It",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis."
   },
   {
-    "objectID": "format.html#q1.-plot-1",
-    "href": "format.html#q1.-plot-1",
+    "objectID": "data.html#per-year-structure",
+    "href": "data.html#per-year-structure",
+    "title": "What’s in It",
+    "section": "Per-year structure",
+    "text": "Per-year structure\n\n\n\n\n\n\n\n\n\nYear\nRows\nCols\nWhat is different that year\n\n\n2015\n158\n12\nIncludes Region and Standard Error; has Dystopia Residual\n\n\n2016\n157\n13\nIncludes Region; Standard Error replaced by Lower/Upper Confidence Interval\n\n\n2017\n155\n12\nRegion dropped; Whisker high/low instead of CI; Dystopia Residual kept\n\n\n2018\n156\n9\nSlim schema: columns renamed; Region, CI and Dystopia Residual all removed\n\n\n2019\n156\n9\nSame slim schema as 2018\n\n\n\nRow counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report’s format was simplified over time."
+  },
+  {
+    "objectID": "data.html#key-variables",
+    "href": "data.html#key-variables",
+    "title": "What’s in It",
+    "section": "Key variables",
+    "text": "Key variables\n\n\n\n\n\n\n\n\nConcept\nColumn name(s)  (2015–17  /  2018–19)\nWhat it measures\n\n\nCountry\nCountry  /  Country or region\nThe nation — the unit of analysis\n\n\nRegion\nRegion  (2015–2016 only)\nWorld region grouping (e.g. Western Europe)\n\n\nRank\nHappiness Rank  /  Overall rank\nPosition in that year’s global ranking\n\n\nHappiness score ★\nHappiness Score  /  Score\nCantril-ladder life evaluation, 0–10 — the TARGET variable\n\n\nGDP per capita\nEconomy (GDP per Capita)  /  GDP per capita\nContribution of income to the score\n\n\nSocial support\nFamily  /  Social support\nContribution of having someone to count on\n\n\nLife expectancy\nHealth (Life Expectancy)  /  Healthy life expectancy\nContribution of healthy longevity\n\n\nFreedom\nFreedom  /  Freedom to make life choices\nContribution of freedom over life choices\n\n\nGenerosity\nGenerosity\nContribution of charitable behaviour\n\n\nCorruption\nTrust (Government Corruption)  /  Perceptions of corruption\nContribution of perceived honesty / low corruption\n\n\nDystopia residual\nDystopia Residual  (through 2017)\nUnexplained remainder above the Dystopia baseline\n\n\n\n★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files."
+  },
+  {
+    "objectID": "data.html#a-subtlety-that-shapes-the-whole-analysis",
+    "href": "data.html#a-subtlety-that-shapes-the-whole-analysis",
+    "title": "What’s in It",
+    "section": "A subtlety that shapes the whole analysis",
+    "text": "A subtlety that shapes the whole analysis\nThe six “factor” columns are not raw measurements.\nWhat they actually are: Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country’s score — not the raw value (e.g. it is not GDP in dollars).\nThey are additive: The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.\nWhy it matters: This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction."
+  },
+  {
+    "objectID": "data.html#source-licence",
+    "href": "data.html#source-licence",
+    "title": "What’s in It",
+    "section": "Source & Licence",
+    "text": "Source & Licence\nDataset: World Happiness Report\nHosted on: Kaggle — kaggle.com/datasets/unsdsn/world-happiness\nPublished by: UN Sustainable Development Solutions Network (UNSDSN)\nUnderlying source: Gallup World Poll — the Cantril ladder life-evaluation question\nCoverage: Five annual files, 2015–2019 (one CSV per report year)\nLicence: CC0 1.0 — Public Domain (no rights reserved)\nBecause the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g. “World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (S.Azzabi@campus.lmu.de)"
+  },
+  {
+    "objectID": "about.html#members",
+    "href": "about.html#members",
+    "title": "About",
+    "section": "",
+    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (S.Azzabi@campus.lmu.de)"
+  },
+  {
+    "objectID": "about.html#github-repositry",
+    "href": "about.html#github-repositry",
+    "title": "About",
+    "section": "GitHub Repositry",
+    "text": "GitHub Repositry\nhttps://github.com/Youta-droid/Stat_Project"
+  },
+  {
+    "objectID": "format.html",
+    "href": "format.html",
     "title": "Presentation formats",
     "section": "",
-    "text": "Scatter plot (bivariate plot)\nShows the relationship between two continuous variables.\n\n\n\n\n\n\nLinear regression line (OLS trend)\n→ Straight line fitted using a linear model (lm).\nLOESS smooth curve (nonparametric regression)\n→ Flexible smoothing method that captures nonlinear patterns.\n\n\n\n\n\n⇒ Exploratory scatter plot with two fitted regression models (parametric + nonparametric)\n\n\n\n\n\nPoints → raw observations\n\nBlue line → parametric model (linear regression)\n\nRed line → nonparametric model (LOESS smoothing)"
-  },
-  {
-    "objectID": "format.html#q1.-plot-2",
-    "href": "format.html#q1.-plot-2",
-    "title": "Presentation formats",
-    "section": "Q1. Plot 2:",
-    "text": "Q1. Plot 2:\n\nType of Visualization\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables.\n\n\n\n\nAdded Modeling Layer\n\nLinear regression line (OLS trend)\n→ A straight line fitted using a linear model (lm) to summarize the overall trend.\n\n\n\n\nOverall Classification\n⇒ Exploratory scatter plot with a fitted linear regression model (parametric)\n\n\n\nKey Components (format-wise)\n\nPoints → raw observations\n\nGreen line → parametric model (linear regression)"
-  },
-  {
-    "objectID": "format.html#q1.-plot-3",
-    "href": "format.html#q1.-plot-3",
-    "title": "Presentation formats",
-    "section": "Q1. Plot 3:",
-    "text": "Q1. Plot 3:\n\nType of Visualization\n\nBar chart (categorical comparison plot)\nDisplays values for a set of discrete categories using bar lengths.\n\n\n\n\nStatistical Measure\n\nCorrelation coefficients (bivariate association measure)\n→ Each bar represents the strength of association between one variable and a target variable.\n\n\n\n\nOverall Classification\n⇒ Descriptive statistical visualization of correlation measures across multiple variables\n\n\n\nKey Components (format-wise)\n\nBars → represent numerical values (correlation coefficients)\n\nCategories (y-axis) → discrete variables being compared\n\nBar length (x-axis) → magnitude of the correlation\n\nOrdering → values sorted to emphasize ranking"
-  },
-  {
-    "objectID": "format.html#q1.-plot-4",
-    "href": "format.html#q1.-plot-4",
-    "title": "Presentation formats",
-    "section": "Q1. Plot 4:",
-    "text": "Q1. Plot 4:\n\nType of Visualization\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables, with observations positioned in a two-dimensional space.\n\n\n\n\nModeling Technique\n\nK-means clustering (unsupervised learning method)\n→ Partitions observations into groups based on similarity across multiple variables.\n\n\n\n\nOverall Classification\n⇒ Exploratory scatter plot with cluster assignments from an unsupervised machine learning model\n\n\n\nKey Components (format-wise)\n\nPoints → individual observations\n\nColor coding → cluster membership\n\nAxes → two selected continuous variables used for visualization\n\nClusters (1, 2, 3) → groups identified by the k-means algorithm"
-  },
-  {
-    "objectID": "format.html#q2.-plot-1",
-    "href": "format.html#q2.-plot-1",
-    "title": "Presentation formats",
-    "section": "Q2. Plot 1:",
-    "text": "Q2. Plot 1:\n\nType of Visualization\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables.\n\n\n\n\nModeling Framework\n\nMultiple linear regression (parametric model)\n→ Predicts a response variable using several explanatory variables.\n\n\n\n\nModel Evaluation Representation\n\nPredicted vs. actual plot (model diagnostics visualization)\n→ Compares model predictions with observed values to assess model fit.\n\n\n\n\nOverall Classification\n⇒ Model evaluation plot for a multiple linear regression model\n\n\n\nKey Components (format-wise)\n\nPoints → observed vs. predicted values for each observation\n\nDiagonal reference line → ideal fit (perfect prediction, 45° line)\n\nAxes → predicted values (x-axis) and actual values (y-axis)"
-  },
-  {
-    "objectID": "format.html#q2.-plot-2",
-    "href": "format.html#q2.-plot-2",
-    "title": "Presentation formats",
-    "section": "Q2. Plot 2:",
-    "text": "Q2. Plot 2:\n\nType of Visualization\n\nBar chart (categorical comparison plot)\nDisplays numerical values for a set of discrete categories using bar lengths.\n\n\n\n\nUnderlying Model Output\n\nResidual-based summary (model diagnostics measure)\n→ Uses residual values derived from a regression model to quantify deviations.\n\n\n\n\nOverall Classification\n⇒ Model diagnostics visualization based on aggregated residuals\n\n\n\nKey Components (format-wise)\n\nBars → aggregated numerical values (average residuals)\n\nCategories (y-axis) → discrete entities (countries)\n\nBar direction → sign of the residual (positive or negative)\n\nBar length (x-axis) → magnitude of the deviation\n\nColor coding → grouping based on residual sign (two categories)"
-  },
-  {
-    "objectID": "format.html#q2.-plot-3",
-    "href": "format.html#q2.-plot-3",
-    "title": "Presentation formats",
-    "section": "Q2. Plot 3:",
-    "text": "Q2. Plot 3:\n\nType of Visualization\n\nTree diagram (hierarchical visualization)\nRepresents data through a sequence of binary splits arranged in a tree structure.\n\n\n\n\nModeling Technique\n\nDecision tree (supervised learning model, regression tree)\n→ Predicts a continuous target variable by recursively splitting the data based on feature thresholds.\n\n\n\n\nOverall Classification\n⇒ Model visualization for a regression tree (nonlinear, rule-based predictive model)\n\n\n\nKey Components (format-wise)\n\nNodes → represent subsets of the data after each split\n\nRoot node → initial dataset before any splitting\n\nBranches → decision rules (feature thresholds) that partition the data\n\nLeaf nodes → final predictions for each segment\n\nHierarchical structure → shows sequential splitting of the feature space"
-  },
-  {
-    "objectID": "format.html#section",
-    "href": "format.html#section",
-    "title": "Presentation formats",
-    "section": "————————————————————————",
-    "text": "————————————————————————"
+    "text": "Go to Plot\n\n\n\nScatter plot (bivariate plot)\nShows the relationship between two continuous variables.\n\n\n\n\n\nLinear regression line (OLS trend)\n→ Straight line fitted using a linear model (lm).\nLOESS smooth curve (nonparametric regression)\n→ Flexible smoothing method that captures nonlinear patterns.\n\n\n\n\n⇒ Exploratory scatter plot with two fitted regression models (parametric + nonparametric)\n\n\n\n\nPoints → raw observations\n\nBlue line → parametric model (linear regression)\n\nRed line → nonparametric model (LOESS smoothing)\n\n\n\n\n\n\nGo to Plot\n\n\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables.\n\n\n\n\n\nLinear regression line (OLS trend)\n→ A straight line fitted using a linear model (lm) to summarize the overall trend.\n\n\n\n\n⇒ Exploratory scatter plot with a fitted linear regression model (parametric)\n\n\n\n\nPoints → raw observations\n\nGreen line → parametric model (linear regression)\n\n\n\n\n\nGo to Plot\n\n\n\nBar chart (categorical comparison plot)\nDisplays values for a set of discrete categories using bar lengths.\n\n\n\n\n\nCorrelation coefficients (bivariate association measure)\n→ Each bar represents the strength of association between one variable and a target variable.\n\n\n\n\n⇒ Descriptive statistical visualization of correlation measures across multiple variables\n\n\n\n\nBars → represent numerical values (correlation coefficients)\n\nCategories (y-axis) → discrete variables being compared\n\nBar length (x-axis) → magnitude of the correlation\n\nOrdering → values sorted to emphasize ranking\n\n\n\n\n\nGo to Plot\n\n\n\nScatter plot (bivariate plot)\nDisplays the relationship between two continuous variables, with observations positioned in a two-dimensional space.\n\n\n\n\n\nK-means clustering (unsupervised learning method)\n→ Partitions observations into groups based on similarity across multiple variables.\n\n\n\n\n⇒ Exploratory scatter plot with cluster assignments from an unsupervised machine learning model\n\n\n\n\nPoints → individual observations\n\nColor coding → cluster membership\n\nAxes → two selected continuous variables used for visualization\n\nClusters (1, 2, 3) → groups identified by the k-means algorithm"
   },
   {
     "objectID": "format.html#plot-1",
@@ -189,38 +175,10 @@
     "text": "Plot 3\nGo to Plot\n\nType of Visualization\n\nTree diagram (hierarchical visualization)\nRepresents data through a sequence of binary splits arranged in a tree structure.\n\n\n\nModeling Technique\n\nDecision tree (supervised learning model, regression tree)\n→ Predicts a continuous target variable by recursively splitting the data based on feature thresholds.\n\n\n\nOverall Classification\n⇒ Model visualization for a regression tree (nonlinear, rule-based predictive model)\n\n\nKey Components (format-wise)\n\nNodes → represent subsets of the data after each split\n\nRoot node → initial dataset before any splitting\n\nBranches → decision rules (feature thresholds) that partition the data\n\nLeaf nodes → final predictions for each segment\n\nHierarchical structure → shows sequential splitting of the feature space"
   },
   {
-    "objectID": "format.html#plot-1-project_proposal.htmlplot1",
-    "href": "format.html#plot-1-project_proposal.htmlplot1",
-    "title": "Presentation formats",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Happiness",
     "section": "",
-    "text": "Scatter plot (bivariate plot)\nShows the relationship between two continuous variables.\n\n\n\n\n\nLinear regression line (OLS trend)\n→ Straight line fitted using a linear model (lm).\nLOESS smooth curve (nonparametric regression)\n→ Flexible smoothing method that captures nonlinear patterns.\n\n\n\n\n⇒ Exploratory scatter plot with two fitted regression models (parametric + nonparametric)\n\n\n\n\nPoints → raw observations\n\nBlue line → parametric model (linear regression)\n\nRed line → nonparametric model (LOESS smoothing)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (S.Azzabi@campus.lmu.de)"
-  },
-  {
-    "objectID": "about.html#members",
-    "href": "about.html#members",
-    "title": "About",
-    "section": "",
-    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (S.Azzabi@campus.lmu.de)"
-  },
-  {
-    "objectID": "about.html#github-repogitry",
-    "href": "about.html#github-repogitry",
-    "title": "About",
-    "section": "GitHub Repogitry",
-    "text": "GitHub Repogitry\nhttps://github.com/Youta-droid/Stat_Project"
-  },
-  {
-    "objectID": "about.html#github-repositry",
-    "href": "about.html#github-repositry",
-    "title": "About",
-    "section": "GitHub Repositry",
-    "text": "GitHub Repositry\nhttps://github.com/Youta-droid/Stat_Project"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]
