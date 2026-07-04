@@ -336,11 +336,21 @@ ggplotly(p_pred, tooltip = "text")
 ```
 
 **Interpretation:**\
-The plot compares the predicted happiness scores from the multiple linear regression model with the actual happiness scores. If the regression model predicted happiness perfectly, all observations would lie on the red diagonal line. Most points are located close to this line, indicating that the model explains a substantial proportion of the variation in happiness across countries. However, the visible scatter around the line shows that prediction errors remain and that additional factors not included in the model may also influence happiness. Overall, the model provides a reasonably good fit and produces predictions that are generally consistent with the observed data.
+The plot compares the predicted happiness scores from your multiple linear regression model (x-axis) with the actual happiness scores from the dataset (y-axis).
+
+The red diagonal line represents perfect predictions. If the model predicted happiness perfectly, all points would lie exactly on this line.
+
+In this plot, most observations cluster around the diagonal line, indicating that the model captures a substantial portion of the variation in happiness scores. This suggests that the explanatory variables included in the model are useful predictors of happiness.
+
+However, there is still noticeable scatter around the line. Some countries have actual happiness scores that are higher or lower than the model predicts, meaning that prediction errors remain. This indicates that the model does not fully explain all differences in happiness and that other factors not included in the regression may also influence happiness levels.
+
+The spread of points appears relatively consistent across the range of predictions, and there is no obvious systematic pattern of over- or underestimation. Overall, the model demonstrates a reasonably good fit, although prediction accuracy is not perfect.
 
 ### Plot 2: Countries that deviate from the model {#plot6}
 
 This plot shows the strongest positive and negative residuals. Positive residuals mean that a country is happier than predicted by the model. Negative residuals mean that a country is less happy than predicted.
+
+Residual=Actual happiness−Predicted happiness
 
 ```{r warning=FALSE}
 #This is a model-result plot.It does not fit a new model, but it visualizes the residuals from the previous regression model.
@@ -373,7 +383,13 @@ ggplot(residual_plot_data, aes(x = reorder(country, mean_residual), y = mean_res
 ```
 
 **Interpretation:**\
-This plot is the main “twist” of the analysis. It shows that even after accounting for GDP, social support, health, freedom, generosity, and corruption, some countries still differ from model expectations. These deviations may reflect factors not directly included in the dataset, such as culture, inequality, mental health, political stability, or historical context.
+The chart shows the countries with the largest average residuals across all years.
+
+Countries on the right side (positive residuals), such as Guatemala, Côte d'Ivoire, Costa Rica, Israel, and Finland, are consistently happier than the model predicts. This suggests that factors beyond those included in the regression model may contribute positively to happiness in these countries.
+
+In contrast, countries on the left side (negative residuals), such as Rwanda, Sri Lanka, Botswana, Lebanon, and Hong Kong SAR of China, are less happy than predicted by the model. Although these countries have characteristics that would lead the model to expect higher happiness scores, their observed happiness levels are lower, indicating that additional unobserved factors may negatively affect well-being.
+
+The fact that residuals range from approximately −1.5 to +0.9 happiness points shows that while the model performs reasonably well overall, it does not fully capture all determinants of happiness. Some countries systematically deviate from the model's predictions.
 
 ### Plot 3: Decision tree model {#plot7}
 
@@ -401,7 +417,15 @@ rpart.plot(
 ```
 
 **Interpretation:**\
-The decision tree is useful because it gives a non-linear view of happiness. It identifies variables that split countries into groups with different average happiness levels. If social support, GDP, or health appear near the top of the tree, this suggests that these variables are especially important for separating higher- and lower-happiness observations.
+The decision tree predicts happiness by repeatedly splitting countries into groups based on threshold values of explanatory variables.
+
+The first and most important split is health (`health < 0.5`). This means that health is the strongest factor in the tree for distinguishing between countries with lower and higher happiness scores. Countries with poorer health tend to fall into branches with lower predicted happiness values.
+
+Among countries with lower health levels, social support, freedom, and GDP provide additional splits that further separate countries into different happiness groups. For example, countries with low health and low social support are predicted to have some of the lowest happiness scores in the dataset.
+
+For countries with better health, the next important factor is corruption, followed by social support, freedom, and GDP. The highest predicted happiness scores occur in groups that combine good health, low perceived corruption, and relatively high freedom.
+
+Overall, the tree suggests that health, social support, freedom, GDP, and corruption are important determinants of happiness, with health appearing as the most influential variable because it is selected for the first split of the tree.
 
 ## Final Conclusion
 
