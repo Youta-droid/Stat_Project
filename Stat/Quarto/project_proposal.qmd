@@ -108,7 +108,13 @@ ggplotly(p_gdp, tooltip = "text")
 ```
 
 **Interpretation:**\
-GDP is positively associated with happiness, meaning that countries with higher economic contribution usually report higher life evaluations. However, the LOESS curve can show whether the increase becomes flatter at higher GDP levels. This supports the idea that money matters, but may not explain happiness indefinitely.
+The scatter plot shows a clear positive relationship between GDP per capita and happiness scores. Countries with higher GDP contributions generally tend to report higher levels of happiness.
+
+The blue linear regression line indicates that happiness increases steadily as GDP increases. This suggests that economic prosperity is an important factor associated with higher well-being.
+
+The red LOESS curve reveals that the relationship is not perfectly linear. At very low GDP levels, increases in GDP are associated with relatively small changes in happiness. In the middle range, the relationship becomes steeper, indicating that increases in GDP are accompanied by larger gains in happiness. At higher GDP levels, the curve begins to flatten slightly, suggesting that additional income may produce smaller improvements in happiness than at lower income levels.
+
+The noticeable spread of observations around both trend lines indicates that GDP alone does not fully explain happiness differences across countries. Countries with similar GDP levels can display quite different happiness scores, implying that other factors such as social support, health, freedom, and governance also contribute to well-being.
 
 ### Plot 2: Social support and happiness {#plot2}
 
@@ -151,7 +157,13 @@ ggplotly(p_social, tooltip = "text")
 ```
 
 **Interpretation:**\
-The plot shows whether countries with stronger social support also report higher happiness scores. If the relationship is strong, it supports the argument that social relationships can be as important as economic wealth in explaining well-being.
+The plot shows a clear **positive relationship** between social support and happiness. Countries with higher levels of social support generally report higher happiness scores, as indicated by the upward-sloping regression line.
+
+The relatively strong upward trend suggests that social support is an important predictor of well-being. Countries where people can rely on friends, family, or their community in times of need tend to have higher average happiness levels.
+
+Although the relationship is clearly positive, there is still noticeable variation around the regression line. Countries with similar levels of social support do not always achieve the same happiness scores, indicating that other factors such as income, health, freedom, or governance also contribute to differences in well-being.
+
+Compared with the GDP plot, this figure demonstrates that economic factors are not the only determinants of happiness. Strong social connections appear to be closely associated with higher happiness levels across countries.
 
 ### Plot 3: Which factors are most strongly associated with happiness? {#plot3}
 
@@ -192,7 +204,17 @@ ggplot(correlations, aes(x = reorder(factor, correlation), y = correlation)) +
 ```
 
 **Interpretation:**\
-This plot helps compare the relative importance of different factors. If GDP, social support, health, and freedom all show strong correlations, then happiness should be understood as multi-dimensional rather than purely economic.
+The bar chart shows the correlation between happiness and each explanatory factor. Larger correlation values indicate a stronger association with happiness.
+
+The strongest correlations are observed for GDP and Social Support, both with values close to 0.7. This suggests that countries with higher income levels and stronger social support networks tend to report higher happiness scores.
+
+Health also exhibits a strong positive correlation with happiness, indicating that longer and healthier lives are associated with greater well-being.
+
+Freedom has a moderate positive correlation, suggesting that the ability to make life choices is linked to higher happiness, although its relationship is weaker than those of GDP, social support, and health.
+
+Corruption shows a weaker but still meaningful correlation with happiness. This implies that perceptions of lower corruption are associated with higher well-being, although the relationship is less pronounced.
+
+In contrast, Generosity has a very small correlation with happiness. Within this dataset, generosity appears to be much less strongly associated with happiness than the other explanatory factors.
 
 ### Plot 4: Country profiles using clustering {#plot4}
 
@@ -251,7 +273,17 @@ ggplotly(p_cluster, tooltip = "text")
 ```
 
 **Interpretation:**\
-The clustering model groups countries into different profiles. For example, some countries may combine high GDP and high social support, while others may show lower values across several factors. This supports the idea that there are different pathways to happiness, not just one universal explanation.
+The k-means clustering algorithm identifies three distinct groups of countries based on multiple happiness-related factors. Although the clusters were created using several variables, they are visualized here using GDP per capita (x-axis) and social support (y-axis).
+
+The plot shows a clear pattern: countries with higher GDP levels generally also tend to have higher levels of social support. The clusters largely follow this gradient.
+
+Cluster 1 (red) contains countries with relatively low GDP and lower social support. These countries tend to exhibit less favorable conditions associated with happiness.
+
+Cluster 2 (green) represents countries with intermediate levels of GDP and social support. This group can be viewed as a middle category between lower- and higher-performing countries.
+
+Cluster 3 (blue) contains countries with the highest GDP and strongest social support. These countries generally have characteristics associated with higher happiness levels.
+
+The visible separation between clusters suggests that countries are not randomly distributed but form distinct groups with similar socioeconomic and well-being profiles.
 
 ### Q1 Summary
 
