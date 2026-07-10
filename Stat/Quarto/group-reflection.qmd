@@ -22,11 +22,11 @@ If you did not use a skill, say so and note why.
 
 ### Debugging (W3)
 
-*What we did:*
+*What we did:* The troubleshooting messages that RStudio sends are actully helpful. We tried to read them carefully and that would work many times.
 
 *What worked well:*
 
-*What was hard:*
+*What was hard:* It was hard to spot the problem sometimes. And sometimes you actually spot it but do not know how to solve it by yourself.
 
 ### Version control & remotes (W4)
 
