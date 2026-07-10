@@ -14,11 +14,11 @@ If you did not use a skill, say so and note why.
 
 ### Functions & refactoring (W2)
 
-*What we did:*
+*What we did:* To make interactive plots, a create_hover function was created. The function serves multiple times and makes troubleshooting easier.
 
-*What worked well:*
+*What worked well:* The function worked well for the first simple two plots.
 
-*What was hard:*
+*What was hard:* It was hard to apply the function to the other plots, since they are more complicated. So paste was used instead.
 
 ### Debugging (W3)
 
