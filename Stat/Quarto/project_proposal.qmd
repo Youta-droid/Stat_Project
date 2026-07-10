@@ -67,6 +67,17 @@ This question explores whether richer countries are automatically happier, or wh
 This plot compares GDP contribution with happiness. A linear regression line shows the general direction of the relationship, while the LOESS curve allows for a non-linear pattern. This is useful because the relationship between income and happiness may weaken at higher income levels.
 
 ```{r warning=FALSE, message=FALSE}
+create_hover <- function(country, year, x_value, happiness, label) {
+  paste(
+    "Country:", country,
+    "<br>Year:", year,
+    paste0("<br>", label, ":"), round(x_value, 2),
+    "<br>Happiness score:", round(happiness, 2)
+  )
+}
+```
+
+```{r warning=FALSE, message=FALSE}
 #This is plot.
 
 browser() # execution pauses here
@@ -75,14 +86,15 @@ p_gdp <- ggplot(
   aes(
     x = gdp,
     y = happiness,
-    text = paste(
-      "Country:", country,
-      "<br>Year:", year,
-      "<br>GDP contribution:", round(gdp, 2),
-      "<br>Happiness score:", round(happiness, 2)
+    text = create_hover(
+      country,
+      year,
+      gdp,
+      happiness,
+      "GDP contribution"
+      )
     )
-  )
-) +
+  )+
   geom_point(alpha = 0.45, color = "gray40") +
   geom_smooth(
     method = "lm",
@@ -130,16 +142,15 @@ p_social <- ggplot(
   aes(
     x = social_support,
     y = happiness,
-    text = paste(
-      "Country:", country,
-      "<br>Year:", year,
-      "<br>Social support:", round(social_support, 
-                                   ),
-      "<br>Happiness score:", round(happiness, 
-                                    )
+    text = create_hover(
+      country,
+      year,
+      gdp,
+      happiness,
+      "Social support"
       )
     )
-  ) +
+  )+
   geom_point(alpha = 0.45, color = "gray40") +
   geom_smooth(
     method = "lm",

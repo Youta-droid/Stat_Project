@@ -1,2 +1,6 @@
 /.quarto/
 **/*.quarto_ipynb
+Stat/Quarto/_site/
+Stat/Quarto/_freeze/
+Stat/Quarto/_site/
+Stat/Quarto/_freeze/
