@@ -6,7 +6,7 @@ project:
 website:
   search: true
   announcement:
-    content: "Final proposal due **17 Jun**"
+    content: "Final proposal due **22 Jul**"
     type: warning        # info, warning, or danger
     dismissable: true    # adds a "x" to deleted it
   page-footer:
