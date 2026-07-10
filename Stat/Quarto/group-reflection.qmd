@@ -22,11 +22,11 @@ If you did not use a skill, say so and note why.
 
 ### Debugging (W3)
 
-*What we did:* The troubleshooting messages that RStudio sends are actully helpful. We tried to read them carefully and that would work many times.
+*What we did:*  We tried to read the error messages carefully. We also used version control as a debugging tool (log -> diff -> bisect)
 
-*What worked well:*
+*What worked well:* Using browser() inside the function, it makes your execution pause there and takes you to an interactive mode where you can inspect variables.
 
-*What was hard:* It was hard to spot the problem sometimes. And sometimes you actually spot it but do not know how to solve it by yourself.
+*What was hard:* Error messages would help you spot the problem but sometimes you don't know how to solve it by yourself.
 
 ### Version control & remotes (W4)
 

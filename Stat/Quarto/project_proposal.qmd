@@ -68,6 +68,8 @@ This plot compares GDP contribution with happiness. A linear regression line sho
 
 ```{r warning=FALSE, message=FALSE}
 #This is plot.
+
+browser() # execution pauses here
 p_gdp <- ggplot(
   happiness_complete,
   aes(
