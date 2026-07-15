@@ -66,25 +66,39 @@ This question explores whether richer countries are automatically happier, or wh
 
 ------------------------------------------------------------------------
 
-### Plot 1: GDP and happiness
+### Plot 1: GDP and happiness {#plot1}
 
 This plot compares GDP contribution with happiness. A linear regression line shows the general direction of the relationship, while the LOESS curve allows for a non-linear pattern. This is useful because the relationship between income and happiness may weaken at higher income levels.
 
 ```{r warning=FALSE, message=FALSE}
+create_hover <- function(country, year, x_value, happiness, label) {
+  paste(
+    "Country:", country,
+    "<br>Year:", year,
+    paste0("<br>", label, ":"), round(x_value, 2),
+    "<br>Happiness score:", round(happiness, 2)
+  )
+}
+```
+
+```{r warning=FALSE, message=FALSE}
 #This is plot.
+
+browser() # execution pauses here
 p_gdp <- ggplot(
   happiness_complete,
   aes(
     x = gdp,
     y = happiness,
-    text = paste(
-      "Country:", country,
-      "<br>Year:", year,
-      "<br>GDP contribution:", round(gdp, 2),
-      "<br>Happiness score:", round(happiness, 2)
+    text = create_hover(
+      country,
+      year,
+      gdp,
+      happiness,
+      "GDP contribution"
+      )
     )
-  )
-) +
+  )+
   geom_point(alpha = 0.45, color = "gray40") +
   geom_smooth(
     method = "lm",
@@ -112,9 +126,15 @@ ggplotly(p_gdp, tooltip = "text")
 ```
 
 **Interpretation:**\
-GDP is positively associated with happiness, meaning that countries with higher economic contribution usually report higher life evaluations. However, the LOESS curve can show whether the increase becomes flatter at higher GDP levels. This supports the idea that money matters, but may not explain happiness indefinitely.
+The scatter plot shows a clear positive relationship between GDP per capita and happiness scores. Countries with higher GDP contributions generally tend to report higher levels of happiness.
 
-### Plot 2: Social support and happiness
+The blue linear regression line indicates that happiness increases steadily as GDP increases. This suggests that economic prosperity is an important factor associated with higher well-being.
+
+The red LOESS curve reveals that the relationship is not perfectly linear. At very low GDP levels, increases in GDP are associated with relatively small changes in happiness. In the middle range, the relationship becomes steeper, indicating that increases in GDP are accompanied by larger gains in happiness. At higher GDP levels, the curve begins to flatten slightly, suggesting that additional income may produce smaller improvements in happiness than at lower income levels.
+
+The noticeable spread of observations around both trend lines indicates that GDP alone does not fully explain happiness differences across countries. Countries with similar GDP levels can display quite different happiness scores, implying that other factors such as social support, health, freedom, and governance also contribute to well-being.
+
+### Plot 2: Social support and happiness {#plot2}
 
 This plot focuses on the relationship between social support and happiness. It directly supports the central story of the project: well-being is not only about wealth, but also about relationships and social connection.
 
@@ -126,14 +146,15 @@ p_social <- ggplot(
   aes(
     x = social_support,
     y = happiness,
-    text = paste(
-      "Country:", country,
-      "<br>Year:", year,
-      "<br>Social support:", round(social_support, 2),
-      "<br>Happiness score:", round(happiness, 2)
+    text = create_hover(
+      country,
+      year,
+      gdp,
+      happiness,
+      "Social support"
       )
     )
-  ) +
+  )+
   geom_point(alpha = 0.45, color = "gray40") +
   geom_smooth(
     method = "lm",
@@ -153,14 +174,73 @@ ggplotly(p_social, tooltip = "text")
 ```
 
 **Interpretation:**\
-The plot shows whether countries with stronger social support also report higher happiness scores. If the relationship is strong, it supports the argument that social relationships can be as important as economic wealth in explaining well-being.
+The plot shows a clear **positive relationship** between social support and happiness. Countries with higher levels of social support generally report higher happiness scores, as indicated by the upward-sloping regression line.
 
-### Plot 3: Which factors are most strongly associated with happiness?
+The relatively strong upward trend suggests that social support is an important predictor of well-being. Countries where people can rely on friends, family, or their community in times of need tend to have higher average happiness levels.
+
+Although the relationship is clearly positive, there is still noticeable variation around the regression line. Countries with similar levels of social support do not always achieve the same happiness scores, indicating that other factors such as income, health, freedom, or governance also contribute to differences in well-being.
+
+Compared with the GDP plot, this figure demonstrates that economic factors are not the only determinants of happiness. Strong social connections appear to be closely associated with higher happiness levels across countries.
+
+### Plot 3: Which factors are most strongly associated with happiness? {#plot3}
 
 Instead of looking at only one variable at a time, this plot compares the correlation between happiness and all explanatory factors. It summarizes which variables are most closely related to happiness.
 
 ```{r warning=FALSE}
 #This is a calculation + plot.It is not a predictive model, but it calculates correlations and then plots them.
+
+cor_data <- happiness_complete %>%
+  select(happiness, gdp, social_support, health, freedom, generosity, corruption)
+
+correlations <- cor_data %>%
+  summarise(
+    GDP = cor(happiness, gdp),
+    `Social Support` = cor(happiness, social_support),
+    Health = cor(happiness, health),
+    Freedom = cor(happiness, freedom),
+    Generosity = cor(happiness, generosity),
+    Corruption = cor(happiness, corruption)
+  ) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "factor",
+    values_to = "correlation"
+  ) %>%
+  arrange(desc(correlation))
+
+ggplot(correlations, aes(x = reorder(factor, correlation), y = correlation)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(
+    title = "Correlation with Happiness",
+    subtitle = "Comparison of the reported explanatory factors",
+    x = "Factor",
+    y = "Correlation with happiness"
+  ) +
+  theme_minimal()
+```
+
+**Interpretation:**\
+The bar chart shows the correlation between happiness and each explanatory factor. Larger correlation values indicate a stronger association with happiness.
+
+The strongest correlations are observed for GDP and Social Support, both with values close to 0.7. This suggests that countries with higher income levels and stronger social support networks tend to report higher happiness scores.
+
+Health also exhibits a strong positive correlation with happiness, indicating that longer and healthier lives are associated with greater well-being.
+
+Freedom has a moderate positive correlation, suggesting that the ability to make life choices is linked to higher happiness, although its relationship is weaker than those of GDP, social support, and health.
+
+Corruption shows a weaker but still meaningful correlation with happiness. This implies that perceptions of lower corruption are associated with higher well-being, although the relationship is less pronounced.
+
+In contrast, Generosity has a very small correlation with happiness. Within this dataset, generosity appears to be much less strongly associated with happiness than the other explanatory factors.
+
+### Plot 4: Country profiles using clustering {#plot4}
+
+This plot uses k-means clustering to group countries with similar happiness profiles. Unlike regression, clustering does not predict happiness. Instead, it discovers patterns in the data and groups countries based on similarities across multiple factors.
+
+```{r warning=FALSE}
+#This is a model + plot
+#kmeans() = clustering model
+#ggplot() = visualization of the cluster results
 
 cluster_data <- happiness_complete %>%
   filter(year == 2024) %>%
@@ -210,45 +290,17 @@ ggplotly(p_cluster, tooltip = "text")
 ```
 
 **Interpretation:**\
-This plot helps compare the relative importance of different factors. If GDP, social support, health, and freedom all show strong correlations, then happiness should be understood as multi-dimensional rather than purely economic.
+The k-means clustering algorithm identifies three distinct groups of countries based on multiple happiness-related factors. Although the clusters were created using several variables, they are visualized here using GDP per capita (x-axis) and social support (y-axis).
 
-### Plot 4: Country profiles using clustering
+The plot shows a clear pattern: countries with higher GDP levels generally also tend to have higher levels of social support. The clusters largely follow this gradient.
 
-This plot uses k-means clustering to group countries with similar happiness profiles. Unlike regression, clustering does not predict happiness. Instead, it discovers patterns in the data and groups countries based on similarities across multiple factors.
+Cluster 1 (red) contains countries with relatively low GDP and lower social support. These countries tend to exhibit less favorable conditions associated with happiness.
 
-```{r warning=FALSE}
-#This is a model + plot
-#kmeans() = clustering model
-#ggplot() = visualization of the cluster results
+Cluster 2 (green) represents countries with intermediate levels of GDP and social support. This group can be viewed as a middle category between lower- and higher-performing countries.
 
-cluster_data <- happiness_complete %>%
-  filter(year == 2024) %>%
-  select(country, happiness, gdp, social_support, health, freedom, generosity, corruption)
+Cluster 3 (blue) contains countries with the highest GDP and strongest social support. These countries generally have characteristics associated with higher happiness levels.
 
-cluster_scaled <- cluster_data %>%
-  select(gdp, social_support, health, freedom, generosity, corruption) %>%
-  scale()
-
-set.seed(123)
-clusters <- kmeans(cluster_scaled, centers = 3)
-
-cluster_data <- cluster_data %>%
-  mutate(cluster = as.factor(clusters$cluster))
-
-ggplot(cluster_data, aes(x = gdp, y = social_support, color = cluster)) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "Country Clusters Based on Happiness Factors",
-    subtitle = "k-means clustering using GDP, social support, health, freedom, generosity, and corruption",
-    x = "Explained by: Log GDP per capita",
-    y = "Explained by: Social support",
-    color = "Cluster"
-  ) +
-  theme_minimal()
-```
-
-**Interpretation:**\
-The clustering model groups countries into different profiles. For example, some countries may combine high GDP and high social support, while others may show lower values across several factors. This supports the idea that there are different pathways to happiness, not just one universal explanation.
+The visible separation between clusters suggests that countries are not randomly distributed but form distinct groups with similar socioeconomic and well-being profiles.
 
 ### Q1 Summary
 
@@ -262,32 +314,64 @@ The Q1 analysis shows that happiness is associated with several dimensions. GDP 
 
 This question uses modeling to estimate happiness from the reported factors and then examines the residuals. Residuals are the differences between actual and predicted happiness. They help identify countries that are happier or less happy than expected based on the model.
 
-### Plot 1: Predicted vs actual happiness
+### Plot 1: Predicted vs actual happiness {#plot5}
 
 A multiple linear regression model is used to predict happiness from several explanatory factors. The plot compares predicted happiness with actual happiness. If the model fits well, the points should lie close to the diagonal line.
 
-```{r warning=FALSE}
-#This is a model + plot.
-#lm() = linear regression model
-#ggplot() = model performance visualization
+```{r q2-setup, include=FALSE}
+# Prepare model data once for all Q2 plots
 
 model_data <- happiness_complete %>%
   select(country, year, happiness, gdp, social_support, health, freedom, generosity, corruption)
 
+# Fit multiple linear regression model
 lm_model <- lm(
   happiness ~ gdp + social_support + health + freedom + generosity + corruption,
   data = model_data
 )
 
+# Create predictions and residuals
 model_results <- model_data %>%
   mutate(
     predicted = predict(lm_model),
     residual = happiness - predicted
   )
+```
 
-ggplot(model_results, aes(x = predicted, y = happiness)) +
-  geom_point(alpha = 0.45, color = "gray40") +
-  geom_abline(slope = 1, intercept = 0, color = "red", linewidth = 1) +
+```{r warning=FALSE, message=FALSE}
+#This is a model + plot.
+#lm() = linear regression model
+#ggplot() = model performance visualization
+
+# create hover text
+model_results <- model_results %>%
+  mutate(
+    hover_text = paste(
+      "Country:", country,
+      "<br>Year:", year,
+      "<br>Actual happiness:", round(happiness, 2),
+      "<br>Predicted happiness:", round(predicted, 2),
+      "<br>Residual:", round(residual, 2)
+    )
+  )
+
+# build plot
+p_pred <- ggplot(
+  model_results,
+  aes(
+    x = predicted,
+    y = happiness,
+    text = hover_text
+  )
+) +
+  geom_point(color = "gray40", alpha = 0.6) +
+  geom_abline(
+    slope = 1,
+    intercept = 0,
+    color = "red",
+    linewidth = 1,
+    aes(text = NULL)
+  ) +
   labs(
     title = "Predicted vs Actual Happiness",
     subtitle = "Multiple linear regression using six reported factors",
@@ -295,14 +379,27 @@ ggplot(model_results, aes(x = predicted, y = happiness)) +
     y = "Actual happiness"
   ) +
   theme_minimal()
+
+# interactive plot
+ggplotly(p_pred, tooltip = "text")
 ```
 
 **Interpretation:**\
-The predicted-versus-actual plot shows how well the regression model reconstructs happiness scores. Points close to the red diagonal line are well explained by the model, while points farther away indicate countries or years where the model does not fully capture the actual happiness score.
+The plot compares the predicted happiness scores from your multiple linear regression model (x-axis) with the actual happiness scores from the dataset (y-axis).
 
-### Plot 2: Countries that deviate from the model
+The red diagonal line represents perfect predictions. If the model predicted happiness perfectly, all points would lie exactly on this line.
+
+In this plot, most observations cluster around the diagonal line, indicating that the model captures a substantial portion of the variation in happiness scores. This suggests that the explanatory variables included in the model are useful predictors of happiness.
+
+However, there is still noticeable scatter around the line. Some countries have actual happiness scores that are higher or lower than the model predicts, meaning that prediction errors remain. This indicates that the model does not fully explain all differences in happiness and that other factors not included in the regression may also influence happiness levels.
+
+The spread of points appears relatively consistent across the range of predictions, and there is no obvious systematic pattern of over- or underestimation. Overall, the model demonstrates a reasonably good fit, although prediction accuracy is not perfect.
+
+### Plot 2: Countries that deviate from the model {#plot6}
 
 This plot shows the strongest positive and negative residuals. Positive residuals mean that a country is happier than predicted by the model. Negative residuals mean that a country is less happy than predicted.
+
+Residual=Actual happiness−Predicted happiness
 
 ```{r warning=FALSE}
 #This is a model-result plot.It does not fit a new model, but it visualizes the residuals from the previous regression model.
@@ -335,9 +432,15 @@ ggplot(residual_plot_data, aes(x = reorder(country, mean_residual), y = mean_res
 ```
 
 **Interpretation:**\
-This plot is the main “twist” of the analysis. It shows that even after accounting for GDP, social support, health, freedom, generosity, and corruption, some countries still differ from model expectations. These deviations may reflect factors not directly included in the dataset, such as culture, inequality, mental health, political stability, or historical context.
+The chart shows the countries with the largest average residuals across all years.
 
-### Plot 3: Decision tree model
+Countries on the right side (positive residuals), such as Guatemala, Côte d'Ivoire, Costa Rica, Israel, and Finland, are consistently happier than the model predicts. This suggests that factors beyond those included in the regression model may contribute positively to happiness in these countries.
+
+In contrast, countries on the left side (negative residuals), such as Rwanda, Sri Lanka, Botswana, Lebanon, and Hong Kong SAR of China, are less happy than predicted by the model. Although these countries have characteristics that would lead the model to expect higher happiness scores, their observed happiness levels are lower, indicating that additional unobserved factors may negatively affect well-being.
+
+The fact that residuals range from approximately −1.5 to +0.9 happiness points shows that while the model performs reasonably well overall, it does not fully capture all determinants of happiness. Some countries systematically deviate from the model's predictions.
+
+### Plot 3: Decision tree model {#plot7}
 
 The decision tree provides a different modeling perspective. Unlike linear regression, it splits the data into groups based on factor thresholds. This makes it useful for identifying which variables separate countries with lower and higher happiness scores.
 
@@ -356,14 +459,22 @@ tree_model <- rpart(
 rpart.plot(
   tree_model,
   main = "Decision Tree Predicting Happiness",
-  type = 2,
+  type = 4,
   extra = 101,
   fallen.leaves = TRUE
 )
 ```
 
 **Interpretation:**\
-The decision tree is useful because it gives a non-linear view of happiness. It identifies variables that split countries into groups with different average happiness levels. If social support, GDP, or health appear near the top of the tree, this suggests that these variables are especially important for separating higher- and lower-happiness observations.
+The decision tree predicts happiness by repeatedly splitting countries into groups based on threshold values of explanatory variables.
+
+The first and most important split is health (`health < 0.5`). This means that health is the strongest factor in the tree for distinguishing between countries with lower and higher happiness scores. Countries with poorer health tend to fall into branches with lower predicted happiness values.
+
+Among countries with lower health levels, social support, freedom, and GDP provide additional splits that further separate countries into different happiness groups. For example, countries with low health and low social support are predicted to have some of the lowest happiness scores in the dataset.
+
+For countries with better health, the next important factor is corruption, followed by social support, freedom, and GDP. The highest predicted happiness scores occur in groups that combine good health, low perceived corruption, and relatively high freedom.
+
+Overall, the tree suggests that health, social support, freedom, GDP, and corruption are important determinants of happiness, with health appearing as the most influential variable because it is selected for the first split of the tree.
 
 ## Final Conclusion
 
