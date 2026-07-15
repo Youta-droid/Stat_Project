@@ -3,6 +3,18 @@ title: "Happiness"
 format: html
 ---
 
-This is a Quarto website.
+Every March the World Happiness Report turns well-being into a global headline — Finland is once again the happiest country in the world. This website looks behind that single number and asks a broader question: **what actually explains happiness, and what stays unexplained?**
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Using World Happiness Report 2025 data (country-year life-evaluation scores and the factors behind them), we investigate two questions:
+
+- **Q1 — What explains happiness?** Which factors — GDP, social support, health, freedom, generosity, low corruption — are most strongly associated with well-being, and do countries fall into distinct well-being profiles?
+- **Q2 — What remains unexplained?** After modelling happiness from those factors, which countries are happier or less happy than the model predicts?
+
+## Where to go
+
+- **[Project outline](project_proposal.qmd)** — the full analysis: initial data analysis, plots, models, and interpretations.
+- **[Our dataset](data.qmd)** — what the data contains and the one subtlety that shapes the whole project.
+- **[Presentation formats](format.qmd)** — how we present the work.
+- **[About this site](about.qmd)** — the group behind it.
+
+*A student project for StatProg2, LMU Munich.*

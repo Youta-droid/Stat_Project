@@ -1,3 +1,10 @@
+# -----------------------------------------------------------------------------
+# NOTE: This file is NOT part of the World Happiness analysis.
+# It is a leftover data-preparation snippet for an unrelated example dataset
+# (Munich open-data museum visitors), kept only as a reference for the
+# usethis/use_data preparation pattern. The happiness project does not use it.
+# -----------------------------------------------------------------------------
+
 ## code to prepare `museum-visitors` dataset goes here
 
 url <- paste0(

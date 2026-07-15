@@ -3,62 +3,63 @@ title: "What's in It"
 format: html
 ---
 
-Each row represents one country in one report year. Combined across the five files there are roughly 780 rows and 150–160 countries per year. Crucially, the schema is not identical across years — column counts and names drift — so a small harmonisation step is needed before any cross-year analysis.
+We use a single file from the **World Happiness Report 2025**: `WHR25_Data_Figure_2.1v3.xlsx`, the data behind the report's headline Figure 2.1. Unlike the older year-by-year CSV releases, this is one already-harmonised table, so the columns are identical across every year and no cross-year schema-fixing is needed.
 
-## Per-year structure
+## Shape of the data
 
-|  |  |  |  |
-|----|----|----|----|
-| **Year** | **Rows** | **Cols** | **What is different that year** |
-| **2015** | 158 | 12 | Includes Region and Standard Error; has Dystopia Residual |
-| **2016** | 157 | 13 | Includes Region; Standard Error replaced by Lower/Upper Confidence Interval |
-| **2017** | 155 | 12 | Region dropped; Whisker high/low instead of CI; Dystopia Residual kept |
-| **2018** | 156 | 9 | Slim schema: columns renamed; Region, CI and Dystopia Residual all removed |
-| **2019** | 156 | 9 | Same slim schema as 2018 |
+Each row represents **one country in one report year**, so the pair **`(country, year)`** uniquely identifies an observation.
 
-Row counts vary because the set of surveyed countries changes slightly each year; column counts vary because the report's format was simplified over time.
+|  |  |
+|----|----|
+| **Rows** | 1,969 country-year observations |
+| **Columns** | 13 |
+| **Years** | 2011–2024 (2013 is absent from the file) |
+| **Countries** | 168 distinct countries overall, with roughly 140–160 reported in any given year |
+| **Unit / row identity** | one country in one year → `(country, year)` |
 
-## Key variables
+Row counts vary a little from year to year (from ~137 in 2022 to ~158 in 2014) because the set of surveyed countries changes slightly each year.
 
-|  |  |  |
-|----|----|----|
-| **Concept** | **Column name(s)  (2015–17  /  2018–19)** | **What it measures** |
-| **Country** | Country  /  Country or region | The nation — the unit of analysis |
-| **Region** | Region  (2015–2016 only) | World region grouping (e.g. Western Europe) |
-| **Rank** | Happiness Rank  /  Overall rank | Position in that year's global ranking |
-| **Happiness score ★** | Happiness Score  /  Score | Cantril-ladder life evaluation, 0–10 — the TARGET variable |
-| **GDP per capita** | Economy (GDP per Capita)  /  GDP per capita | Contribution of income to the score |
-| **Social support** | Family  /  Social support | Contribution of having someone to count on |
-| **Life expectancy** | Health (Life Expectancy)  /  Healthy life expectancy | Contribution of healthy longevity |
-| **Freedom** | Freedom  /  Freedom to make life choices | Contribution of freedom over life choices |
-| **Generosity** | Generosity | Contribution of charitable behaviour |
-| **Corruption** | Trust (Government Corruption)  /  Perceptions of corruption | Contribution of perceived honesty / low corruption |
-| **Dystopia residual** | Dystopia Residual  (through 2017) | Unexplained remainder above the Dystopia baseline |
+## Columns
 
-★ = target variable. Where two names are shown, the report renamed the column in the 2018–2019 files.
+| Column (as in the file) | What it is |
+|----|----|
+| `Year` | Report year (part of the row identity) |
+| `Rank` | Position in that year's global ranking |
+| `Country name` | The nation — part of the row identity |
+| `Life evaluation (3-year average)` ★ | Cantril-ladder life evaluation, 0–10 — the **target variable** |
+| `Lower whisker` / `Upper whisker` | Confidence bounds around the life-evaluation estimate |
+| `Explained by: Log GDP per capita` | Estimated contribution of income to the score |
+| `Explained by: Social support` | Contribution of having someone to count on |
+| `Explained by: Healthy life expectancy` | Contribution of healthy longevity |
+| `Explained by: Freedom to make life choices` | Contribution of freedom over life choices |
+| `Explained by: Generosity` | Contribution of charitable behaviour |
+| `Explained by: Perceptions of corruption` | Contribution of perceived honesty / low corruption |
+| `Dystopia + residual` | Baseline plus the unexplained remainder |
+
+★ = target variable.
 
 ## A subtlety that shapes the whole analysis
 
-**The six “factor” columns are not raw measurements.**
+**The six "Explained by" columns are not raw measurements.**
 
-**What they actually are:** Each factor column (GDP, social support, life expectancy, freedom, generosity, corruption) is the estimated contribution of that factor to the country's score — not the raw value (e.g. it is not GDP in dollars).
+**What they actually are:** each `Explained by:` column is the estimated *contribution* of that factor to the country's score — not the raw value (e.g. it is not GDP in dollars, but how much income is estimated to lift that country's ladder score).
 
-**They are additive:** The six contributions plus the Dystopia Residual sum (up to rounding) to the Happiness Score. The bars in the report literally stack to the total.
+**They are additive:** the six contributions plus `Dystopia + residual` sum — up to rounding — exactly to the life-evaluation score. We checked this on the file itself: the largest gap between the reported score and the summed parts is about **0.003**. The bars in the report literally stack to the total.
 
-**Why it matters:** This means a model that “predicts” the score from these six columns will score near-perfectly almost by construction.
+**Why it matters:** a model that "predicts" the score from these six columns will fit near-perfectly almost by construction. We keep this in mind when reading the regression in Q2 — a high R² is partly built into how the columns are defined.
+
+## Missing values
+
+The factor columns are not populated for every country-year, especially generosity and perceptions of corruption in the earlier years. Keeping only complete cases (no missing value across the score and all six factors) drops the data from 1,969 to **868 rows** and, as a side effect, narrows the usable range to **2019–2024**. The full breakdown is documented in the [Initial data analysis](project_proposal.qmd#initial-data-analysis) section on the home page.
 
 ## Source & Licence
 
-**Dataset:** World Happiness Report
+**Dataset:** World Happiness Report 2025 — *Data for Figure 2.1*
 
-**Hosted on:** Kaggle — [kaggle.com/datasets/unsdsn/world-happiness](https://www.kaggle.com/datasets/unsdsn/world-happiness)
+**Published by:** the World Happiness Report ([worldhappiness.report](https://worldhappiness.report)), produced by the Wellbeing Research Centre at the University of Oxford together with Gallup and the UN Sustainable Development Solutions Network.
 
-**Published by:** UN Sustainable Development Solutions Network (UNSDSN)
+**Underlying source:** Gallup World Poll — the Cantril-ladder life-evaluation question.
 
-**Underlying source:** Gallup World Poll — the Cantril ladder life-evaluation question
+**Coverage:** one harmonised file, report years 2011–2024.
 
-**Coverage:** Five annual files, 2015–2019 (one CSV per report year)
-
-**Licence:** CC0 1.0 — Public Domain (no rights reserved)
-
-Because the data is released under CC0, there is no legal obligation to attribute it. As good academic practice we will still credit it, e.g. “World Happiness Report, UNSDSN, via Kaggle (CC0). Underlying data: Gallup World Poll.”
+**Attribution:** the data is published for public and research use on the World Happiness Report website. As good academic practice we credit it as: "World Happiness Report 2025, *Data for Figure 2.1*. Underlying data: Gallup World Poll."
