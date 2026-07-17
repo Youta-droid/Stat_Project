@@ -59,7 +59,7 @@ All years share the **same 13 columns**. Row counts vary only because the set of
 
 ### Source & Licence
 
-- **Dataset:** World Happiness Report 2025 — data underlying Figure 2.1
+- **Dataset:** World Happiness Report 2025 — data underlying Figure 2.1 (https://www.worldhappiness.report/data-sharing/)[https://www.worldhappiness.report/data-sharing/]
 - **Published by:** UN Sustainable Development Solutions Network (UNSDSN) / World Happiness Report editorial team
 - **Underlying source:** Gallup World Poll — the Cantril-ladder life-evaluation question
 - **Coverage:** Single file, 13 report years (2011–2024, no 2013)
