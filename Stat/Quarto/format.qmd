@@ -159,7 +159,6 @@ format: html
 - **Color coding** → grouping based on residual sign (two categories)
 
 ## Plot 3
-[Go to Plot](project_proposal.html#plot7)
 
 #### Type of Visualization
 
