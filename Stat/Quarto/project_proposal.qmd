@@ -67,6 +67,11 @@ This question explores whether richer countries are automatically happier, or wh
 This plot compares GDP contribution with happiness. A linear regression line shows the general direction of the relationship, while the LOESS curve allows for a non-linear pattern. This is useful because the relationship between income and happiness may weaken at higher income levels.
 
 ```{r warning=FALSE, message=FALSE}
+#' creates hovering message windows for the intarcrive prot by protly
+#' returns the informations about countryname, year, the value of the regarding parameter
+#' and happiness score
+#' @param label The name of the parameter in question (gdp, corruption, etc.)
+#' @return A caracter string. 
 create_hover <- function(country, year, x_value, happiness, label) {
   paste(
     "Country:", country,
@@ -80,7 +85,7 @@ create_hover <- function(country, year, x_value, happiness, label) {
 ```{r warning=FALSE, message=FALSE}
 #This is plot.
 
-browser() # execution pauses here
+#browser() # execution pauses here
 p_gdp <- ggplot(
   happiness_complete,
   aes(
@@ -455,7 +460,7 @@ tree_model <- rpart(
 rpart.plot(
   tree_model,
   main = "Decision Tree Predicting Happiness",
-  type = 4,
+  type = 4, 
   extra = 101,
   fallen.leaves = TRUE
 )
