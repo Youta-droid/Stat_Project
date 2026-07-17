@@ -5,7 +5,7 @@ format: html
 
 ## Dataset
 
-Each row represents **one country in one report year**. The file contains **1,969 rows** in a single sheet — `Data for Figure 2.1 (2011–2024)` — spanning **13 report years** (2011, 2012, and 2014–2024; **2013 is not included**), with **137–158 countries per year** and **168 unique countries overall**. Unlike the earlier Kaggle 2015–2019 release, this file has **one consistent schema across all years**, so no harmonisation step is needed before cross-year analysis.
+Each row represents **one country in one report year**. The file contains **1,969 rows** in a single sheet — `Data for Figure 2.1 (2011–2024)` — spanning **13 report years** (2011, 2012, and 2014–2024; **2013 is not included**), with **137–158 countries per year** and **168 unique countries overall**. This file has **one consistent schema across all years**, so no harmonisation step is needed before cross-year analysis.
 
 ### Per-year structure
 
@@ -30,7 +30,7 @@ All years share the **same 13 columns**. Row counts vary only because the set of
 ### Key variables
 
 | Concept | Column name | What it measures |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | **Year** | `Year` | Report year (2011–2024, no 2013) |
 | **Country** | `Country name` | The nation — the unit of analysis |
 | **Rank** | `Rank` | Position in that year's global ranking |
@@ -59,7 +59,7 @@ All years share the **same 13 columns**. Row counts vary only because the set of
 
 ### Source & Licence
 
-- **Dataset:** World Happiness Report 2025 — data underlying Figure 2.1 (https://www.worldhappiness.report/data-sharing/)[https://www.worldhappiness.report/data-sharing/]
+- **Dataset:** World Happiness Report 2025 — data underlying Figure 2.1 (https://www.worldhappiness.report/data-sharing/)\[https://www.worldhappiness.report/data-sharing/\]
 - **Published by:** UN Sustainable Development Solutions Network (UNSDSN) / World Happiness Report editorial team
 - **Underlying source:** Gallup World Poll — the Cantril-ladder life-evaluation question
 - **Coverage:** Single file, 13 report years (2011–2024, no 2013)
