@@ -1,2 +1,13 @@
 # Stat_Project
-Just some students trying to develop their own website :) 
+
+## Members
+
+Shohei Kobayashi (S.kobayashi\@lmu.campus.de)
+
+Eya Fares (E.Fares\@lmu.campus.de)
+
+Salaheddine Azzabi (Azzabi.Slaheddine\@campus.lmu.de)
+
+## GitHub Repositry
+
+<https://github.com/Youta-droid/Stat_Project>
