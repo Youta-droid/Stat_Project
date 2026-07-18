@@ -52,6 +52,100 @@ Every March, the World Happiness Report turns well-being into a global headline:
 
 This project uses World Happiness Report data to move beyond the ranking itself. Instead of only asking which countries are happiest, we investigate which factors are most strongly associated with happiness, where countries form similar well-being profiles, and which parts of happiness remain unexplained by the available variables.
 
+# Initial Data Analysis (IDA)
+
+Before answering the research questions, we inspect the data itself: how much of it is missing, how many observations we lose by keeping only complete cases, and what shape each variable takes. This step justifies the cleaning done in the setup chunk above.
+
+## Missingness
+
+The setup chunk drops every row that has a missing value in any of the seven core variables (`filter(!is.na(...))`). Here we quantify *how many* rows that removes and *which* variables are responsible.
+
+```{r ida-missingness, warning=FALSE, message=FALSE}
+# core variables used throughout the analysis
+core_vars <- c("happiness", "gdp", "social_support", "health",
+               "freedom", "generosity", "corruption")
+
+# per-variable missingness on the cleaned (pre-filter) data
+missing_summary <- happiness_clean %>%
+  summarise(across(all_of(core_vars), ~ sum(is.na(.)))) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "n_missing") %>%
+  mutate(pct_missing = round(100 * n_missing / nrow(happiness_clean), 1)) %>%
+  arrange(desc(n_missing))
+
+knitr::kable(
+  missing_summary,
+  col.names = c("Variable", "Missing (n)", "Missing (%)"),
+  caption = "Missing values per core variable (before filtering)"
+)
+```
+
+```{r ida-rowdrop, warning=FALSE, message=FALSE}
+# how many rows survive the complete-case filter
+n_total    <- nrow(happiness_clean)
+n_complete <- nrow(happiness_complete)
+n_dropped  <- n_total - n_complete
+
+knitr::kable(
+  tibble(
+    metric = c("Total rows (cleaned)", "Complete cases kept", "Rows dropped", "% dropped"),
+    value  = c(n_total, n_complete, n_dropped, round(100 * n_dropped / n_total, 1))
+  ),
+  col.names = c("Metric", "Value"),
+  caption = "Effect of the complete-case filter"
+)
+```
+
+**Interpretation:**\
+Of the `r n_total` rows in the cleaned data, `r n_complete` are complete across all seven core variables and `r n_dropped` (`r round(100 * n_dropped / n_total, 1)`%) are removed by the complete-case filter. The missingness is not spread evenly: `corruption` and `generosity` account for most of the missing values, while the target variable `happiness` and `gdp` are almost fully observed. Because the share of dropped rows is small and concentrated in a few secondary predictors rather than in the target, complete-case analysis is a reasonable and unbiased-enough strategy for this project.
+
+## Distributions
+
+Next we look at each variable one at a time — its centre, spread, and shape — using the complete-case data that feeds the rest of the analysis.
+
+```{r ida-summary, warning=FALSE, message=FALSE}
+# summary statistics for every core variable
+summary_stats <- happiness_complete %>%
+  select(all_of(core_vars)) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "value") %>%
+  group_by(variable) %>%
+  summarise(
+    min    = round(min(value), 2),
+    q1     = round(quantile(value, 0.25), 2),
+    median = round(median(value), 2),
+    mean   = round(mean(value), 2),
+    q3     = round(quantile(value, 0.75), 2),
+    max    = round(max(value), 2),
+    sd     = round(sd(value), 2),
+    .groups = "drop"
+  )
+
+knitr::kable(
+  summary_stats,
+  col.names = c("Variable", "Min", "Q1", "Median", "Mean", "Q3", "Max", "SD"),
+  caption = "Summary statistics for each core variable (complete-case data)"
+)
+```
+
+```{r ida-histograms, warning=FALSE, message=FALSE}
+# faceted histograms to compare the shape of each variable
+happiness_complete %>%
+  select(all_of(core_vars)) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "value") %>%
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white") +
+  facet_wrap(~ variable, scales = "free", ncol = 3) +
+  labs(
+    title = "Distribution of Each Variable",
+    subtitle = "Complete-case data used in the analysis",
+    x = "Value",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+**Interpretation:**\
+The target variable `happiness` is roughly symmetric and unimodal, centred around the middle of the ladder scale — well suited to the linear methods used later. Among the predictors, `gdp`, `social_support`, and `health` are fairly spread out and approximately symmetric, whereas `generosity` and `corruption` are noticeably right-skewed and concentrated near their lower end, with a tail of higher values. These skewed contribution columns are worth keeping in mind, since a few extreme values can influence correlations and regression coefficients. Importantly, all six predictors are *estimated contributions* to the score rather than raw measurements, so their scales are not directly comparable to real-world units (dollars, years, etc.).
+
 # Research Questions
 
 ## Q1. What explains happiness?

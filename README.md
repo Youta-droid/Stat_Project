@@ -103,8 +103,6 @@ We use the data underlying **Figure 2.1 of the World Happiness Report 2025**. Ea
 
 The **target variable** is `Life evaluation (3-year average)` — the Cantril-ladder life-evaluation score (0–10). The six `Explained by: …` columns (GDP, social support, healthy life expectancy, freedom, generosity, corruption) are *estimated contributions* to that score — additive decompositions rather than raw measurements.
 
-> ⚠️ Because those contributions are additive by construction, a model that predicts the score from them fits near-perfectly almost by design. The analysis treats this as a known subtlety (see the residual and decision-tree sections).
-
 - **Source:** [World Happiness Report — data sharing](https://www.worldhappiness.report/data-sharing/)
 - **Underlying data:** Gallup World Poll (Cantril-ladder life-evaluation question)
 - **Publisher:** UN Sustainable Development Solutions Network / WHR editorial team
