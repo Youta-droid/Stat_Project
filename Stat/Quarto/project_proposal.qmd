@@ -142,7 +142,7 @@ The scatter plot shows a clear positive relationship between GDP per capita and 
 
 The blue linear regression line indicates that happiness increases steadily as GDP increases. This suggests that economic prosperity is an important factor associated with higher well-being.
 
-The red LOESS curve reveals that the relationship is not perfectly linear. At very low GDP levels, increases in GDP are associated with relatively small changes in happiness. In the middle range, the relationship becomes steeper, indicating that increases in GDP are accompanied by larger gains in happiness. At higher GDP levels, the curve begins to flatten slightly, suggesting that additional income may produce smaller improvements in happiness than at lower income levels.
+The red LOESS curve reveals that the relationship is not perfectly linear. At very low GDP levels, increases in GDP are associated with relatively small changes in happiness. In the middle range, the relationship becomes steeper, indicating that increases in GDP are accompanied by larger gains in happiness. At higher GDP levels, the curve begins to flatten slightly, suggesting that additional income produces smaller improvements in happiness than at lower income levels.
 
 The noticeable spread of observations around both trend lines indicates that GDP alone does not fully explain happiness differences across countries. Countries with similar GDP levels can display quite different happiness scores, implying that other factors such as social support, health, freedom, and governance also contribute to well-being.
 
@@ -378,11 +378,9 @@ ggplotly(p_pred, tooltip = "text")
 **Interpretation:**\
 The plot compares the predicted happiness scores from your multiple linear regression model (x-axis) with the actual happiness scores from the dataset (y-axis).
 
-The red diagonal line represents perfect predictions. If the model predicted happiness perfectly, all points would lie exactly on this line.
+The red diagonal line represents perfect predictions. In this plot, most observations cluster around the diagonal line, indicating that the model captures a substantial portion of the variation in happiness scores. The predicted values lie very close to the diagonal line, indicating an excellent model fit. This strong fit is expected because the predictors are not independent socioeconomic variables but the World Happiness Report's additive factor contributions that were constructed to explain the reported happiness score. Consequently, the regression largely reconstructs the happiness measure rather than discovering a completely new relationship.
 
-In this plot, most observations cluster around the diagonal line, indicating that the model captures a substantial portion of the variation in happiness scores. This suggests that the explanatory variables included in the model are useful predictors of happiness.
-
-However, there is still noticeable scatter around the line. Some countries have actual happiness scores that are higher or lower than the model predicts, meaning that prediction errors remain. This indicates that the model does not fully explain all differences in happiness and that other factors not included in the regression may also influence happiness levels.
+However, there is still noticeable scatter around the line. Some countries (we'll see them below) have actual happiness scores that are higher or lower than the model predicts, meaning that prediction errors remain. This indicates that the model does not fully explain all differences in happiness and that other factors not included in the regression also influence happiness levels.
 
 The spread of points appears relatively consistent across the range of predictions, and there is no obvious systematic pattern of over- or underestimation. Overall, the model demonstrates a reasonably good fit, although prediction accuracy is not perfect.
 
@@ -425,9 +423,9 @@ ggplot(residual_plot_data, aes(x = reorder(country, mean_residual), y = mean_res
 **Interpretation:**\
 The chart shows the countries with the largest average residuals across all years.
 
-Countries on the right side (positive residuals), such as Guatemala, Côte d'Ivoire, Costa Rica, Israel, and Finland, are consistently happier than the model predicts. This suggests that factors beyond those included in the regression model may contribute positively to happiness in these countries.
+Countries on the right side (positive residuals), such as Guatemala, Côte d'Ivoire, Costa Rica, Israel, and Finland, are consistently happier than the model predicts. This suggests that factors beyond those included in the regression model in fact contribute positively to happiness in these countries.
 
-In contrast, countries on the left side (negative residuals), such as Rwanda, Sri Lanka, Botswana, Lebanon, and Hong Kong SAR of China, are less happy than predicted by the model. Although these countries have characteristics that would lead the model to expect higher happiness scores, their observed happiness levels are lower, indicating that additional unobserved factors may negatively affect well-being.
+In contrast, countries on the left side (negative residuals), such as Rwanda, Sri Lanka, Botswana, Lebanon, and Hong Kong SAR of China, are less happy than predicted by the model. Although these countries have characteristics that would lead the model to expect higher happiness scores, their observed happiness levels are lower, indicating that additional unobserved factors does negatively affect well-being.
 
 The fact that residuals range from approximately −1.5 to +0.9 happiness points shows that while the model performs reasonably well overall, it does not fully capture all determinants of happiness. Some countries systematically deviate from the model's predictions.
 
