@@ -128,9 +128,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About this site",
     "section": "",
-    "text": "Shohei Kobayashi (S.kobayashi@lmu.campus.de)\nEya Fares (E.Fares@lmu.campus.de)\nSalaheddine Azzabi (Azzabi.Slaheddine@campus.lmu.de)"
+    "text": "This website presents Happiness ㋡, a group project for StatProg2 — LMU Munich. It explores the World Happiness Report to move beyond the yearly country ranking and ask a broader question: what actually explains happiness? Is it mainly economic prosperity, or do social support, health, freedom, and trust matter just as much?"
   },
   {
     "objectID": "about.html#members",
@@ -201,5 +201,40 @@
     "title": "Project Outline",
     "section": "Distributions",
     "text": "Distributions\nNext we look at each variable one at a time — its centre, spread, and shape — using the complete-case data that feeds the rest of the analysis.\n\n\n\nSummary statistics for each core variable (complete-case data)\n\n\nVariable\nMin\nQ1\nMedian\nMean\nQ3\nMax\nSD\n\n\n\n\ncorruption\n0.00\n0.06\n0.11\n0.14\n0.18\n0.59\n0.12\n\n\nfreedom\n0.00\n0.45\n0.57\n0.56\n0.68\n1.02\n0.18\n\n\ngdp\n0.00\n0.90\n1.26\n1.22\n1.57\n2.21\n0.46\n\n\ngenerosity\n0.00\n0.09\n0.14\n0.15\n0.20\n0.57\n0.09\n\n\nhappiness\n1.36\n4.75\n5.68\n5.54\n6.36\n7.84\n1.12\n\n\nhealth\n0.00\n0.38\n0.56\n0.54\n0.71\n1.14\n0.22\n\n\nsocial_support\n0.00\n0.85\n1.11\n1.08\n1.36\n1.84\n0.36\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation:\nThe target variable happiness is roughly symmetric and unimodal, centred around the middle of the ladder scale — well suited to the linear methods used later. Among the predictors, gdp, social_support, and health are fairly spread out and approximately symmetric, whereas generosity and corruption are noticeably right-skewed and concentrated near their lower end, with a tail of higher values. These skewed contribution columns are worth keeping in mind, since a few extreme values can influence correlations and regression coefficients. Importantly, all six predictors are estimated contributions to the score rather than raw measurements, so their scales are not directly comparable to real-world units (dollars, years, etc.)."
+  },
+  {
+    "objectID": "about.html#what-is-this",
+    "href": "about.html#what-is-this",
+    "title": "About this site",
+    "section": "",
+    "text": "This website presents Happiness ㋡, a group project for StatProg2 — LMU Munich. It explores the World Happiness Report to move beyond the yearly country ranking and ask a broader question: what actually explains happiness? Is it mainly economic prosperity, or do social support, health, freedom, and trust matter just as much?"
+  },
+  {
+    "objectID": "about.html#research-questions",
+    "href": "about.html#research-questions",
+    "title": "About this site",
+    "section": "Research questions",
+    "text": "Research questions\n\nQ1 — What explains happiness? To what extent can happiness be explained by economic and social factors such as GDP, social support, and freedom?\nQ2 — What remains unexplained? What part of happiness cannot be explained by observable variables?\n\nMain takeaway: wealth matters, but happiness is broader than money."
+  },
+  {
+    "objectID": "about.html#how-to-navigate",
+    "href": "about.html#how-to-navigate",
+    "title": "About this site",
+    "section": "How to navigate",
+    "text": "How to navigate\n\n\n\n\n\n\n\nPage\nContent\n\n\n\n\nHome\nThe full analysis: research questions, plots, interpretations, and conclusion\n\n\nOur dataset\nWhat’s in the data, per-year structure, key variables, source & licence\n\n\nPresentation formats\nClassification of each plot (chart type + modelling layer)\n\n\nAbout this site\nThis page\n\n\nGroup reflection\nSkills inventory, key decisions, workflow & LLM usage\n\n\n\nCode chunks are folded by default — click “Show code” to expand any of them."
+  },
+  {
+    "objectID": "about.html#built-with",
+    "href": "about.html#built-with",
+    "title": "About this site",
+    "section": "Built with",
+    "text": "Built with\nThe site is an interactive Quarto website written in R. Plots are built with ggplot2 and made interactive with plotly. Other key packages include tidyverse, readxl, broom, rpart, and rpart.plot."
+  },
+  {
+    "objectID": "about.html#team",
+    "href": "about.html#team",
+    "title": "About this site",
+    "section": "Team",
+    "text": "Team\n\nShohei Kobayashi — S.kobayashi@lmu.campus.de\nEya Fares — E.Fares@lmu.campus.de\nSlaheddine Azzabi — Azzabi.Slaheddine@campus.lmu.de\n\nSource code: https://github.com/Youta-droid/Stat_Project"
   }
 ]

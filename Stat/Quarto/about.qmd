@@ -1,5 +1,39 @@
 ---
-title: "About"
+title: "About this site"
 format: html
 ---
 
+## What is this?
+
+This website presents **Happiness ㋡**, a group project for **StatProg2 — LMU Munich**. It explores the [World Happiness Report](https://www.worldhappiness.report/) to move beyond the yearly country ranking and ask a broader question: **what actually explains happiness?** Is it mainly economic prosperity, or do social support, health, freedom, and trust matter just as much?
+
+## Research questions
+
+- **Q1 — What explains happiness?** To what extent can happiness be explained by economic and social factors such as GDP, social support, and freedom?
+- **Q2 — What remains unexplained?** What part of happiness cannot be explained by observable variables?
+
+**Main takeaway:** wealth matters, but happiness is broader than money.
+
+## How to navigate
+
+| Page | Content |
+|-----------------------------|-------------------------------------------|
+| **Home** | The full analysis: research questions, plots, interpretations, and conclusion |
+| **Our dataset** | What's in the data, per-year structure, key variables, source & licence |
+| **Presentation formats** | Classification of each plot (chart type + modelling layer) |
+| **About this site** | This page |
+| **Group reflection** | Skills inventory, key decisions, workflow & LLM usage |
+
+Code chunks are folded by default — click **"Show code"** to expand any of them.
+
+## Built with
+
+The site is an interactive **Quarto** website written in **R**. Plots are built with `ggplot2` and made interactive with `plotly`. Other key packages include `tidyverse`, `readxl`, `broom`, `rpart`, and `rpart.plot`.
+
+## Team
+
+- **Shohei Kobayashi** — S.kobayashi\@lmu.campus.de
+- **Eya Fares** — E.Fares\@lmu.campus.de
+- **Slaheddine Azzabi** — Azzabi.Slaheddine\@campus.lmu.de
+
+Source code: <https://github.com/Youta-droid/Stat_Project>
