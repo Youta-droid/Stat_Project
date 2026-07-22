@@ -30,7 +30,7 @@ All years share the **same 13 columns**. Row counts vary only because the set of
 ### Key variables
 
 | Concept | Column name | What it measures |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **Year** | `Year` | Report year (2011–2024, no 2013) |
 | **Country** | `Country name` | The nation — the unit of analysis |
 | **Rank** | `Rank` | Position in that year's global ranking |
