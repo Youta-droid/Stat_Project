@@ -387,8 +387,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="how-to-navigate">How to navigate</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 40%">
-<col style="width: 60%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -577,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/Youta-droid\.github\.io\/Stat_Project\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -911,47 +911,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5"></a></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">## What is this?</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>This website presents **Happiness ㋡**, a group project for **StatProg2 — LMU</span>
-<span id="cb1-9"><a href="#cb1-9"></a>Munich**. It explores the [World Happiness</span>
-<span id="cb1-10"><a href="#cb1-10"></a>Report](https://www.worldhappiness.report/) to move beyond the yearly country</span>
-<span id="cb1-11"><a href="#cb1-11"></a>ranking and ask a broader question: **what actually explains happiness?** Is it</span>
-<span id="cb1-12"><a href="#cb1-12"></a>mainly economic prosperity, or do social support, health, freedom, and trust</span>
-<span id="cb1-13"><a href="#cb1-13"></a>matter just as much?</span>
+<span id="cb1-8"><a href="#cb1-8"></a>This website presents **Happiness ㋡**, a group project for **StatProg2 — LMU Munich**. It explores the [World Happiness Report](https://www.worldhappiness.report/) to move beyond the yearly country ranking and ask a broader question: **what actually explains happiness?** Is it mainly economic prosperity, or do social support, health, freedom, and trust matter just as much?</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">## Research questions</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="ss">- </span>**Q1 — What explains happiness?** To what extent can happiness be explained by economic and social factors such as GDP, social support, and freedom?</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="ss">- </span>**Q2 — What remains unexplained?** What part of happiness cannot be explained by observable variables?</span>
 <span id="cb1-14"><a href="#cb1-14"></a></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="fu">## Research questions</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>**Main takeaway:** wealth matters, but happiness is broader than money.</span>
 <span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="ss">- </span>**Q1 — What explains happiness?** To what extent can happiness be explained by</span>
-<span id="cb1-18"><a href="#cb1-18"></a>  economic and social factors such as GDP, social support, and freedom?</span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="ss">- </span>**Q2 — What remains unexplained?** What part of happiness cannot be explained</span>
-<span id="cb1-20"><a href="#cb1-20"></a>  by observable variables?</span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a>**Main takeaway:** wealth matters, but happiness is broader than money.</span>
-<span id="cb1-23"><a href="#cb1-23"></a></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="fu">## How to navigate</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="pp">|</span> Page <span class="pp">|</span> Content <span class="pp">|</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="pp">|------|---------|</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="pp">|</span> **Home** <span class="pp">|</span> The full analysis: research questions, plots, interpretations, and conclusion <span class="pp">|</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="pp">|</span> **Our dataset** <span class="pp">|</span> What's in the data, per-year structure, key variables, source &amp; licence <span class="pp">|</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="pp">|</span> **Presentation formats** <span class="pp">|</span> Classification of each plot (chart type + modelling layer) <span class="pp">|</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="pp">|</span> **About this site** <span class="pp">|</span> This page <span class="pp">|</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="pp">|</span> **Group reflection** <span class="pp">|</span> Skills inventory, key decisions, workflow &amp; LLM usage <span class="pp">|</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a></span>
-<span id="cb1-34"><a href="#cb1-34"></a>Code chunks are folded by default — click **"Show code"** to expand any of them.</span>
-<span id="cb1-35"><a href="#cb1-35"></a></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="fu">## Built with</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a></span>
-<span id="cb1-38"><a href="#cb1-38"></a>The site is an interactive **Quarto** website written in **R**. Plots are built</span>
-<span id="cb1-39"><a href="#cb1-39"></a>with <span class="in">`ggplot2`</span> and made interactive with <span class="in">`plotly`</span>. Other key packages include</span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="in">`tidyverse`</span>, <span class="in">`readxl`</span>, <span class="in">`broom`</span>, <span class="in">`rpart`</span>, and <span class="in">`rpart.plot`</span>.</span>
-<span id="cb1-41"><a href="#cb1-41"></a></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="fu">## Team</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a></span>
-<span id="cb1-44"><a href="#cb1-44"></a><span class="ss">- </span>**Shohei Kobayashi** — S.kobayashi@lmu.campus.de</span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="ss">- </span>**Eya Fares** — E.Fares@lmu.campus.de</span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="ss">- </span>**Slaheddine Azzabi** — Azzabi.Slaheddine@campus.lmu.de</span>
-<span id="cb1-47"><a href="#cb1-47"></a></span>
-<span id="cb1-48"><a href="#cb1-48"></a>Source code: <span class="ot">&lt;https://github.com/Youta-droid/Stat_Project&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">## How to navigate</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="pp">|</span> Page <span class="pp">|</span> Content <span class="pp">|</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="pp">|----|----|</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="pp">|</span> **Home** <span class="pp">|</span> The full analysis: research questions, plots, interpretations, and conclusion <span class="pp">|</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="pp">|</span> **Our dataset** <span class="pp">|</span> What's in the data, per-year structure, key variables, source &amp; licence <span class="pp">|</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="pp">|</span> **Presentation formats** <span class="pp">|</span> Classification of each plot (chart type + modelling layer) <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="pp">|</span> **About this site** <span class="pp">|</span> This page <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="pp">|</span> **Group reflection** <span class="pp">|</span> Skills inventory, key decisions, workflow &amp; LLM usage <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a>Code chunks are folded by default — click **"Show code"** to expand any of them.</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="fu">## Built with</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>The site is an interactive **Quarto** website written in **R**. Plots are built with <span class="in">`ggplot2`</span> and made interactive with <span class="in">`plotly`</span>. Other key packages include <span class="in">`tidyverse`</span>, <span class="in">`readxl`</span>, <span class="in">`broom`</span>, <span class="in">`rpart`</span>, and <span class="in">`rpart.plot`</span>.</span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="fu">## Team</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="ss">- </span>**Shohei Kobayashi** — S.kobayashi\@lmu.campus.de</span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="ss">- </span>**Eya Fares** — E.Fares\@lmu.campus.de</span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="ss">- </span>**Slaheddine Azzabi** — Azzabi.Slaheddine\@campus.lmu.de</span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a>Source code: <span class="ot">&lt;https://github.com/Youta-droid/Stat_Project&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

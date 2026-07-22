@@ -692,7 +692,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/Youta-droid\.github\.io\/Stat_Project\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1051,7 +1051,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-30"><a href="#cb1-30"></a><span class="fu">### Key variables</span></span>
 <span id="cb1-31"><a href="#cb1-31"></a></span>
 <span id="cb1-32"><a href="#cb1-32"></a><span class="pp">|</span> Concept <span class="pp">|</span> Column name <span class="pp">|</span> What it measures <span class="pp">|</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="pp">|------------------------|------------------------|------------------------|</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="pp">|----|----|----|</span></span>
 <span id="cb1-34"><a href="#cb1-34"></a><span class="pp">|</span> **Year** <span class="pp">|</span> <span class="in">`Year`</span> <span class="pp">|</span> Report year (2011–2024, no 2013) <span class="pp">|</span></span>
 <span id="cb1-35"><a href="#cb1-35"></a><span class="pp">|</span> **Country** <span class="pp">|</span> <span class="in">`Country name`</span> <span class="pp">|</span> The nation — the unit of analysis <span class="pp">|</span></span>
 <span id="cb1-36"><a href="#cb1-36"></a><span class="pp">|</span> **Rank** <span class="pp">|</span> <span class="in">`Rank`</span> <span class="pp">|</span> Position in that year's global ranking <span class="pp">|</span></span>
