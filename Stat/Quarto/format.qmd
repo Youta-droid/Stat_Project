@@ -79,30 +79,6 @@ format: html
 - **Bar length (x-axis)** → magnitude of the correlation\
 - **Ordering** → values sorted to emphasize ranking
 
-## Plot 4
-[Go to Plot](project_proposal.html#plot4)
-
-#### Type of Visualization
-
-- **Scatter plot (bivariate plot)**\
-  Displays the relationship between two continuous variables, with observations positioned in a two-dimensional space.
-
-#### Modeling Technique
-
-- **K-means clustering (unsupervised learning method)**\
-  → Partitions observations into groups based on similarity across multiple variables.
-
-#### Overall Classification
-
-⇒ **Exploratory scatter plot with cluster assignments from an unsupervised machine learning model**
-
-#### Key Components (format-wise)
-
-- **Points** → individual observations\
-- **Color coding** → cluster membership\
-- **Axes** → two selected continuous variables used for visualization\
-- **Clusters (1, 2, 3)** → groups identified by the k-means algorithm
-
 # Question 2
 
 ## Plot 1
