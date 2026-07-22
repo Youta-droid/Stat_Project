@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Happiness ㋡</title>
+<title>About this site – Happiness ㋡</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -340,8 +340,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#members" id="toc-members" class="nav-link active" data-scroll-target="#members">Members</a></li>
-  <li><a href="#github-repositry" id="toc-github-repositry" class="nav-link" data-scroll-target="#github-repositry">GitHub Repositry</a></li>
+  <li><a href="#what-is-this" id="toc-what-is-this" class="nav-link active" data-scroll-target="#what-is-this">What is this?</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research questions</a></li>
+  <li><a href="#how-to-navigate" id="toc-how-to-navigate" class="nav-link" data-scroll-target="#how-to-navigate">How to navigate</a></li>
+  <li><a href="#built-with" id="toc-built-with" class="nav-link" data-scroll-target="#built-with">Built with</a></li>
+  <li><a href="#team" id="toc-team" class="nav-link" data-scroll-target="#team">Team</a></li>
   </ul>
 </nav>
     </div>
@@ -351,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">About</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">About this site</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -368,15 +371,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="members" class="level2">
-<h2 class="anchored" data-anchor-id="members">Members</h2>
-<p>Shohei Kobayashi (S.kobayashi@lmu.campus.de)</p>
-<p>Eya Fares (E.Fares@lmu.campus.de)</p>
-<p>Salaheddine Azzabi (Azzabi.Slaheddine@campus.lmu.de)</p>
+<section id="what-is-this" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-this">What is this?</h2>
+<p>This website presents <strong>Happiness ㋡</strong>, a group project for <strong>StatProg2 — LMU Munich</strong>. It explores the <a href="https://www.worldhappiness.report/">World Happiness Report</a> to move beyond the yearly country ranking and ask a broader question: <strong>what actually explains happiness?</strong> Is it mainly economic prosperity, or do social support, health, freedom, and trust matter just as much?</p>
 </section>
-<section id="github-repositry" class="level2">
-<h2 class="anchored" data-anchor-id="github-repositry">GitHub Repositry</h2>
-<p><a href="https://github.com/Youta-droid/Stat_Project" class="uri">https://github.com/Youta-droid/Stat_Project</a></p>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research questions</h2>
+<ul>
+<li><strong>Q1 — What explains happiness?</strong> To what extent can happiness be explained by economic and social factors such as GDP, social support, and freedom?</li>
+<li><strong>Q2 — What remains unexplained?</strong> What part of happiness cannot be explained by observable variables?</li>
+</ul>
+<p><strong>Main takeaway:</strong> wealth matters, but happiness is broader than money.</p>
+</section>
+<section id="how-to-navigate" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-navigate">How to navigate</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Page</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Home</strong></td>
+<td>The full analysis: research questions, plots, interpretations, and conclusion</td>
+</tr>
+<tr class="even">
+<td><strong>Our dataset</strong></td>
+<td>What’s in the data, per-year structure, key variables, source &amp; licence</td>
+</tr>
+<tr class="odd">
+<td><strong>Presentation formats</strong></td>
+<td>Classification of each plot (chart type + modelling layer)</td>
+</tr>
+<tr class="even">
+<td><strong>About this site</strong></td>
+<td>This page</td>
+</tr>
+<tr class="odd">
+<td><strong>Group reflection</strong></td>
+<td>Skills inventory, key decisions, workflow &amp; LLM usage</td>
+</tr>
+</tbody>
+</table>
+<p>Code chunks are folded by default — click <strong>“Show code”</strong> to expand any of them.</p>
+</section>
+<section id="built-with" class="level2">
+<h2 class="anchored" data-anchor-id="built-with">Built with</h2>
+<p>The site is an interactive <strong>Quarto</strong> website written in <strong>R</strong>. Plots are built with <code>ggplot2</code> and made interactive with <code>plotly</code>. Other key packages include <code>tidyverse</code>, <code>readxl</code>, <code>broom</code>, <code>rpart</code>, and <code>rpart.plot</code>.</p>
+</section>
+<section id="team" class="level2">
+<h2 class="anchored" data-anchor-id="team">Team</h2>
+<ul>
+<li><strong>Shohei Kobayashi</strong> — S.kobayashi@lmu.campus.de</li>
+<li><strong>Eya Fares</strong> — E.Fares@lmu.campus.de</li>
+<li><strong>Slaheddine Azzabi</strong> — Azzabi.Slaheddine@campus.lmu.de</li>
+</ul>
+<p>Source code: <a href="https://github.com/Youta-droid/Stat_Project" class="uri">https://github.com/Youta-droid/Stat_Project</a></p>
 
 
 <!-- -->
@@ -849,21 +905,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "About"</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "About this site"</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">## Members</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">## What is this?</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>Shohei Kobayashi (S.kobayashi\@lmu.campus.de)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>This website presents **Happiness ㋡**, a group project for **StatProg2 — LMU Munich**. It explores the [World Happiness Report](https://www.worldhappiness.report/) to move beyond the yearly country ranking and ask a broader question: **what actually explains happiness?** Is it mainly economic prosperity, or do social support, health, freedom, and trust matter just as much?</span>
 <span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>Eya Fares (E.Fares\@lmu.campus.de)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">## Research questions</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a>Salaheddine Azzabi (Azzabi.Slaheddine\@campus.lmu.de)</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">## GitHub Repositry</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="ot">&lt;https://github.com/Youta-droid/Stat_Project&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="ss">- </span>**Q1 — What explains happiness?** To what extent can happiness be explained by economic and social factors such as GDP, social support, and freedom?</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="ss">- </span>**Q2 — What remains unexplained?** What part of happiness cannot be explained by observable variables?</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a>**Main takeaway:** wealth matters, but happiness is broader than money.</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">## How to navigate</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="pp">|</span> Page <span class="pp">|</span> Content <span class="pp">|</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="pp">|----|----|</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="pp">|</span> **Home** <span class="pp">|</span> The full analysis: research questions, plots, interpretations, and conclusion <span class="pp">|</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="pp">|</span> **Our dataset** <span class="pp">|</span> What's in the data, per-year structure, key variables, source &amp; licence <span class="pp">|</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="pp">|</span> **Presentation formats** <span class="pp">|</span> Classification of each plot (chart type + modelling layer) <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="pp">|</span> **About this site** <span class="pp">|</span> This page <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="pp">|</span> **Group reflection** <span class="pp">|</span> Skills inventory, key decisions, workflow &amp; LLM usage <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a>Code chunks are folded by default — click **"Show code"** to expand any of them.</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="fu">## Built with</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>The site is an interactive **Quarto** website written in **R**. Plots are built with <span class="in">`ggplot2`</span> and made interactive with <span class="in">`plotly`</span>. Other key packages include <span class="in">`tidyverse`</span>, <span class="in">`readxl`</span>, <span class="in">`broom`</span>, <span class="in">`rpart`</span>, and <span class="in">`rpart.plot`</span>.</span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="fu">## Team</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="ss">- </span>**Shohei Kobayashi** — S.kobayashi\@lmu.campus.de</span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="ss">- </span>**Eya Fares** — E.Fares\@lmu.campus.de</span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="ss">- </span>**Slaheddine Azzabi** — Azzabi.Slaheddine\@campus.lmu.de</span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a>Source code: <span class="ot">&lt;https://github.com/Youta-droid/Stat_Project&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
