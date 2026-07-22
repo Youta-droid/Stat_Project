@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Youta-droid.github.io/Stat_Project/Slah-proposed.html</loc>
-    <lastmod>2026-07-17T10:59:11.729Z</lastmod>
+    <loc>https://Youta-droid.github.io/Stat_Project/project_proposal.html</loc>
+    <lastmod>2026-07-17T13:43:57.214Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Youta-droid.github.io/Stat_Project/group-reflection.html</loc>
+    <lastmod>2026-07-17T13:03:07.764Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Youta-droid.github.io/Stat_Project/data.html</loc>
+    <lastmod>2026-07-22T07:45:22.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Youta-droid.github.io/Stat_Project/about.html</loc>
+    <lastmod>2026-07-17T13:03:07.739Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Youta-droid.github.io/Stat_Project/format.html</loc>
+    <lastmod>2026-07-17T12:10:09.033Z</lastmod>
   </url>
   <url>
     <loc>https://Youta-droid.github.io/Stat_Project/index.html</loc>
     <lastmod>2026-06-29T12:08:12.185Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Youta-droid.github.io/Stat_Project/format.html</loc>
-    <lastmod>2026-06-29T12:08:12.169Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Youta-droid.github.io/Stat_Project/about.html</loc>
-    <lastmod>2026-07-17T10:59:11.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Youta-droid.github.io/Stat_Project/data.html</loc>
-    <lastmod>2026-06-29T10:45:46.771Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Youta-droid.github.io/Stat_Project/group-reflection.html</loc>
-    <lastmod>2026-07-17T10:59:11.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Youta-droid.github.io/Stat_Project/project_proposal.html</loc>
-    <lastmod>2026-07-17T10:59:11.858Z</lastmod>
   </url>
 </urlset>
