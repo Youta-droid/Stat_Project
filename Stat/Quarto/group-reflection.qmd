@@ -25,11 +25,11 @@ For each skill area, describe what your group actually used it for. If you did n
 
 ### Version control & remotes (W4)
 
-*What we did:*
+*What we did:* we used GitHub and worked separately. We made contact after every major change and had meetings a couple of times. When we merge the branches, we asked all of us if it was no problem.
 
-*What worked well:*
+*What worked well:* we reported our changes often and kept uorselves updated.
 
-*What was hard:*
+*What was hard:* we sometimes made changes in our individual branches and sometimes directly on the main branch. This occasionally made it difficult to keep track of which changes had been made where.
 
 ### Quarto websites & collaborative coding (W5)
 
@@ -49,15 +49,17 @@ For each skill area, describe what your group actually used it for. If you did n
 
 ### Initial data analysis & data cleaning (W7)
 
-*What we did:* we began with the basic analyse of the whole dataset and went on to focus on some
+*What we did:* we began with the basic analyse of the whole dataset and went on to focus on some significant variables. We already had known that GDP was the most influential factor among them, that's why we did not started the analysis exactly with the whole analysis but with GDP.
 
-*What worked well:*
+we did only basic data cleanings — we renamed the column names and changed into the snake cases and eliminated N/A.
 
-*What was hard:*
+*What worked well:* the processes themselves are not complicated.
+
+*What was hard:* we wanted to rename and change the column names. Therefore we could not simply use clean_names() function.
 
 ### Reproducibility, open data & renv (W9)
 
-*What we did:*
+*What we did:* we did not use it.
 
 *What worked well:*
 
@@ -65,25 +67,29 @@ For each skill area, describe what your group actually used it for. If you did n
 
 ### Analysis & inference strategies (W10)
 
-*What we did:*
+*What we did:* we planed to examine the influences of the important variables. All of the variables are continuous, that is why we used the linear regression to the relationship of each variable with the happiness scores.
 
-*What worked well:*
+To see the influences of each valuable, we examined the correlations.
 
-*What was hard:*
+We also focused on the residues of the predicted happiness scores and the observed ones, for in the data the predictors are not independent socioeconomic variables but the World Happiness Report’s additive factor contributions that were constructed to explain the reported happiness score. The relatively big deviations must derive from the factors which are not recorded in the dataset.
+
+*What worked well:* the models are not difficult to make because we did not exploited many variables. We also had enough samples (n = 868).
+
+*What was hard:* it was hard to derive substantial statements from the analysis, sometimes even impossible. For example, the deviation you see on the LOESS function in the plot 1 in Q1 is not easy to explain: It might be non-linear trend, but I also might be the sample effect of these countries (for instance, all of these poor countries could have a specific economic structure). So we had to be fareful about our statement (what is sure and what is not).
 
 ### Communication & visualisation (W11)
 
-*What we did:*
+*What we did:* we used different plots for the analysis. For the linear regression, we used the scatter plot and added the regression. For the ranking of the significance of each valuable and the residues of countries we used bar chart because you use a categorcial valuable.
 
-*What worked well:*
+*What worked well:* ggplot worked well and we had no difficulties to show the charts.
 
-*What was hard:*
+*What was hard:* it took time to create a general function to make a scatter plots.
 
 ## Key analytical decisions
 
 Describe 2–3 decisions that had a meaningful effect on your results or workflow. #say that I used https://quarto.org/docs/reference/projects/websites.html
 
-### Decision 1: \[short title\]
+### Decision 1: The order of the analysis 
 
 *What were we deciding between?*
 
@@ -91,13 +97,17 @@ Describe 2–3 decisions that had a meaningful effect on your results or workflo
 
 *In hindsight, would we decide differently?*
 
-### Decision 2: \[short title\]
+We analysed the dataset beginning with GDP, which had obviously a strong influence on happiness scores. However, there is also a consideration that we could have begin it with the analysis of the influences of each variables, so that our storytelling would have went from the overview to the detailed investigation.
+
+### Decision 2: Regression vs. Correlation
 
 *What were we deciding between?*
 
 *How did we reason through it?*
 
 *In hindsight, would we decide differently?*
+
+To investigate the influence of the variables, we used the correlations. We also considered that we could have use the linear regression to understand the contributions of each variables. However, we would then have had to standarize every variable to compare the regressions, and the significance of the variables are already obvious by means of the correlations. That's why wo did not pick the linear regression.
 
 ## Workflow & collaboration
 
@@ -107,18 +117,28 @@ Describe 2–3 decisions that had a meaningful effect on your results or workflo
 
 *What would we change about how we coordinated?*
 
+Eya created the texts and designs with the support of the AI, and Slah and Shohei reviewd and corrected it. \
+Slah picked the suitable models for each analysis, Shohei cleaned the dataset. Eya did the visualization.\
+At the end, all of us checked the text, and Shohei created a plot function for the scatter plot.
+
 ## LLM usage
 
 Describe up to 5 significant uses of an LLM tool during the project.
 
-### Usage 1: \[task\]
+### Usage 1: Making the draft of project_proposal.qmd
 
--   **Tool / model:**
--   **What it produced:**
--   **What we had to correct or verify:**
+-   **Tool / model: MS Copilot**
+-   **What it produced:** we used it to generate the texts we already derived from the plots.
+-   **What we had to correct or verify:** The vague expressions, missing details and missing assertive statements.
 
-### Usage 2: \[task\]
+### Usage 2: Making the plot of project_proposal.qmd
 
--   **Tool / model:**
--   **What it produced:**
--   **What we had to correct or verify:**
+-   **Tool / model: MS Copilot**
+-   **What it produced:** we used it to create the plots, whose models Slah chose to use.
+-   **What we had to correct or verify:** We put the function for the scatter plot together, which the LLM created separately.
+
+### Usage 3: Listing the information of data.qmd
+
+-   **Tool / model:** Claude opus 4.6
+-   **What it produced:** we made summarize the information of the dataset, copy rights
+-   **What we had to correct or verify:** we checked the source, URL, and the description of the variables. We also adjusted the design of the tables.
