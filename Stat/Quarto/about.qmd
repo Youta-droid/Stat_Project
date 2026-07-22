@@ -17,7 +17,7 @@ This website presents **Happiness ㋡**, a group project for **StatProg2 — LMU
 ## How to navigate
 
 | Page | Content |
-|-----------------------------|-------------------------------------------|
+|----|----|
 | **Home** | The full analysis: research questions, plots, interpretations, and conclusion |
 | **Our dataset** | What's in the data, per-year structure, key variables, source & licence |
 | **Presentation formats** | Classification of each plot (chart type + modelling layer) |
