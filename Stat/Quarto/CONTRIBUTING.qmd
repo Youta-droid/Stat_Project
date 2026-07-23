@@ -7,41 +7,41 @@ format: html
 
 **Primarily responsible for:** Visualizations and website design
 
--   Producing presentation graphics
--   Structuring the website (night mode, hidden code, search tool...)
--   Mainly used files: \_quarto.yml,project_proposal.qmd, format.qmd
+- Producing presentation graphics
+- Structuring the website (night mode, hidden code, search tool...)
+- Mainly used files: \_quarto.yml,project_proposal.qmd, format.qmd
 
 **Collaborative tasks:**
 
--   Building regression models
--   Research questions design
--   Evaluation and interpretation of findings
+- Building regression models
+- Research questions design
+- Evaluation and interpretation of findings
 
 ## Shohei — Contribution Statement
 
 **Primarily responsible for:** Data cleaning and optimization
 
--   Data cleaning (project_proposal.qmd)
--   Creating the plot functions (project_proposal.qmd)
--   Correcting the text (project_proposal.qmd / data.qmd)
+- Data cleaning (project_proposal.qmd)
+- Creating the plot functions (project_proposal.qmd)
+- Correcting the text (project_proposal.qmd / data.qmd)
 
 **Collaborative tasks:**
 
--   Building regression models
--   Research questions design
--   Evaluation and interpretation of findings
+- Building regression models
+- Research questions design
+- Evaluation and interpretation of findings
 
 ## Slaheddine — Contribution Statement
 
 **Primarily responsible for:** Documentation and environment maintenance
 
--   Writing (report/text sections)
--   Adding the README
--   Refreshing the renv folder (dependency/environment management)
--   Mainly used files: README.md, renv (folder), project_proposal.qmd
+- Writing (report/text sections)
+- Adding the README
+- Refreshing the renv folder (dependency/environment management)
+- Mainly used files: README.md, renv (folder), project_proposal.qmd
 
 **Collaborative tasks:**
 
--   Building regression models
--   Research questions design
--   Evaluation and interpretation of findings
+- Building regression models
+- Research questions design
+- Evaluation and interpretation of findings
