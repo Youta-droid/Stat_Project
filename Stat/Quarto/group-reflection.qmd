@@ -75,7 +75,7 @@ We also focused on the residues of the predicted happiness scores and the observ
 
 *What worked well:* the models are not difficult to make because we did not exploited many variables. We also had enough samples (n = 868).
 
-*What was hard:* it was hard to derive substantial statements from the analysis, sometimes even impossible. For example, the deviation you see on the LOESS function in the plot 1 in Q1 is not easy to explain: It might be non-linear trend, but I also might be the sample effect of these countries (for instance, all of these poor countries could have a specific economic structure). So we had to be fareful about our statement (what is sure and what is not).
+*What was hard:* it was hard to derive substantial statements from the analysis, sometimes even impossible. For example, the deviation you see on the LOESS function in the plot 1 in Q1 is not easy to explain: It might be non-linear trend, but I also might be the sample effect of these countries (for instance, all of these poor countries could have a specific economic structure). So we had to be careful about our statement (what is sure and what is not).
 
 ### Communication & visualisation (W11)
 
