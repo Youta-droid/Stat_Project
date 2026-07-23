@@ -10,22 +10,22 @@ format: html
 - Producing presentation graphics
 - Structuring the website (night mode, hidden code, search tool...)
 
-**Collaborative tasks:** 
+**Collaborative tasks:**
 
 - Building regression models
 - Research questions design
-- Evaluation and interpretation of findings 
+- Evaluation and interpretation of findings
 
 ## Shohei — Contribution Statement
 
-**Primarily responsible for:** Data cleaning and optimization 
+**Primarily responsible for:** Data cleaning and optimization
 
 - Data cleaning
-- creating the plot functions
-- correcting the text
+- Creating the plot functions
+- Correcting the text
 
-**Collaborative tasks:** 
+**Collaborative tasks:**
 
 - Building regression models
 - Research questions design
-- Evaluation and interpretation of findings 
+- Evaluation and interpretation of findings
