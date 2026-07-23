@@ -5,10 +5,13 @@ format: html
 
 ## Eya — Contribution Statement
 
-**Primarily responsible for:** modelling section
+**Primarily responsible for:** Visualizations and website design
 
-- Built and evaluated the regression model
-- Produced all presentation graphics
-- Reviewed and integrated team members' sections into the final report
+- Producing presentation graphics
+- Structuring the website (night mode, hidden code, search tool...)
 
-**Collaborative tasks:** research question design, data sourcing discussion
+**Collaborative tasks:** 
+
+- Building regression models
+- Research questions design
+- Evaluation and interpretation of findings 
