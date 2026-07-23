@@ -1,0 +1,14 @@
+---
+title: "CONTRIBUTING"
+format: html
+---
+
+## Eya — Contribution Statement
+
+**Primarily responsible for:** modelling section
+
+- Built and evaluated the regression model
+- Produced all presentation graphics
+- Reviewed and integrated team members' sections into the final report
+
+**Collaborative tasks:** research question design, data sourcing discussion
