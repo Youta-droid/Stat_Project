@@ -1,5 +1,5 @@
 ---
-title: "CONTRIBUTING"
+title: "Contributions of the group members"
 format: html
 ---
 
