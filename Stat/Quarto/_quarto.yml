@@ -25,7 +25,7 @@ website:
       - href: group-reflection.qmd
         text: "Group reflection"
       - href: CONTRIBUTING.qmd
-        text: "Group members contributions"
+        text: "Contributions"
     right:
       - icon: github
         href: https://github.com/Youta-droid/Stat_Project
