@@ -15,3 +15,17 @@ format: html
 - Building regression models
 - Research questions design
 - Evaluation and interpretation of findings 
+
+## Shohei — Contribution Statement
+
+**Primarily responsible for:** Data cleaning and optimization 
+
+- Data cleaning
+- creating the plot functions
+- correcting the text
+
+**Collaborative tasks:** 
+
+- Building regression models
+- Research questions design
+- Evaluation and interpretation of findings 
