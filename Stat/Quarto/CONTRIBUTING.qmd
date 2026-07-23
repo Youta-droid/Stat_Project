@@ -9,6 +9,7 @@ format: html
 
 - Producing presentation graphics
 - Structuring the website (night mode, hidden code, search tool...)
+- Mainly used files: _quarto.yml,project_proposal.qmd, format.qmd
 
 **Collaborative tasks:**
 
@@ -29,3 +30,18 @@ format: html
 - Building regression models
 - Research questions design
 - Evaluation and interpretation of findings
+
+## Sleh — Contribution Statement
+
+**Primarily responsible for:** Data cleaning and optimization
+
+- Data cleaning
+- Creating the plot functions
+- Correcting the text
+
+**Collaborative tasks:**
+
+- Building regression models
+- Research questions design
+- Evaluation and interpretation of findings
+
