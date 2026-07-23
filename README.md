@@ -196,8 +196,8 @@ Stat_Project/
 <!-- TEAM -->
 ## Team
 
-- **Shohei Kobayashi** — S.kobayashi@lmu.campus.de
-- **Eya Fares** — E.Fares@lmu.campus.de
+- **Shohei Kobayashi** — S.kobayashi@campus.lmu.de
+- **Eya Fares** — E.Fares@campus.lmu.de
 - **Slaheddine Azzabi** — Azzabi.Slaheddine@campus.lmu.de
 
 Project Link: [https://github.com/Youta-droid/Stat_Project](https://github.com/Youta-droid/Stat_Project)
