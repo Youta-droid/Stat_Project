@@ -31,13 +31,14 @@ format: html
 -   Research questions design
 -   Evaluation and interpretation of findings
 
-## Sleh — Contribution Statement
+## Slaheddine — Contribution Statement
 
-**Primarily responsible for:** Data cleaning and optimization
+**Primarily responsible for:** Documentation and environment maintenance
 
--   Data cleaning
--   Creating the plot functions
--   Correcting the text
+-   Writing (report/text sections)
+-   Adding the README
+-   Refreshing the renv folder (dependency/environment management)
+-   Mainly used files: README.md, renv (folder), project_proposal.qmd
 
 **Collaborative tasks:**
 
