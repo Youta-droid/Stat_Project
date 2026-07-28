@@ -1,0 +1,283 @@
+---
+title: "practical 1"
+---
+
+## Excercise 1
+
+1\.
+
+```{r}
+start_with_prefix <- function(string, prefix) {
+  str_sub(string, 1, str_length(prefix)) == prefix
+}
+
+
+
+repeat_fill <- function(x, y) {
+  rep(y, length.out = length(x))
+}
+#length(x) gets the size of x
+#rep(y, length.out = ...) repeats y until it reaches that length
+```
+
+2.  Make a case for why `norm_r()`, `norm_d()` etc. would be better than `rnorm()`, `dnorm()`^[1](https://soda-lmu.github.io/StatProg2-2026-SoSe/02-functions/practical.html#fn1)^. Make a case for the opposite. How could you make the names even clearer?
+
+-\> if you type "norm". you can easily get the variation of the data types.
+
+## Excercise 2
+
+```{r}
+library(docstring)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(cli)
+
+#' Displays the scatter plot of the selected columns on a selected species
+#' @param species_name the name of the speciees  
+#' @return GGplot
+
+plot_species <- function(species_name, x_col = "bill_length_mm", y_col = "bill_depth_mm"){
+  if (!any(penguins$species == species_name)) {
+    
+    stop("the selected species does not exist")
+  }
+  if (!is.numeric(dplyr::pull(penguins, {{ x_col }}))){
+    
+    cli_abort(c(
+      "{.arg x_col} must be numeric"
+    ))
+  }
+  if (!is.numeric(dplyr::pull(penguins, {{ y_col }}))){
+    
+    cli_abort(c(
+      "{.arg y_col} must be numeric"
+    ))
+    
+  }
+  penguins %>%
+    filter(species == species_name) %>%
+    #use aes_string() to give the column name 
+    ggplot(aes_string(x = x_col, y = y_col)) +
+    geom_point() +
+    labs(title = paste(x_col, "vs.", y_col, "for", species_name, "Penguins"),
+         x = x_col,
+         y = y_col)
+}
+
+plot_species("Adelie")
+
+```
+
+## **Exercise 4: Recursion and Iteration**
+
+```{r}
+#iterative version 
+#' @param n the number of the numbers added.
+fib_iter <- function(n) {
+  if (n <= 0) stop("n must be a positive integer")
+  # if there's only one number its 0
+  if (n == 1) return(0)
+  # if there's only two number it's 0 + 1 = 1
+  if (n == 2) return(1)
+  
+  a <- 0
+  b <- 1
+  
+  for (i in 3:n) {
+    temp <- a + b
+    a <- b
+    b <- temp
+  }
+  
+  return(b)
+}
+
+system.time({
+  result1 <- fib_iter(30)
+})
+
+print(result1)
+```
+
+```{r}
+#recursive version
+fib_rec <- function(n) {
+  if (n <= 0) stop("n must be a positive integer")
+  if (n == 1) return(0)
+  if (n == 2) return(1)
+  
+  fib_rec(n - 1) + fib_rec(n - 2)
+}
+
+system.time({
+  result2 <- fib_rec(30)
+})
+
+print(result2)
+
+
+```
+
+## **Task 1: Spot the repetition**
+
+Consider the following function that produces a small summary for a single species:
+
+```{r}
+summarise_species <- function(species_name) {
+  adelie_mean_bill <- mean(penguins$bill_length_mm[penguins$species == "Adelie"], na.rm = TRUE)
+  gentoo_mean_bill <- mean(penguins$bill_length_mm[penguins$species == "Gentoo"], na.rm = TRUE)
+  chinstrap_mean_bill <- mean(penguins$bill_length_mm[penguins$species == "Chinstrap"], na.rm = TRUE)
+
+  adelie_mean_mass <- mean(penguins$body_mass_g[penguins$species == "Adelie"], na.rm = TRUE)
+  gentoo_mean_mass <- mean(penguins$body_mass_g[penguins$species == "Gentoo"], na.rm = TRUE)
+  chinstrap_mean_mass <- mean(penguins$body_mass_g[penguins$species == "Chinstrap"], na.rm = TRUE)
+
+  if (species_name == "Adelie") {
+    cat("Adelie — mean bill:", adelie_mean_bill, "mean mass:", adelie_mean_mass, "\n")
+  } else if (species_name == "Gentoo") {
+    cat("Gentoo — mean bill:", gentoo_mean_bill, "mean mass:", gentoo_mean_mass, "\n")
+  } else if (species_name == "Chinstrap") {
+    cat("Chinstrap — mean bill:", chinstrap_mean_bill, "mean mass:", chinstrap_mean_mass, "\n")
+  }
+}
+
+summarise_species("Adelie")
+```
+
+2\.
+
+```{r}
+
+summarise_species <- function(species_name){
+  penguins %>%
+    filter(species == species_name) %>%
+    summarize(
+      mean_bill = mean(bill_length_mm, na.rm = TRUE),
+      mean_mass = mean(body_mass_g, na.rm = TRUE)
+    ) %>%
+    mutate(output = paste(species_name, " - mean bill: ", mean_bill, "mean bass: ", mean_mass, "\n")) %>%
+    pull(output) %>%
+    cat("\n")
+}
+
+summarise_species("Adelie")
+```
+
+### Task 2
+
+```{r}
+penguin_report <- function(species_name) {
+  # load
+  library(palmerpenguins)
+  library(tidyverse)
+  data <- penguins
+
+  # clean
+  data <- data[!is.na(data$bill_length_mm) & !is.na(data$body_mass_g), ]
+
+  # filter
+  data <- data[data$species == species_name, ]
+
+  # summarise
+  cat("n =", nrow(data), "\n")
+  cat("mean bill length:", mean(data$bill_length_mm), "\n")
+  cat("mean body mass:",   mean(data$body_mass_g),    "\n")
+
+  # plot
+  ggplot(data, aes(x = bill_length_mm, y = body_mass_g)) +
+    geom_point() +
+    labs(title = paste("Bill length vs. body mass —", species_name))
+}
+
+penguin_report("Gentoo")
+```
+
+```{r}
+
+penguins_loading <- function(){
+   # load
+  library(palmerpenguins)
+  library(tidyverse)
+  data <- penguins
+  
+  return(data)
+}
+
+penguins_clean <- function(data){
+  data <- data[!is.na(data$bill_length_mm) & !is.na(data$body_mass_g), ]
+  
+  return(data)
+}
+
+penguins_summarise_species <- function(data, species_name){
+    # filter
+  data <- data[data$species == species_name, ]
+
+  # summarise
+  cat("n =", nrow(data), "\n")
+  cat("mean bill length:", mean(data$bill_length_mm), "\n")
+  cat("mean body mass:",   mean(data$body_mass_g),    "\n")
+  
+  return(data)
+}
+
+penguins_plot <- function(data, species_name){
+    ggplot(data, aes(x = bill_length_mm, y = body_mass_g)) +
+      geom_point() +
+      labs(title = paste("Bill length vs. body mass —", species_name))
+}
+
+penguin_report <- function(species_name){
+  df <- penguins_loading()
+  df <- penguins_clean(df)
+  df <- penguins_summarise_species(df, species_name)
+  penguins_plot(df, species_name)
+}
+  
+
+penguin_report("Gentoo")
+```
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+#' clean the columns used for the plot later
+starwars_clean <- function(data, column1, column2){
+  data <- data %>%
+    filter(!is.na(data[[column1]]), !is.na(data[[column2]]))
+  
+  return(data)
+}
+
+starwars_means <- function(data, column1, column2){
+  cat(column1, "mean: ", mean(data[[column1]]), "\n")
+  cat(column2, "mean: ", mean(data[[column2]]), "\n")
+  
+  return(data)
+}
+
+starwars_plot <- function(data, column1, column2){
+  ggplot(data, aes_string(x = column1, y = column2)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    xlab(column1) + 
+    ylab(column2) + 
+    labs(
+    title = paste(column1, " vs ", column2)
+  ) 
+    
+    
+}
+
+df <- starwars
+starwars_report <- function(df, column1, column2){
+  df <- starwars_clean(df, column1, column2)
+  df <- starwars_means(df, column1, column2)
+  starwars_plot(df, column1, column2)
+}
+
+starwars_report(df, "height", "mass")
+```
