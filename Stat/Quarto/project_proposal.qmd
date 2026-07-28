@@ -100,7 +100,7 @@ Of the `r n_total` rows in the cleaned data, `r n_complete` are complete across 
 
 ## Distributions
 
-Next we look at each variable one at a time — its centre, spread, and shape — using the complete-case data that feeds the rest of the analysis.
+Next we look at each variable one at a time — its center, spread, and shape — using the complete-case data that feeds the rest of the analysis.
 
 ```{r ida-summary, warning=FALSE, message=FALSE}
 # summary statistics for every core variable
@@ -161,11 +161,11 @@ This question explores whether richer countries are automatically happier, or wh
 This plot compares GDP contribution with happiness. A linear regression line shows the general direction of the relationship, while the LOESS curve allows for a non-linear pattern. This is useful because the relationship between income and happiness may weaken at higher income levels.
 
 ```{r warning=FALSE, message=FALSE}
-#' creates hovering message windows for the intarcrive prot by protly
-#' returns the informations about countryname, year, the value of the regarding parameter
+#' creates hovering message windows for the interactive plot by plotly
+#' returns the information about countryname, year, the value of the regarding parameter
 #' and happiness score
 #' @param label The name of the parameter in question (gdp, corruption, etc.)
-#' @return A caracter string. 
+#' @return A character string. 
 create_hover <- function(country, year, x_value, happiness, label) {
   paste(
     "Country:", country,
@@ -176,10 +176,10 @@ create_hover <- function(country, year, x_value, happiness, label) {
 }
 
 
-# the valiables for the column names are wrapped in {{}}. The actual columns are not. 
+# the variables for the column names are wrapped in {{}}. The actual columns are not. 
 #' the function creates a scatter plot with a linear regression WITHOUT captions. 
 #' @param parameter_name the name of the indicator you want to display in the window in side of create_hover
-#' @param use_loess you can choose if you use a loess function
+#' @param use_loess you can choose if you use a LOESS function
 #' @return the plot in the minimal style WITHOUT any captions
 ggplot_scatter_linear <- function(data, x, y, parameter_name, use_loess = FALSE){
   p <- ggplot(

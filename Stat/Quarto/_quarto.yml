@@ -4,12 +4,12 @@ project:
 
 
 website:
-  search: true
-  announcement:
+  search: true          # adds a search box to the site so readers can search your pages.
+  announcement:         # banner across the top of every page
     content: "Final proposal due **22 Jul**"
-    type: warning        # info, warning, or danger
-    dismissable: true    # adds a "x" to deleted it
-  page-footer:
+    type: warning       # info, warning, or danger
+    dismissable: true   # adds a "x" to deleted it
+  page-footer:          # text at the bottom of every page
     center: "StatProg2 — LMU Munich"
   title: "Happiness ㋡"
   navbar:
@@ -28,18 +28,18 @@ website:
         text: "Contributions"
     right:
       - icon: github
-        href: https://github.com/Youta-droid/Stat_Project
-        aria-label: GitHub
+        href: https://github.com/Youta-droid/Stat_Project   #link to your repo
+        aria-label: GitHub   # screen-readers announce "GitHub"
 
 
-format:
-  html:
-    theme:
+format:                    # "Make the code box PRETTY"
+  html:                    # render pages as HTML.
+    theme:                 # visual Bootstrap theme
      light: minty
      dark: superhero
-    css: styles.css
-    toc: true
-    code-fold: true        # collapse code into <details>
+    css: styles.css        # load own custom CSS file for extra styling on top of the theme.
+    toc: true              # show a table of contents on each page
+    code-fold: true        # code chunks are collapsed by default behind a toggle
     code-summary: "Show code"
     code-overflow: scroll  # or wrap
     code-line-numbers: true
@@ -47,7 +47,7 @@ format:
     code-tools: true       # show/hide all code menu
 
 
-execute:
+execute:           # "RUN the code and handle output"
   echo: false      # show source code
   eval: true       # run code
   output: true     # include results

@@ -1,0 +1,18 @@
+---
+title: "Eya"
+format: html
+---
+
+## Eya — Contribution Statement
+
+**Primarily responsible for:** Visualizations and website design
+
+-   Producing presentation graphics
+-   Structuring the website (night mode, hidden code, search tool...)
+-   Mainly used files: \_quarto.yml,project_proposal.qmd, format.qmd
+
+**Collaborative tasks:**
+
+-   Building regression models
+-   Research questions design
+-   Evaluation and interpretation of findings
